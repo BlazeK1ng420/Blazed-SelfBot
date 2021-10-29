@@ -2,8 +2,7 @@
 
 The official code for Ghost which was recently discontinued and released to the public.  
 Feel free to use any of the code found in this project for your own project.  
-⠀
-
+<br />
 > ### Latest Changelog (v2.3.7)
 > ```yaml
 > New:
