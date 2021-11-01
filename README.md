@@ -5,6 +5,14 @@ Feel free to use any of the code found in this project for your own project.
   
 <br />
   
+> ### Notable Features
+> - Fast nitro sniper
+> - 200+ commands
+> - Custom code/scripts
+> - Fully Customisable
+  
+<br />
+  
 > ### Latest Changelog (v2.3.7)
 > ```yaml
 > New:
