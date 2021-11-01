@@ -5,14 +5,6 @@ Feel free to use any of the code found in this project for your own project.
   
 <br />
   
-> ### Notable Features
-> - Fast nitro sniper
-> - 200+ commands
-> - Custom code/scripts
-> - Fully Customisable
-  
-<br />
-  
 > ### Latest Changelog (v2.3.7)
 > ```yaml
 > New:
@@ -34,6 +26,14 @@ Feel free to use any of the code found in this project for your own project.
 > + cthemes/community themes not downloading some themes
 > + theme command not updating large embed image
 > ```  
+   
+<br />
+  
+> ### Notable Features
+> - Fast nitro sniper
+> - 200+ commands
+> - Custom code/scripts
+> - Fully Customisable
   
 <br />
   
