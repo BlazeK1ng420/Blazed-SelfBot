@@ -1,7 +1,21 @@
 # 👻 Ghost Selfbot
 
 The official code for Ghost which was recently discontinued and released to the public.  
-Feel free to use any of the code found in this project for your own project.  
+Feel free to use any of the code found in this project for your own project.   
+   
+<br />
+  
+> ### Notable Features
+> - Fast nitro sniper
+> - 200+ commands
+> - Custom code/scripts
+> - Fully Customisable
+  
+<br />
+  
+> ### Useful Links  
+> - Support Discord : https://discord.gg/aWTpaJV4cT
+> - Get your Discord token : https://youtu.be/YEgFvgg7ZPI  
   
 <br />
   
@@ -25,18 +39,4 @@ Feel free to use any of the code found in this project for your own project.
 > Fixed:
 > + cthemes/community themes not downloading some themes
 > + theme command not updating large embed image
-> ```  
-   
-<br />
-  
-> ### Notable Features
-> - Fast nitro sniper
-> - 200+ commands
-> - Custom code/scripts
-> - Fully Customisable
-  
-<br />
-  
-> ### Useful Links  
-> - Support Discord : https://discord.gg/aWTpaJV4cT
-> - Get your Discord token : https://youtu.be/YEgFvgg7ZPI  
+> ``` 
