@@ -63,13 +63,13 @@ try:
         if os.name == "nt":
             os.system(f"{sys.executable} -m pip install {package}")
         if os.name == "posix":
-            os.system(f"pip3 install {package}")
+            os.system(f"pip3.9 install {package}")
 
     def uninstall(package):
         if os.name == "nt":
             os.system(f"{sys.executable} -m pip uninstall {package}")
         if os.name == "posix":
-            os.system(f"pip3 uninstall {package}")
+            os.system(f"pip3.9 uninstall {package}")
 
     if "discord.py" in sys.modules:
         uninstall("discord.py")
@@ -8170,10 +8170,10 @@ Status changed to: Watching {text}
 
 except Exception as e:
     if "improper token" in str(e).lower():
-        print_error("The Discord token that Ghost has been given to use is no longer working or is invalid.")
-        print_error("Please put a new token in to the config (config.json).")
+        print("The Discord token that Ghost has been given to use is no longer working or is invalid.")
+        print("Please put a new token in to the config (config.json).")
     else:
-        print_error(e)
+        print(e)
     logging.exception(str(e))
     if os.name == "nt":
         os.system("pause")
