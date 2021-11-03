@@ -627,16 +627,19 @@ async def example(Ghost):
     ccmd_file = open('customcommands.json')
     ccmd = json.load(ccmd_file)
 
+    def updateTheme(theme):
+        themeJson = json.load(open(f"themes/{theme}"))
+        if "consolecolour" not in themeJson:
+            themeJson["consolecolour"] = "#3B79FF"
+        if "consolemode" not in themeJson:
+            themeJson["consolemode"] = "new"
+        if "embedlargeimage" not in themeJson:
+            themeJson["embedlargeimage"] = ""
+        json.dump(themeJson, open(f"themes/{theme}", "w"), sort_keys=False, indent=4)    
+
     for theme in os.listdir("themes"):
         if theme.endswith(".json"):
-            themeJson = json.load(open(f"themes/{theme}"))
-            if "consolecolour" not in themeJson:
-                themeJson["consolecolour"] = "#3B79FF"
-            if "consolemode" not in themeJson:
-                themeJson["consolemode"] = "new"
-            if "embedlargeimage" not in themeJson:
-                themeJson["embedlargeimage"] = "https://ghost.cool/assets/animatedbanner.gif"
-            json.dump(themeJson, open(f"themes/{theme}", "w"), sort_keys=False, indent=4)    
+            updateTheme(theme)
 
     update_config()
 
@@ -2128,7 +2131,7 @@ Current Theme: {__theme__}
     @Ghost.command(name="ctheme", description="Community themes.", usage="ctheme", aliases=["communitythemes", "cloudthemes", "cthemes"])
     async def ctheme(ctx, *, dl = None):
         if dl is None:
-            url = "https://ghost.cool/assets/cthemes.txt"
+            url = "https://raw.githubusercontent.com/GhostSelfbot/Community-Themes/main/themes.txt"
             themes = requests.get(url).text.split("\n")
 
             if __embedmode__:
@@ -2154,7 +2157,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
         else:
-            request = requests.get("https://ghost.cool/assets/cthemes.txt")
+            request = requests.get("https://raw.githubusercontent.com/GhostSelfbot/Community-Themes/main/themes.txt")
             themes = []
             for line in request.text.split("\n"):
                 themes.append(line.replace("\r", ""))
@@ -2163,7 +2166,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
             print(dl)
 
             if dl in themes:
-                url = f'https://ghost.cool/assets/cthemes/{dl}.json'
+                url = f'https://raw.githubusercontent.com/GhostSelfbot/Community-Themes/main/{dl}.json'
                 data = requests.get(url, allow_redirects=True)
                 open(f'themes/{dl}.json', 'wb').write(data.content)
 
@@ -5238,6 +5241,7 @@ Webhook Token: {webhook.token}
     @Ghost.command(name="theme", description="Change your current theme.", usage="theme [theme]", aliases=["settheme"])
     async def theme__(ctx, *, theme):
         if os.path.isfile(f'themes/{theme}.json'):
+            updateTheme(theme + ".json")
             Config.changeTheme(theme)
 
             if __embedmode__:
