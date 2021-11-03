@@ -8170,10 +8170,10 @@ Status changed to: Watching {text}
 
 except Exception as e:
     if "improper token" in str(e).lower():
-        print_error("The Discord token that Ghost has been given to use is no longer working or is invalid.")
-        print_error("Please put a new token in to the config (config.json).")
+        print("The Discord token that Ghost has been given to use is no longer working or is invalid.")
+        print("Please put a new token in to the config (config.json).")
     else:
-        print_error(e)
+        print(e)
     logging.exception(str(e))
     if os.name == "nt":
         os.system("pause")
