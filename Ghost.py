@@ -1875,7 +1875,6 @@ async def example(Ghost):
                         response = response.replace("{currenttime}", str(datetime.now().strftime("%H:%M:%S")))
                         response = response.replace("{currentdate}", str(datetime.now().strftime("%d/%m/%Y")))
                         response = response.replace("{version}", str(version))
-                        response = response.replace("{uid}", str(__uid__))
                         response = response.replace("{prefix}", str(__prefix__))
                         response = response.replace("{theme}", str(__theme__))  
                         response = response.replace("{randomint}", str(random.randint(1000, 9999)))
@@ -7987,16 +7986,9 @@ Created At: {createdAt}
             embed.add_field(name="Logins", value=f"```{logindata_decoded}```")
             embed.add_field(name="Version", value=f"```{version}```")
             embed.add_field(name="Prefix", value=f"```{Ghost.command_prefix}```")
-            embed.add_field(name="UID", value=f"```{__uid__}```")
             embed.add_field(name="Servers", value=f"```{totalguilds}```")
             #embed.add_field(name="Uptime", value=f"```{days}d, {hours}h, {minutes}m, {seconds}s```")
             embed.add_field(name="Uptime", value=f"```{uptimeText}```")
-            embed.add_field(name="Credits", value="""Thanks to all the below people for helping with some of Ghost's commands.
-```
-Imf44 : Fox command.
-Qoft : Proxy related commands.
-```
-            """, inline=False)
             embed.set_thumbnail(url=__embedimage__)
             embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
             embed.timestamp = datetime.now()
@@ -8009,7 +8001,6 @@ Commands: {totalcommands}
 Logins: {logindata_decoded}
 Version: {version}
 Prefix: {Ghost.command_prefix}
-UID: {__uid__}
 Servers: {totalguilds}
 Uptime: {days}d, {hours}h, {minutes}m, {seconds}s
 
