@@ -888,14 +888,16 @@ async def example(Ghost):
             cfg = Config.getConfig()
             cfg["prefix"] = newPrefix
             Config.saveConfig(cfg)
-        def changeDeleteTimeout(newDeleteTimeout: int):
+        def changeDeleteTimeout(newDeleteTimeout):
             global __deletetimeout__
+            newDeleteTimeout = int(newDeleteTimeout)
             __deletetimeout__ = newDeleteTimeout
             cfg = Config.getConfig()
             cfg["delete_timeout"] = newDeleteTimeout
             Config.saveConfig(cfg)
-        def changeGiveawayJoinDelay(newJoinDelay: int):
+        def changeGiveawayJoinDelay(newJoinDelay):
             global __giveawayjoindelay__
+            newJoinDelay = int(newJoinDelay)
             __giveawayjoindelay__ = newJoinDelay
             cfg = Config.getConfig()
             cfg["giveaway_join_delay"] = newJoinDelay
