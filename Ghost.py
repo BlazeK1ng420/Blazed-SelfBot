@@ -480,7 +480,10 @@ try:
         f = codecs.open('giveawaybots.json', "w", encoding="UTF-8")
         f.write("""
 {
-    "294882584201003009": "🎉"
+    "294882584201003009": "🎉",
+    "396464677032427530": "🎉",
+    "720351927581278219": "🎉",
+    "582537632991543307": "🎉"
 }
         """)
         f.close()        
@@ -3252,7 +3255,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
     async def readall(ctx):
         index = 0
         index2 = 0
-        DiscumClient = discum.Client(token=__token__, log=False)
+        DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
         for guild in Ghost.guilds:
             messages2 = []
             for channel in guild.text_channels:
