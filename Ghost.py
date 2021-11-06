@@ -74,13 +74,13 @@ try:
         if os.name == "nt":
             os.system(f"{sys.executable} -m pip install {package}")
         if os.name == "posix":
-            os.system(f"pip3.9 install {package}")
+            os.system(f"python3 -m pip install {package}")
 
     def uninstall(package):
         if os.name == "nt":
             os.system(f"{sys.executable} -m pip uninstall {package}")
         if os.name == "posix":
-            os.system(f"pip3.9 uninstall {package}")
+            os.system(f"python3 -m pip uninstall {package}")
 
     if "discord.py" in sys.modules:
         uninstall("discord.py")
