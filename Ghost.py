@@ -2876,7 +2876,7 @@ You have risk mode disabled, you cant use this command.
                 pass              
         else:
             await ctx.send(f"""```ini
-[ Giveaway Commands ]
+[ Proxy Commands ]
 
 {Ghost.command_prefix}proxies http » Scrape HTTP proxies.
 {Ghost.command_prefix}proxies https » Scrape HTTPS proxies.
