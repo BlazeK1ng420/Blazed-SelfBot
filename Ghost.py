@@ -71,16 +71,10 @@ try:
     #     print("You're using a supported python version, " + str(pythonVersion))
 
     def install(package):
-        if os.name == "nt":
-            os.system(f"{sys.executable} -m pip install {package}")
-        if os.name == "posix":
-            os.system(f"pip3.9 install {package}")
+        os.system(f"{sys.executable} -m pip install {package}")
 
     def uninstall(package):
-        if os.name == "nt":
-            os.system(f"{sys.executable} -m pip uninstall {package}")
-        if os.name == "posix":
-            os.system(f"pip3.9 uninstall {package}")
+        os.system(f"{sys.executable} -m pip uninstall {package}")
 
     if "discord.py" in sys.modules:
         uninstall("discord.py")
