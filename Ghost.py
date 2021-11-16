@@ -74,13 +74,13 @@ try:
         if os.name == "nt":
             os.system(f"{sys.executable} -m pip install {package}")
         if os.name == "posix":
-            os.system(f"python3 -m pip install {package}")
+            os.system(f"pip3.9 install {package}")
 
     def uninstall(package):
         if os.name == "nt":
             os.system(f"{sys.executable} -m pip uninstall {package}")
         if os.name == "posix":
-            os.system(f"python3 -m pip uninstall {package}")
+            os.system(f"pip3.9 uninstall {package}")
 
     if "discord.py" in sys.modules:
         uninstall("discord.py")
@@ -210,6 +210,12 @@ try:
     except ModuleNotFoundError:
         install("discord-emoji")
 
+    if sys.platform == "darwin":
+        try:
+            import pync
+        except ModuleNotFoundError:
+            install("pync")
+
     if os.name == "nt":
         try:
             import wmi
@@ -220,8 +226,13 @@ try:
 
     if os.name == "nt":
         import plyer
-    if os.name == "nt":
+
+    try:
         import tkinter
+    except:
+        pass
+    if sys.platform == "darwin":
+        import pync
     import discord_emoji
     import threading
     import pygame
@@ -448,6 +459,7 @@ try:
     if not os.path.exists('data/'): os.makedirs('data/');
     if not os.path.exists('themes/'): os.makedirs('themes/');
     if not os.path.exists('sounds/'): os.makedirs('sounds/');
+    if not os.path.isfile("data/icon.png"): open("data/icon.png", "wb").write(requests.get("https://raw.githubusercontent.com/GhostSelfbot/Branding/main/ghost.png", allow_redirects=True).content)
     # if not os.path.isfile('icon.ico'): open('icon.ico', 'wb').write(requests.get('https://ghost.cool/favicon.ico', allow_redirects=True).content);  
     # if not os.path.isfile('sounds/connected.mp3'): open('sounds/connected.mp3', 'wb').write(requests.get('https://ghost.cool/assets/sounds/connected.mp3', allow_redirects=True).content);  
     # if not os.path.isfile('sounds/error.mp3'): open('sounds/error.mp3', 'wb').write(requests.get('https://ghost.cool/assets/sounds/error.mp3', allow_redirects=True).content);  
@@ -801,7 +813,7 @@ async def example(Ghost):
             url = request[0]["data"]["children"][0]["data"]["preview"]["reddit_video_preview"]["fallback_url"]
         return url    
     def send_notification(title, message, duration):
-        try:
+        if sys.platform == "win32":
             plyer.notification.notify(
                 title=title,
                 message=message,
@@ -810,9 +822,9 @@ async def example(Ghost):
                 timeout=duration,
                 toast=True
             )
+        elif sys.platform == "darwin":
+            pync.notify(message, title=title)
 
-        except:
-            pass   
     def claim_nitro(code, userToken):
         URL = f'https://discordapp.com/api/v6/entitlements/gift-codes/{code}/redeem'
         result = requests.post(URL, headers={'Authorization': userToken}).text
@@ -4998,8 +5010,11 @@ Average: {average}
     async def webhooksetup(ctx):
         global __nitrowebhook__, __privnotewebhook__, __giveawaywebhook__, __ghostpingwebhook__, __friendsupdatewebhook__, __dmtypingwebhook__, __guildleavewebhook__, __selfbotwebhook__, __ticketswebhook__
         
+        iconFile = open("data/icon.png", "rb")
+        icon = bytes(iconFile.read())
+
         configFile = json.load(open("config.json"))
-        guild = await Ghost.create_guild(ctx.author.name + "'s webhooks")
+        guild = await Ghost.create_guild("Ghost Notifications", icon=icon)
         newGuildDefaultChannels = await guild.fetch_channels()
         
         for channel in newGuildDefaultChannels:
