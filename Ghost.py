@@ -1212,7 +1212,6 @@ async def example(Ghost):
             # def print_sniper_info(firstmessage, secondmessage):
             #     print(f"{fg.cGrey}{getCurrentTime()} | {fg.cOrange}[Sniper] {fg.cGrey} | {firstmessage} | {secondmessage}")
 
-
         if "beta" in version.lower():
             print_important("You're currently using a beta build of Ghost.")
             print_important("If you notice any bugs please report them to the developer.")
@@ -1670,15 +1669,11 @@ async def example(Ghost):
                     if message.embeds:
                         messageEmbed = discord.Embed.to_dict(message.embeds[0])
 
-                    if message.author.id in giveawayBots and message.author.bot:
+                    if int(message.author.id) in giveawayBots and message.author.bot:
                         isGiveaway = False
 
-                        if message.embeds:
-                            if "giveaway" in str(messageEmbed).lower():
-                                isGiveaway = True
-                        else:
-                            if "giveaway" in message.content.lower():
-                                isGiveaway = True
+                        if "giveaway" in message.content.lower() or "giveaway" in json.dumps(messageEmbed).lower():
+                            isGiveaway = True
 
                         if isGiveaway:
                             if message.guild.id not in __ignoredservers__["giveaways"]:
