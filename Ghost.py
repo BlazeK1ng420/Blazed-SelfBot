@@ -3609,7 +3609,7 @@ That crypto currency doesnt exist or there was an error.
 
         for key, value in cfg["snipers"].items():
             if type.lower() == key.lower():
-                cfg["sniper"][key] = True
+                cfg["snipers"][key] = True
                 Config.saveConfig(cfg)
                 success = True
 
@@ -3625,7 +3625,7 @@ That crypto currency doesnt exist or there was an error.
 
         for key, value in cfg["snipers"].items():
             if type.lower() == key.lower():
-                cfg["sniper"][key] = False
+                cfg["snipers"][key] = False
                 Config.saveConfig(cfg)
                 success = True
 
