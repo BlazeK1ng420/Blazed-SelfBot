@@ -436,6 +436,10 @@ try:
             configJson["afkmode"]["enabled"] = False
             configJson["afkmode"]["replymessage"] = "im currently afk :/"
 
+        if ("toastnotifications" not in configFile):
+            print(printSpaces+"Adding toast notifications to config.")
+            configJson["toastnotifications"] = True
+
         json.dump(configJson, open("config.json", "w"), sort_keys=False, indent=4) 
 
         configJson = json.load(open("config.json"))
@@ -807,17 +811,18 @@ async def example(Ghost):
             url = request[0]["data"]["children"][0]["data"]["preview"]["reddit_video_preview"]["fallback_url"]
         return url    
     def send_notification(title, message, duration):
-        if sys.platform == "win32":
-            plyer.notification.notify(
-                title=title,
-                message=message,
-                app_name="Ghost",
-                app_icon="icon.ico",
-                timeout=duration,
-                toast=True
-            )
-        elif sys.platform == "darwin":
-            pync.notify(message, title=title)
+        if CONFIG["toastnotifications"]:
+            if sys.platform == "win32":
+                plyer.notification.notify(
+                    title=title,
+                    message=message,
+                    app_name="Ghost",
+                    app_icon="icon.ico",
+                    timeout=duration,
+                    toast=True
+                )
+            elif sys.platform == "darwin":
+                pync.notify(message, title=title)
 
     def claim_nitro(code, userToken):
         URL = f'https://discordapp.com/api/v6/entitlements/gift-codes/{code}/redeem'
