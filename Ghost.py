@@ -1250,7 +1250,7 @@ async def example(Ghost):
         send_notification("Ghost", "Successfully connected!", 10)  
         global __ghostloaded__
         __ghostloaded__ = True
-        if __sounds__:
+        if Config.getConfig()["sounds"]:
             if str(sounddevice.query_devices()) != "":
                 pygame.mixer.music.load(resource_path("sounds/connected.mp3"))
                 pygame.mixer.music.play(1)                    
@@ -1318,7 +1318,7 @@ async def example(Ghost):
     @Ghost.event
     async def on_message_delete(message):
         if __ghostloaded__:
-            if __deletedmessagesdetect__:
+            if Config.getConfig()["detections"]["deletedmessages"]:
                 if message.guild.id not in __ignoredservers__["deletedmessages"]:
                     print_detect("Deleted Message")
                     print_sniper_info("Content", message.content)
@@ -1332,7 +1332,7 @@ async def example(Ghost):
                     except:
                         pass  
 
-            if __ghostpingdetect__:
+            if Config.getConfig()["detections"]["ghostping"]:
                 if Ghost.user.mentioned_in(message):
                     if message.guild.id not in __ignoredservers__["ghostpings"]:
                         print_detect("Ghost Ping")
@@ -1346,7 +1346,7 @@ async def example(Ghost):
                             print_sniper_info("Guild", str(message.guild.name))
                         except:
                             pass   
-                        if __sounds__:   
+                        if Config.getConfig()["sounds"]:   
                             if str(sounddevice.query_devices()) != "":          
                                 pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                                 pygame.mixer.music.play(1)                        
@@ -1363,14 +1363,14 @@ async def example(Ghost):
     @Ghost.event
     async def on_member_ban(guild, user):
         if __ghostloaded__:
-            if __bandetect__:
+            if Config.getConfig()["detections"]["bans"]:
                 if guild.id not in __ignoredservers__["bans"]:
                     print_detect("Banned")
                     print_sniper_info("Member", f"{user}")
                     print_sniper_info("Member ID", f"{user.id}")
                     print_sniper_info("Guild", f"{guild.name}")    
                 if str(Ghost.user) == str(user):
-                    if __sounds__:   
+                    if Config.getConfig()["sounds"]:   
                         if str(sounddevice.query_devices()) != "":          
                             pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                             pygame.mixer.music.play(1)  
@@ -1379,7 +1379,7 @@ async def example(Ghost):
     @Ghost.event
     async def on_guild_remove(guild):
         if __ghostloaded__:
-            if __guildleavedetect__:
+            if Config.getConfig()["detections"]["guildleave"]:
                 if guild.id not in __guildleaveignoredservers__:
                     print_detect("Guild Left")
                     print_sniper_info("Name", guild.name)
@@ -1401,7 +1401,7 @@ async def example(Ghost):
     @Ghost.event
     async def on_webhooks_update(channel):
         if __ghostloaded__:
-            if __webhookmodificationdetect__:
+            if Config.getConfig()["detections"]["webhookmodification"]:
                 if channel.guild.id not in __ignoredservers__["webhookmodifications"]:
                     print_detect("Webhook Modification")
                     try:
@@ -1416,7 +1416,7 @@ async def example(Ghost):
     @Ghost.event
     async def on_relationship_add(relationship):
         if __ghostloaded__:
-            if __friendsupdatedetect__:
+            if Config.getConfig()["detections"]["friendsupdate"]:
                 if isinstance(relationship.type, discord.RelationshipType.incoming_request):
                     print_detect("Incoming Friend Request")
                     print_sniper_info("User", relationship.user.name + "#" + relationship.user.discriminator)
@@ -1449,7 +1449,7 @@ async def example(Ghost):
     @Ghost.event
     async def on_relationship_remove(relationship):
         if __ghostloaded__:
-            if __friendsupdatedetect__:
+            if Config.getConfig()["detections"]["friendsupdate"]:
                 if isinstance(relationship.type, discord.RelationshipType.outgoing_request):
                     print_detect("Outgoing Friend Request")
                     print_sniper_info("User", relationship.user.name + "#" + relationship.user.discriminator)
@@ -1497,10 +1497,10 @@ async def example(Ghost):
     async def on_typing(channel, user, when):
         if __ghostloaded__:
             if isinstance(channel, discord.DMChannel):
-                if __dmtypingdetect__:
+                if Config.getConfig()["detections"]["dmtyping"]:
                     print_detect(f"DM Typing")
                     print_sniper_info("User", user)
-                    if __sounds__:   
+                    if Config.getConfig()["sounds"]:   
                         if str(sounddevice.query_devices()) != "":          
                             pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                             pygame.mixer.music.play(1)  
@@ -1520,7 +1520,7 @@ async def example(Ghost):
     @Ghost.event
     async def on_guild_channel_create(channel):
         if __ghostloaded__:
-            if __ticketsniper__:
+            if Config.getConfig()["snipers"]["tickets"]:
                 if "ticket" in channel.name:
                     if channel.guild.id not in __ignoredservers__["tickets"]:
                         if str(channel.type).lower() != "category":
@@ -1536,7 +1536,7 @@ async def example(Ghost):
                                 except:
                                     pass
 
-                                if __sounds__:   
+                                if Config.getConfig()["sounds"]:   
                                     if str(sounddevice.query_devices()) != "":          
                                         pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                                         pygame.mixer.music.play(1)  
@@ -1569,7 +1569,7 @@ async def example(Ghost):
                     if isinstance(message.channel, discord.DMChannel):
                         await message.channel.send(CONFIG["afkmode"]["replymessage"])
 
-                if __nitrosniper__:
+                if Config.getConfig()["snipers"]["nitro"]:
                     if "discord.gift/" in message.content:
                         if message.guild.id not in __ignoredservers__["nitro"]:
                             giftLink = ""
@@ -1607,14 +1607,14 @@ async def example(Ghost):
                                 response = webhook.execute()
 
                             if nitroStatus == "Valid Code":
-                                if __sounds__:
+                                if Config.getConfig()["sounds"]:
                                     if str(sounddevice.query_devices()) != "":
                                         pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                                         pygame.mixer.music.play(1)
 
                                 send_notification("Nitro Sniper", "Sniped a nitro gift code!", 10)                                
 
-                if __privnotesniper__:
+                if Config.getConfig()["snipers"]["privnote"]:
                     if "privnote.com/" in message.content:
                         if message.guild.id not in __ignoredservers__["privnote"]:
                             privnoteLink = ""
@@ -1640,7 +1640,7 @@ async def example(Ghost):
                                 file.close()
                                 print_sniper_info("Content", content)        
 
-                                if __sounds__:
+                                if Config.getConfig()["sounds"]:
                                     if str(sounddevice.query_devices()) != "":
                                         pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                                         pygame.mixer.music.play(1)
@@ -1666,7 +1666,7 @@ async def example(Ghost):
                                 webhook.add_embed(embed)
                                 response = webhook.execute()   
 
-                if __giveawaysniper__:
+                if Config.getConfig()["snipers"]["giveaway"]:
                     if message.embeds:
                         messageEmbed = discord.Embed.to_dict(message.embeds[0])
 
@@ -1696,7 +1696,7 @@ async def example(Ghost):
                                         print_sniper_info("Channel", message.channel.name)
                                     except:
                                         pass   
-                                    if __sounds__:
+                                    if Config.getConfig()["sounds"]:
                                         if str(sounddevice.query_devices()) != "":
                                             pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                                             pygame.mixer.music.play(1)                                                               
@@ -1754,7 +1754,7 @@ async def example(Ghost):
 
                                     #     giveawayGUI()
 
-                                    #     if __sounds__:
+                                    #     if Config.getConfig()["sounds"]:
                                     #         if str(sounddevice.query_devices()) != "":
                                     #             pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                                     #             pygame.mixer.music.play(1)
@@ -1831,12 +1831,12 @@ async def example(Ghost):
                             #             response = webhook.execute() 
 
                             #         send_notification("Giveaway Sniper", f"You won a giveaway for {prize} 🎉!", 10)                                                                       
-                            #         if __sounds__:
+                            #         if Config.getConfig()["sounds"]:
                             #             if str(sounddevice.query_devices()) != "":
                             #                 pygame.mixer.music.load(resource_path("sounds/giveaway-win.mp3"))
                             #                 pygame.mixer.music.play(1)
 
-                if __selfbotdetect__:
+                if Config.getConfig()["detections"]["selfbot"]:
                     if not message.author.bot:
                         if message.embeds:
                             if "http" not in message.content:
@@ -2648,11 +2648,16 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**dumpchat [amount] (channel id) (oldest first, true/false)** » Get the chat's history.
 `{Ghost.command_prefix}`**invite** » Get Ghost's Discord server invite link.
 `{Ghost.command_prefix}`**addccmd [name] [response]** » Add a custom command.
-`{Ghost.command_prefix}`**enablesniper [type, nitro/privnote/giveaway]** » Enable a sniper.
-`{Ghost.command_prefix}`**disablesniper [type, nitro/privnote/giveaway]** » Disable a sniper.
-`{Ghost.command_prefix}`**enabledetect [type, selfbot/..]** » Enable a detection.
-`{Ghost.command_prefix}`**disabledetect [type, selfbot/..]** » Disable a detection.
-`{Ghost.command_prefix}`**riskmode** » Disable and enable risk mode
+`{Ghost.command_prefix}`**delccmd [name]** » Delete a custom command.
+`{Ghost.command_prefix}`**detections** » A list of all detections.
+`{Ghost.command_prefix}`**snipers** » A list of all snipers.
+`{Ghost.command_prefix}`**enablesniper [type]** » Enable a sniper.
+`{Ghost.command_prefix}`**disablesniper [type]** » Disable a sniper.
+`{Ghost.command_prefix}`**enabledetect [type]** » Enable a detection.
+`{Ghost.command_prefix}`**disabledetect [type]** » Disable a detection.
+`{Ghost.command_prefix}`**riskmode** » Disable and enable risk mode.
+`{Ghost.command_prefix}`**sounds** » Toggle Ghost notification sounds.
+`{Ghost.command_prefix}`**notifications** » Toggle Ghost notification.
             """)
                 embed.set_author(name="Selfbot Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2672,11 +2677,16 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}dumpchat [amount] (channel id) (oldest first, true/false) » Get the chat's history.
 {Ghost.command_prefix}invite » Get Ghost's Discord server invite link.
 {Ghost.command_prefix}addccmd [name] [response] » Add a custom command.
-{Ghost.command_prefix}enablesniper [type, nitro/privnote/giveaway] » Enable a sniper.
-{Ghost.command_prefix}disablesniper [type, nitro/privnote/giveaway] » Disable a sniper.
-{Ghost.command_prefix}enabledetect [type, selfbot/..] » Enable a detection.
-{Ghost.command_prefix}disabledetect [type, selfbot/..] » Disable a detection.    
-{Ghost.command_prefix}riskmode » Disable and enable risk mode
+{Ghost.command_prefix}delccmd [name] » Delete a custom command.
+{Ghost.command_prefix}detections » A list of all detections.
+{Ghost.command_prefix}snipers » A list of all snipers.
+{Ghost.command_prefix}enablesniper [type] » Enable a sniper.
+{Ghost.command_prefix}disablesniper [type] » Disable a sniper.
+{Ghost.command_prefix}enabledetect [type] » Enable a detection.
+{Ghost.command_prefix}disabledetect [type] » Disable a detection.
+{Ghost.command_prefix}riskmode » Disable and enable risk mode.
+{Ghost.command_prefix}sounds » Toggle Ghost notification sounds.
+{Ghost.command_prefix}notifications » Toggle Ghost notification.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
@@ -3520,180 +3530,156 @@ That crypto currency doesnt exist or there was an error.
         emoji = await ctx.guild.create_custom_emoji(name=match.name, image=response.content)
         await ctx.send(f"Successfully cloned `{emoji.name}`.")                
 
-    @Ghost.command(name="enabledetect", description="Enable a detection.", usage="enabledetect [type, selfbot/ghostping/bans/deletedmessages/webhookmodification]")
+    @Ghost.command(name="detections", description="A list of all detections.", usage="detections")
+    async def detections(ctx):
+        cfg = Config.getConfig()
+        _list = []
+
+        for key, value in cfg["detections"].items():
+            if __embedmode__:
+                _list.append(f"**{key}** : {value}")
+            else:
+                _list.append(f"{key} : {value}")
+
+        if __embedmode__:
+            embed = discord.Embed(title="Detections", description='\n'.join(_list), color=__embedcolour__)
+            embed.set_thumbnail(url=__embedimage__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            embed.timestamp = datetime.now()    
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("```ini\n[ Detections ]\n " + "\n".join(_list) + "\n\n# " + __embedfooter__ + "```")
+
+    @Ghost.command(name="snipers", description="A list of all snipers.", usage="snipers")
+    async def snipers(ctx):
+        cfg = Config.getConfig()
+        _list = []
+
+        for key, value in cfg["snipers"].items():
+            if __embedmode__:
+                _list.append(f"**{key}** : {value}")
+            else:
+                _list.append(f"{key} : {value}")
+
+        if __embedmode__:
+            embed = discord.Embed(title="Snipers", description='\n'.join(_list), color=__embedcolour__)
+            embed.set_thumbnail(url=__embedimage__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            embed.timestamp = datetime.now()
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("```ini\n[ Snipers ]\n " + "\n".join(_list) + "\n\n# " + __embedfooter__ + "```")
+
+    @Ghost.command(name="enabledetect", description="Enable a detection.", usage="enabledetect [type]", aliases=["enabledetection", "enabledetections"])
     async def enabledetect(ctx, *, type):
-        if type.lower() == "selfbot":
-            global __selfbotdetect__
-            __selfbotdetect__ = True
-            CONFIG["detections"]["selfbot"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Selfbot detection has been enabled.", delete_after=__deletetimeout__)
-        if type.lower() == "ghostping":
-            global __ghostpingdetect__
-            __ghostpingdetect__ = True
-            CONFIG["detections"]["ghostping"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Ghostping detection has been enabled.", delete_after=__deletetimeout__)    
-        if type.lower() == "bans":
-            global __bandetect__
-            __bandetect__ = True
-            CONFIG["detections"]["bans"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Ban detection has been enabled.", delete_after=__deletetimeout__)    
-        if type.lower() == "deletedmessages":
-            global __deletedmessagesdetect__
-            __deletedmessagesdetect__ = True
-            CONFIG["detections"]["deletedmessages"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Deleted messages detection has been enabled.", delete_after=__deletetimeout__)    
-        if type.lower() == "webhookmodification":
-            global __webhookmodificationdetect__
-            __webhookmodificationdetect__ = True
-            CONFIG["detections"]["webhookmodification"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Webhook modification detection has been enabled.", delete_after=__deletetimeout__)                                                       
-        else:
-            await ctx.send("Invalid type.", delete_after=__deletetimeout__)
+        cfg = Config.getConfig()
+        success = False
 
-    @Ghost.command(name="disabledetect", description="Disable a detection.", usage="disabledetect [type, selfbot/ghostping/bans/deletedmessages/webhookmodification]")
+        for key, value in cfg["detections"].items():
+            if type.lower() == key.lower():
+                cfg["detections"][key] = True
+                Config.saveConfig(cfg)
+                success = True
+
+        if success:
+            await ctx.send(f"Enabled `{type}` detection.")
+        else:
+            await ctx.send(f"Couldnt find `{type}` detection.")
+
+    @Ghost.command(name="disabledetect", description="Disable a detection.", usage="disabledetect [type]", aliases=["disabledetection", "disabledetections"])
     async def disabledetect(ctx, *, type):
-        if type.lower() == "selfbot":
-            global __selfbotdetect__
-            __selfbotdetect__ = False
-            CONFIG["detections"]["selfbot"]  = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Selfbot detection has been disabled.", delete_after=__deletetimeout__)
-        if type.lower() == "ghostping":
-            global __ghostpingdetect__
-            __selfbotdetect__ = False
-            CONFIG["detections"]["ghostping"]  = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Ghostping detection has been disabled.", delete_after=__deletetimeout__)           
-        if type.lower() == "bans":
-            global __bandetect__
-            __bandetect__ = False
-            CONFIG["detections"]["bans"]  = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Ban detection has been disabled.", delete_after=__deletetimeout__)  
-        if type.lower() == "deletedmessages":
-            global __deletedmessagesdetect__
-            __deletedmessagesdetect__ = False
-            CONFIG["detections"]["deletedmessages"]  = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Deleted messages detection has been disabled.", delete_after=__deletetimeout__)     
-        if type.lower() == "webhookmodification":
-            global __webhookmodificationdetect__
-            __webhookmodificationdetect__ = False
-            CONFIG["detections"]["webhookmodification"]  = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Webhook modifcation detection has been disabled.", delete_after=__deletetimeout__)                                                                 
-        else:
-            await ctx.send("Invalid type.", delete_after=__deletetimeout__)
+        cfg = Config.getConfig()
+        success = False
 
-    @Ghost.command(name="enablesniper", description="Enable a sniper.", usage="enablesniper [type, nitro/privnote/giveaway/tickets]")
+        for key, value in cfg["detections"].items():
+            if type.lower() == key.lower():
+                cfg["detections"][key] = False
+                Config.saveConfig(cfg)
+                success = True
+
+        if success:
+            await ctx.send(f"Disabled `{type}` detection.")
+        else:
+            await ctx.send(f"Couldnt find `{type}` detection.")
+
+    @Ghost.command(name="enablesniper", description="Enable a sniper.", usage="enablesniper [type]", aliases=["enablesnipers"])
     async def enablesniper(ctx, *, type):
-        if type.lower() == "nitro":
-            global __nitrosniper__
-            __nitrosniper__ = True
-            CONFIG["snipers"]["nitro"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Nitro sniper has been enabled.", delete_after=__deletetimeout__)
-        elif type.lower() == "privnote":
-            global __privnotesniper__
-            __privnotesniper__ = True
-            CONFIG["snipers"]["privnote"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False) 
-            await ctx.send("Privnote sniper has been enabled.", delete_after=__deletetimeout__)  
-        elif type.lower() == "giveaway":
-            global __giveawaysniper__
-            __giveawaysniper__ = True
-            CONFIG["snipers"]["giveaway"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)    
-            await ctx.send("Giveaway sniper has been enabled.", delete_after=__deletetimeout__)        
-        elif type.lower() == "tickets":
-            global __ticketsniper__
-            __ticketsniper__ = True
-            CONFIG["snipers"]["tickets"] = True
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)    
-            await ctx.send("Ticket sniper has been enabled.", delete_after=__deletetimeout__)                                                
-        else:
-            await ctx.send("Invalid type.", delete_after=__deletetimeout__)
+        cfg = Config.getConfig()
+        success = False
 
-    @Ghost.command(name="disablesniper", description="Disable a sniper.", usage="disablesniper [type, nitro/privnote/giveaway/tickets]")
+        for key, value in cfg["sniper"].items():
+            if type.lower() == key.lower():
+                cfg["sniper"][key] = True
+                Config.saveConfig(cfg)
+                success = True
+
+        if success:
+            await ctx.send(f"Enabled `{type}` sniper.")
+        else:
+            await ctx.send(f"Couldnt find `{type}` sniper.")
+
+    @Ghost.command(name="disablesniper", description="Disable a sniper.", usage="disablesniper [type]", aliases=["disablesnipers"])
     async def disablesniper(ctx, *, type):
-        if type.lower() == "nitro":
-            global __nitrosniper__
-            __nitrosniper__ = False
-            CONFIG["snipers"]["nitro"] = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)
-            await ctx.send("Nitro sniper has been disabled.", delete_after=__deletetimeout__)
-        elif type.lower() == "privnote":
-            global __privnotesniper__
-            __privnotesniper__ = False
-            CONFIG["snipers"]["privnote"] = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False)  
-            await ctx.send("Privnote sniper has been disabled.", delete_after=__deletetimeout__) 
-        elif type.lower() == "giveaway":
-            global __giveawaysniper__
-            __giveawaysniper__ = False
-            CONFIG["snipers"]["giveaway"] = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False) 
-            await ctx.send("Giveaway sniper has been disabled.", delete_after=__deletetimeout__)
-        elif type.lower() == "tickets":
-            global __ticketsniper__
-            __ticketsniper__ = False
-            CONFIG["snipers"]["tickets"] = False
-            json.dump(CONFIG, open("config.json", "w"), indent=4, sort_keys=False) 
-            await ctx.send("Ticket sniper has been disabled.", delete_after=__deletetimeout__)                    
+        cfg = Config.getConfig()
+        success = False
+
+        for key, value in cfg["sniper"].items():
+            if type.lower() == key.lower():
+                cfg["sniper"][key] = False
+                Config.saveConfig(cfg)
+                success = True
+
+        if success:
+            await ctx.send(f"Disabled `{type}` sniper.")
         else:
-            await ctx.send("Invalid type.", delete_after=__deletetimeout__)                    
+            await ctx.send(f"Couldnt find `{type}` sniper.")
 
-#             @Ghost.command(name="ghostusers", description="Finds all the people using Ghost in a server.", usage="ghostusers")
-#             @commands.guild_only()
-#             async def ghostusers(ctx):
-#                 message = await ctx.send("Looking for people that have Ghost, this may take a while...")
+#     @Ghost.command(name="ghostusers", description="Finds all the people using Ghost in a server.", usage="ghostusers")
+#     @commands.guild_only()
+#     async def ghostusers(ctx):
+#         message = await ctx.send("Looking for people that have Ghost, this may take a while...")
 
-#                 ghostUsers = []
-#                 userAgent = get_random_user_agent()
-#                 try:
-#                     await ctx.message.delete()
-#                 except:
-#                     pass
-#                 DiscumClient = discum.Client(token=__token__, user_agent=f"{userAgent}")
-#                 @DiscumClient.gateway.command
-#                 def getmembers(resp):
-#                     guild_id = f'{ctx.guild.id}'
-#                     channel_id = f'{ctx.channel.id}'
-#                     if resp.event.ready_supplemental:
-#                         DiscumClient.gateway.fetchMembers(guild_id, channel_id, wait=1)
-#                     if DiscumClient.gateway.finishedMemberFetching(guild_id):
-#                         DiscumClient.gateway.removeCommand(getmembers)
-#                         DiscumClient.gateway.close()
-
-#                 DiscumClient.gateway.run()
-
-#                 for memberID in DiscumClient.gateway.session.guild(f'{ctx.guild.id}').members:
-#                     member = await ctx.guild.fetch_member(int(memberID))
-#                     ghostguild = await Ghost.fetch_guild(838869729829191681)
-#                     mutualGuilds = member.mutual_guilds
-#                     for guild in mutualGuilds:
-#                         print(guild.name)
-
+#         ghostUsers = []
+#         userAgent = get_random_user_agent()
+#         try:
+#             await ctx.message.delete()
+#         except:
+#             pass
+#         DiscumClient = discum.Client(token=__token__, user_agent=f"{userAgent}")
+#         @DiscumClient.gateway.command
+#         def getmembers(resp):
+#             guild_id = f'{ctx.guild.id}'
+#             channel_id = f'{ctx.channel.id}'
+#             if resp.event.ready_supplemental:
+#                 DiscumClient.gateway.fetchMembers(guild_id, channel_id, wait=1)
+#             if DiscumClient.gateway.finishedMemberFetching(guild_id):
+#                 DiscumClient.gateway.removeCommand(getmembers)
 #                 DiscumClient.gateway.close()
 
-#                 if __embedmode__:
-#                     embed=discord.Embed(
-#                         title="Ghost Users",
-#                         description=f"There are a total of `{len(ghostUsers)}` Ghost users in `{ctx.guild.name}`\n \n```\n" + ", ".join(ghostUsers) + f"\n```",
-#                         color=__embedcolour__
-#                     )
-#                     embed.set_thumbnail(url=__embedimage__)
-#                     embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-#                     embed.timestamp = datetime.now()
+#         DiscumClient.gateway.run()
 
-#                     await message.edit(content="", embed=embed)
-#                 else:
-#                     await message.edit(content=f"""```ini
+#         for memberID in DiscumClient.gateway.session.guild(f'{ctx.guild.id}').members:
+#             member = await ctx.guild.fetch_member(int(memberID))
+#             ghostguild = await Ghost.fetch_guild(838869729829191681)
+#             mutualGuilds = member.mutual_guilds
+#             for guild in mutualGuilds:
+#                 print(guild.name)
+
+#         DiscumClient.gateway.close()
+
+#         if __embedmode__:
+#             embed=discord.Embed(
+#                 title="Ghost Users",
+#                 description=f"There are a total of `{len(ghostUsers)}` Ghost users in `{ctx.guild.name}`\n \n```\n" + ", ".join(ghostUsers) + f"\n```",
+#                 color=__embedcolour__
+#             )
+#             embed.set_thumbnail(url=__embedimage__)
+#             embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+#             embed.timestamp = datetime.now()
+
+#             await message.edit(content="", embed=embed)
+#         else:
+#             await message.edit(content=f"""```ini
 # [ Ghost Users ]
 
 # There is a total of {len(ghostUsers)} in {ctx.guild.name}.
@@ -4893,19 +4879,27 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="sounds", description="Toggle Ghost notification sounds.", usage="sounds", aliases=["togglesounds", "soundstoggle"])
     async def sounds(ctx):
-        global __sounds__
-        if __sounds__:
-            __sounds__ = False
-            cfg = Config.getConfig()
+        cfg = Config.getConfig()
+
+        if cfg["sounds"]:
             cfg["sounds"] = False
-            Config.saveConfig(cfg)
-            await ctx.send("Disabled Ghost notification sounds.")
         else:
-            __sounds__ = True
-            cfg = Config.getConfig()
             cfg["sounds"] = True
-            Config.saveConfig(cfg)
-            await ctx.send("Enabled Ghost notification sounds.")
+        
+        Config.saveConfig(cfg)
+        await ctx.send(f"Sounds set to `{cfg['sounds']}`.")
+
+    @Ghost.command(name="notifications", description="Toggle Ghost notifications.", usage="notifications", aliases=["togglenotifications", "notificationstoggle"])
+    async def notifications(ctx):
+        cfg = Config.getConfig()
+
+        if cfg["toastnotifications"]:
+            cfg["toastnotifications"] = False
+        else:
+            cfg["toastnotifications"] = True
+        
+        Config.saveConfig(cfg)
+        await ctx.send(f"Notifications set to `{cfg['toastnotifications']}`.")
 
     @Ghost.command(name="ping", description="Ping a domain or ip address.", usage="ping [ip/domain]")
     async def ping(ctx, *, dns):
