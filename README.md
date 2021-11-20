@@ -17,27 +17,3 @@ Fyi: don't use this on heroku, ghost supports windows 8, 10, macos and Linux
 > ### Useful Links  
 > - Support Discord : https://discord.gg/aWTpaJV4cT
 > - Get your Discord token : https://youtu.be/YEgFvgg7ZPI  
-  
-<br />
-  
-> ### Latest Changelog (v2.3.7)
-> ```yaml
-> New:
-> + afkmode value in config
-> + riskmode value in config
-> + Risk mode by default disabled.
-> + custom giveaway bots (giveawaybots.json)
-> 
-> ~ Commands:
->   + afkmode
->   + riskmode
->   + playing
->   + streaming
->   + listening
->   + watching
->   + clearstatus
-> 
-> Fixed:
-> + cthemes/community themes not downloading some themes
-> + theme command not updating large embed image
-> ``` 
