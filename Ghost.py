@@ -134,6 +134,11 @@ try:
         install("sty==1.0.0rc0")
 
     try:
+        import colorama
+    except ModuleNotFoundError:
+        install("colorama")
+
+    try:
         import discord_rpc
     except ModuleNotFoundError:
         install("discord-rpc.py")
@@ -227,6 +232,8 @@ try:
         pass
     if sys.platform == "darwin":
         import pync
+    
+    import colorama
     import discord_emoji
     import threading
     import pygame
@@ -931,21 +938,34 @@ async def example(Ghost):
             cfg["theme"] = newTheme
             Config.saveConfig(cfg)
 
-    ccolourred, ccolourgreen, ccolourblue = hex_to_rgb(__consolecolour__)
-    fg.consoleColour = Style(RgbFg(ccolourred, ccolourgreen, ccolourblue))
+    if sys.platform == "win32":
+        ccolourred, ccolourgreen, ccolourblue = hex_to_rgb(__consolecolour__)
+        fg.consoleColour = Style(RgbFg(ccolourred, ccolourgreen, ccolourblue))
 
-    fg.cRed = Style(RgbFg(255, 81, 69))
-    fg.cOrange = Style(RgbFg(255, 165, 69))
-    fg.cYellow = Style(RgbFg(255, 255, 69))
-    fg.cGreen = Style(RgbFg(35, 222, 57))
-    fg.cBlue = Style(RgbFg(69, 119, 255))
-    fg.cPurple = Style(RgbFg(177, 69, 255))
-    fg.cPink = Style(RgbFg(255, 69, 212))
+        fg.cRed = Style(RgbFg(255, 81, 69))
+        fg.cOrange = Style(RgbFg(255, 165, 69))
+        fg.cYellow = Style(RgbFg(255, 255, 69))
+        fg.cGreen = Style(RgbFg(35, 222, 57))
+        fg.cBlue = Style(RgbFg(69, 119, 255))
+        fg.cPurple = Style(RgbFg(177, 69, 255))
+        fg.cPink = Style(RgbFg(255, 69, 212))
 
-    fg.cGrey = Style(RgbFg(207, 207, 207))
-    fg.cBrown = Style(RgbFg(199, 100, 58))
-    fg.cBlack = Style(RgbFg(0, 0, 0))
-    fg.cWhite = Style(RgbFg(255, 255, 255))
+        fg.cGrey = Style(RgbFg(207, 207, 207))
+        fg.cBrown = Style(RgbFg(199, 100, 58))
+        fg.cBlack = Style(RgbFg(0, 0, 0))
+        fg.cWhite = Style(RgbFg(255, 255, 255))
+    elif sys.platform == "linux" or sys.platform == "darwin":
+        fg.consoleColour = colorama.Fore.BLUE
+        fg.cRed = colorama.Fore.RED
+        fg.cOrange = colorama.Fore.YELLOW
+        fg.cYellow = colorama.Fore.YELLOW
+        fg.cGreen = colorama.Fore.GREEN
+        fg.cBlue = colorama.Fore.BLUE
+        fg.cPurple = colorama.Fore.MAGENTA
+        fg.cPink = colorama.Fore.MAGENTA
+        fg.cGrey = colorama.Fore.WHITE
+        fg.cBlack = colorama.Fore.BLACK
+        fg.cWhite = colorama.Fore.RESET
 
     if is_windows():
         os.system("cls")
