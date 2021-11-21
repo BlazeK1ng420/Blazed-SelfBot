@@ -2192,9 +2192,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
             for line in request.text.split("\n"):
                 themes.append(line.replace("\r", ""))
 
-            print(themes)
-            print(dl)
-
             if dl in themes:
                 url = f'https://raw.githubusercontent.com/GhostSelfbot/Community-Themes/main/{dl}.json'
                 data = requests.get(url, allow_redirects=True)
