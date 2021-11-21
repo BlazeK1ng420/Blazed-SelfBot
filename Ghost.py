@@ -25,7 +25,7 @@ import os
 from re import T
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
-printSpaces = ""
+printSpaces = " "
 
 if os.name == "nt":
     os.system("cls")
