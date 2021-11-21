@@ -1,16 +1,16 @@
 # 👻 Ghost Selfbot
 
-The official code for Ghost which was recently discontinued and released to the public.  
-Feel free to use any of the code found in this project for your own project.   
-Fyi: don't use this on heroku, ghost supports windows 8, 10, macos and Linux
+The official code for Ghost which was discontinued and released to the public.  
+Feel free to use any of the code found in this project for your own project.
    
 <br />
   
-> ### Notable Features
-> - Fast nitro sniper
-> - 200+ commands
-> - Custom code/scripts
-> - Fully Customisable
+> ### How To Install
+> 0. If you dont have python installed, install it!
+> 1. Download the source code.
+> 2. Open a command prompt in the src code folder.
+> 3. Run `pip install -r requirements.txt` to install the packages.
+> 4. Double click `Ghost.py` or run `python Ghost.py`.
   
 <br />
   
