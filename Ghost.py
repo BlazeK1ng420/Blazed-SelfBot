@@ -25,7 +25,7 @@ import os
 from re import T
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
-printSpaces = " "
+printSpaces = ""
 
 if os.name == "nt":
     os.system("cls")
@@ -621,6 +621,18 @@ Never gonna make you cry
 Never gonna say goodbye
 Never gonna tell a lie and hurt...""")
         f.close()
+    if not os.path.isfile("scripts/consolecommand-example.py"):
+        f = open("scripts/consolecommand-example.py", "w")
+        f.write("""
+@Ghost.command(name="consolecommand", description="console command test", usage="consoletest", aliases=["consoleCommand-consoletest"])
+async def consoletest(ctx):
+    print("This is a command that can be executed in the console.")
+    print("You can create this commands by adding consoleCommand-{commandname} in the commands aliases.")
+    print("")
+    print("Any command that has that in the aliases will be able to be executed in the console and in discord so prints will be better.")
+    print("FYI: Arguments currently are not possible.")
+""")
+        f.close()
     if not os.path.isfile('scripts/example.py'):
         f = open('scripts/example.py', "w")
         f.write('''
@@ -881,6 +893,32 @@ async def example(Ghost):
                 friends.append(item["user"])
         return friends
 
+    async def constant_input(bot):
+        while True:
+            message = input().lower()
+            cmd = ""
+
+            try:
+                msgs = bot.cached_messages
+                ctx = await bot.get_context(msgs[0])
+            except IndexError:
+                print("Couldnt get context from cached message. Send a message in discord and try again.")
+            else:
+                consoleCommand = False
+
+                for command in bot.commands:
+                    if command.name == message:
+                        for alias in command.aliases:
+                            if "consolecommand" in alias.lower():
+                                consoleCommand = True
+                                cmd = alias
+                                break
+            
+                if consoleCommand:
+                    await ctx.invoke(bot.get_command(cmd))
+                else:
+                    print("That command can't be ran in the console.")
+
     class Config():
         def __init__(self):
             self.json = json.load(open("config.json"))
@@ -1023,34 +1061,18 @@ async def example(Ghost):
             os.system("cls")
             os.system(f"title Ghost [{version}] [{Ghost.user}]")
 
-        # if is_windows():
-        #     def startupPath():
-        #         return str(shell.SHGetFolderPath(0, (shellcon.CSIDL_STARTUP, shellcon.CSIDL_COMMON_STARTUP)[0], None, 0))
-
-        #     os.system("cls")
-        #     os.system(f"title Ghost [{version}] [{Ghost.user}]")
-            
-        #     if (CONFIG["load_on_startup"] == True):
-        #         print("Adding to startup.......")
-        #         USER_NAME = getpass.getuser()
-
-        #         def add_to_startup(file_path=""):
-        #             if file_path == "":
-        #                 file_path = os.path.dirname(os.path.realpath(__file__))
-                    
-        #             bat_file = open(startupPath() + r"\\Ghost.bat", "w")
-        #             bat_file.write(f"cd {file_path}\nstart Ghost")   
-        #             bat_file.close()
-
-        #         add_to_startup()   
-
-        #     else:
-        #         print("Removing from startup......")
-        #         if os.path.exists(startupPath() + r"\\Ghost.bat"): os.remove(startupPath() + r"\\Ghost.bat");
-
-        #     os.system("cls")
         if is_linux():
             os.system("clear")
+
+        def constant_input2(bot):
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+
+            loop.run_until_complete(constant_input(bot))
+            loop.close()
+
+        threading.Thread(target=constant_input2, args=(Ghost,)).start()
+
         if consoleMode.lower() == "new":
             print("")
             print(fg.consoleColour + "")                    
