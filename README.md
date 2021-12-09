@@ -18,4 +18,4 @@ Feel free to use any of the code found in this project for your own project.
 > - Support Discord : https://discord.gg/aWTpaJV4cT
 > - Get your Discord token : https://youtu.be/YEgFvgg7ZPI  
 > - Our wiki : https://github.com/GhostSelfbot/ghost/wiki
-> - Supported OS : Windows, Linux, Mac
+> - Supported OS : Windows, Linux(Debian based only), Mac
