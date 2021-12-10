@@ -25,7 +25,7 @@ import os
 from re import T
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
-printSpaces = " "
+printSpaces = ""
 
 if os.name == "nt":
     os.system("cls")
@@ -279,7 +279,7 @@ try:
     from os.path import dirname, basename, isfile, join
     from datetime import datetime, timedelta
     import numpy as np
-    from faker import Faker
+    from faker import Faker 
 
     def update_config():
         configJson = json.load(open("config.json"))
@@ -1054,7 +1054,10 @@ async def example(Ghost):
     @Ghost.event
     async def on_connect():
         if str(sounddevice.query_devices()) != "":
-            pygame.mixer.init()
+            try:
+                pygame.mixer.init()
+            except:
+                pass
         width = os.get_terminal_size().columns
 
         if is_windows():
@@ -2305,6 +2308,8 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**zalgo [text]** » Unleash the zalgo into your message.  
 `{Ghost.command_prefix}`**leet [text]** » Turn your text into 1337 text.
 `{Ghost.command_prefix}`**fakeedited [message]** » "Edit" a message.
+`{Ghost.command_prefix}`**brainfuck [text]** » Generate brainfuck code from text.
+`{Ghost.command_prefix}`**executebrainfuck [code]** » Execute brainfuck code.
             """)
                 embed.set_author(name="Text Commands (2/2)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2984,7 +2989,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__) 
 
-    @Ghost.command(name="clearconsole", description="Clear your console.", usage="clearconsole", aliases=["resetconsole", "consoleclear", "consolereset"])
+    @Ghost.command(name="clearconsole", description="Clear your console.", usage="clearconsole", aliases=["resetconsole", "consoleclear", "consolereset", "consoleCommand-clearconsole", "consoleCommand-clear"])
     async def clearconsole(ctx):
         width = os.get_terminal_size().columns
 
@@ -5353,10 +5358,13 @@ Webhook Token: {webhook.token}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Ghost.command(name="restart", description="Restart Ghost selfbot.", usage="restart", aliases=["reboot", "reload"])
+    @Ghost.command(name="restart", description="Restart Ghost selfbot.", usage="restart", aliases=["reboot", "reload", "consoleCommand-restart"])
     async def restart(ctx):
         print_info("Restarting ghost...")
-        await ctx.send("Restarting ghost...")
+        try:
+            await ctx.send("Restarting ghost...")
+        except:
+            pass
         restart_bot()
 
     @Ghost.command(name="firstmessage", description="Get the first message in the command channel.", usage="firstmessage")
@@ -5384,6 +5392,16 @@ Webhook Token: {webhook.token}
         }
         response = requests.request("POST", url, headers=headers, data=payload)
         await ctx.send(response.text)
+
+    @Ghost.command(name="brainfuck", description="Generate brainfuck code from text.", usage="brainfuck [text]", aliases=["bf"])
+    async def brainfuck(ctx, *, text):
+        request = requests.get("https://benny.fun/api/brainfuck", json={"text": text})
+        await ctx.send(request.json()["code"])
+
+    @Ghost.command(name="executebrainfuck", description="Execute brainfuck code.", usage="executebrainfuck [code]", aliases=["ebf"])
+    async def executebrainfuck(ctx, *, code):
+        request = requests.get("https://benny.fun/api/brainfuck", json={"code": code})
+        await ctx.send(request.json()["text"])
 
     @Ghost.command(name="shrug", description="Shrug your arms.", usage="shrug")
     async def shrug(ctx):
@@ -5791,6 +5809,55 @@ You have risk mode disabled, you cant use this command.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
+
+    @Ghost.command(name="fetchmembers", description="Fetch members from a server.", usage="fetchmembers", aliases=["fetchmembersfromserver"])
+    async def fetchmembers(ctx):
+        if __riskmode__:
+            try:
+                await ctx.message.delete()
+            except:
+                pass
+
+            bot = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
+
+            print_info("Fetching members from server...")
+
+            guild_id = ctx.guild.id
+            channel_id = ctx.channel.id
+            bot.gateway.fetchMembers(guild_id, channel_id, reset=False)
+            @bot.gateway.command
+            def memberTest(resp):
+                if bot.gateway.finishedMemberFetching(guild_id):
+                    lenmembersfetched = len(bot.gateway.session.guild(guild_id).members)
+                    print_info(str(lenmembersfetched)+' members fetched')
+                    print_info("Fetch complete.")
+                    bot.gateway.removeCommand(memberTest)
+                    bot.gateway.close()
+
+            bot.gateway.run()
+
+            members = bot.gateway.session.guild(guild_id).members
+            open("data/members.txt", "w").write('\n'.join(members))
+
+            await ctx.send("See console.", delete_after=__deletetimeout__)
+            print_info("Fetched a total of " + str(len(members)) + " members.")
+            print_info("Saved a list of member IDs to data/members.txt.")
+
+        else:
+            if __embedmode__:
+                embed = discord.Embed(title=f"Abusive Commands", color=__embedcolour__, description=f"You have risk mode disabled, you cant use this command.")
+                embed.set_thumbnail(url=__embedimage__)
+                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+                embed.timestamp = datetime.now()
+                await ctx.send(embed=embed, delete_after=__deletetimeout__)      
+            else:
+                await ctx.send(f"""```ini
+[ Abuse Commands ]
+
+You have risk mode disabled, you cant use this command.
+
+
+# {__embedfooter__}```""", delete_after=__deletetimeout__)              
 
     @Ghost.command(name="massghostping", description="Ping a mass amount of people in the command server and delete the messages.", usage="massghostping (amount of messages) (send delay)", aliases=["massghostmention", "theotherfunny"])
     async def massghostping(ctx, amount:int=1, delay:int=0):
