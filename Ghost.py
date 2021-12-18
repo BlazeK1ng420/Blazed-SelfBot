@@ -1043,7 +1043,7 @@ async def example(Ghost):
     spammingMessages = False
     rickRollEnabled = False
     nukingToken = False
-    consoleMode = "old"
+    consoleMode = __consolemode__
     consoleModes = ["new", "new2", "new3", "new4", "bear", "old", "react", "rise", "nighty", "rainbow"]
     scriptsList = []
     afkMode = CONFIG["afkmode"]["enabled"]
