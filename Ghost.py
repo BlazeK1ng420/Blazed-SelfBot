@@ -1235,13 +1235,17 @@ async def example(Ghost):
         if consoleMode.lower() == "nighty":
             if is_windows():
                 os.system("mode con: cols=90 lines=24")
+                os.system("cls")
+            if is_linux():
+                os.system("resize -s 24 90")
+                os.system("clear")
             print("")                    
-            print(f"                     {fg.cWhite}███{fg.consoleColour}╗   {fg.cWhite}██{fg.consoleColour}╗{fg.cWhite}██{fg.consoleColour}╗ {fg.cWhite}██████{fg.consoleColour}╗ {fg.cWhite}██{fg.consoleColour}╗  {fg.cWhite}██{fg.consoleColour}╗{fg.cWhite}████████{fg.consoleColour}╗{fg.cWhite}██{fg.consoleColour}╗   {fg.cWhite}██{fg.consoleColour}╗")
-            print(f"                     {fg.cWhite}████{fg.consoleColour}╗  {fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}╔════╝ {fg.cWhite}██{fg.consoleColour}║  {fg.cWhite}██{fg.consoleColour}║╚══{fg.cWhite}██{fg.consoleColour}╔══╝╚{fg.cWhite}██{fg.consoleColour}╗ {fg.cWhite}██{fg.consoleColour}╔╝")
-            print(f"                     {fg.cWhite}██{fg.consoleColour}╔{fg.cWhite}██{fg.consoleColour}╗ {fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║  {fg.cWhite}███{fg.consoleColour}╗{fg.cWhite}███████{fg.consoleColour}║   {fg.cWhite}██{fg.consoleColour}║    ╚{fg.cWhite}████{fg.consoleColour}╔╝ ")
-            print(f"                     {fg.cWhite}██{fg.consoleColour}║╚{fg.cWhite}██{fg.consoleColour}╗{fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║   {fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}╔══{fg.cWhite}██{fg.consoleColour}║   {fg.cWhite}██{fg.consoleColour}║     ╚{fg.cWhite}██{fg.consoleColour}╔╝  ")
-            print(f"                     {fg.cWhite}██{fg.consoleColour}║ ╚{fg.cWhite}████{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║╚{fg.cWhite}██████{fg.consoleColour}╔╝{fg.cWhite}██{fg.consoleColour}║  {fg.cWhite}██{fg.consoleColour}║   {fg.cWhite}██{fg.consoleColour}║      {fg.cWhite}██{fg.consoleColour}║   ")
-            print(fg.consoleColour + f"                     ╚═╝  ╚═══╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ╚═╝   ")
+            print(f"                      {fg.cWhite}██████{fg.cBlue}╗ {fg.cWhite}██{fg.cBlue}╗  {fg.cWhite}██{fg.cBlue}╗ {fg.cWhite}██████{fg.cBlue}╗ {fg.cWhite}███████{fg.cBlue}╗{fg.cWhite}████████{fg.cBlue}╗")
+            print(f"                     {fg.cWhite}██{fg.cBlue}╔════╝ {fg.cWhite}██{fg.cBlue}║  {fg.cWhite}██{fg.cBlue}║{fg.cWhite}██{fg.cBlue}╔═══{fg.cWhite}██{fg.cBlue}╗{fg.cWhite}██{fg.cBlue}╔════╝╚══{fg.cWhite}██{fg.cBlue}╔══╝")
+            print(f"                     {fg.cWhite}██{fg.cBlue}║  {fg.cWhite}███{fg.cBlue}╗{fg.cWhite}███████{fg.cBlue}║{fg.cWhite}██{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║{fg.cWhite}███████{fg.cBlue}╗   {fg.cWhite}██{fg.cBlue}║   ")
+            print(f"                     {fg.cWhite}██{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║{fg.cWhite}██{fg.cBlue}╔══{fg.cWhite}██{fg.cBlue}║{fg.cWhite}██{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║╚════{fg.cWhite}██{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║   ")
+            print(f"                     {fg.cBlue}╚{fg.cWhite}██████{fg.cBlue}╔╝{fg.cWhite}██{fg.cBlue}║  {fg.cWhite}██{fg.cBlue}║╚{fg.cWhite}██████{fg.cBlue}╔╝{fg.cWhite}███████{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║   ")
+            print(f"                      {fg.cBlue}╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ")   
             print("")
             print(f"{fg.cWhite}Status:    {fg.cGreen}Connected")
             print(f"{fg.cWhite}Account:   {Ghost.user} [{len(Ghost.guilds)} servers] [{len(get_friends(__token__))} friends]")
@@ -3184,13 +3188,18 @@ There is a total of {len(hiddenChannels)} hidden channels.
         if consoleMode.lower() == "nighty":
             if is_windows():
                 os.system("mode con: cols=90 lines=24")
+                os.system("cls")
+            if is_linux():
+                os.system("resize -s 24 90")    
+                os.system("clear")
+
             print("")                    
-            print(f"                     {fg.cWhite}███{fg.consoleColour}╗   {fg.cWhite}██{fg.consoleColour}╗{fg.cWhite}██{fg.consoleColour}╗ {fg.cWhite}██████{fg.consoleColour}╗ {fg.cWhite}██{fg.consoleColour}╗  {fg.cWhite}██{fg.consoleColour}╗{fg.cWhite}████████{fg.consoleColour}╗{fg.cWhite}██{fg.consoleColour}╗   {fg.cWhite}██{fg.consoleColour}╗")
-            print(f"                     {fg.cWhite}████{fg.consoleColour}╗  {fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}╔════╝ {fg.cWhite}██{fg.consoleColour}║  {fg.cWhite}██{fg.consoleColour}║╚══{fg.cWhite}██{fg.consoleColour}╔══╝╚{fg.cWhite}██{fg.consoleColour}╗ {fg.cWhite}██{fg.consoleColour}╔╝")
-            print(f"                     {fg.cWhite}██{fg.consoleColour}╔{fg.cWhite}██{fg.consoleColour}╗ {fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║  {fg.cWhite}███{fg.consoleColour}╗{fg.cWhite}███████{fg.consoleColour}║   {fg.cWhite}██{fg.consoleColour}║    ╚{fg.cWhite}████{fg.consoleColour}╔╝ ")
-            print(f"                     {fg.cWhite}██{fg.consoleColour}║╚{fg.cWhite}██{fg.consoleColour}╗{fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║   {fg.cWhite}██{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}╔══{fg.cWhite}██{fg.consoleColour}║   {fg.cWhite}██{fg.consoleColour}║     ╚{fg.cWhite}██{fg.consoleColour}╔╝  ")
-            print(f"                     {fg.cWhite}██{fg.consoleColour}║ ╚{fg.cWhite}████{fg.consoleColour}║{fg.cWhite}██{fg.consoleColour}║╚{fg.cWhite}██████{fg.consoleColour}╔╝{fg.cWhite}██{fg.consoleColour}║  {fg.cWhite}██{fg.consoleColour}║   {fg.cWhite}██{fg.consoleColour}║      {fg.cWhite}██{fg.consoleColour}║   ")
-            print(fg.consoleColour + f"                     ╚═╝  ╚═══╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ╚═╝   ")
+            print(f"                      {fg.cWhite}██████{fg.cBlue}╗ {fg.cWhite}██{fg.cBlue}╗  {fg.cWhite}██{fg.cBlue}╗ {fg.cWhite}██████{fg.cBlue}╗ {fg.cWhite}███████{fg.cBlue}╗{fg.cWhite}████████{fg.cBlue}╗")
+            print(f"                     {fg.cWhite}██{fg.cBlue}╔════╝ {fg.cWhite}██{fg.cBlue}║  {fg.cWhite}██{fg.cBlue}║{fg.cWhite}██{fg.cBlue}╔═══{fg.cWhite}██{fg.cBlue}╗{fg.cWhite}██{fg.cBlue}╔════╝╚══{fg.cWhite}██{fg.cBlue}╔══╝")
+            print(f"                     {fg.cWhite}██{fg.cBlue}║  {fg.cWhite}███{fg.cBlue}╗{fg.cWhite}███████{fg.cBlue}║{fg.cWhite}██{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║{fg.cWhite}███████{fg.cBlue}╗   {fg.cWhite}██{fg.cBlue}║   ")
+            print(f"                     {fg.cWhite}██{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║{fg.cWhite}██{fg.cBlue}╔══{fg.cWhite}██{fg.cBlue}║{fg.cWhite}██{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║╚════{fg.cWhite}██{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║   ")
+            print(f"                     {fg.cBlue}╚{fg.cWhite}██████{fg.cBlue}╔╝{fg.cWhite}██{fg.cBlue}║  {fg.cWhite}██{fg.cBlue}║╚{fg.cWhite}██████{fg.cBlue}╔╝{fg.cWhite}███████{fg.cBlue}║   {fg.cWhite}██{fg.cBlue}║   ")
+            print(f"                      {fg.cBlue}╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ")   
             print("")
             print(f"{fg.cWhite}Status:    {fg.cGreen}Connected")
             print(f"{fg.cWhite}Account:   {Ghost.user} [{len(Ghost.guilds)} servers] [{len(get_friends(__token__))} friends]")
@@ -8286,17 +8295,6 @@ Status changed to: Watching {text}
             await ctx.send("Nickname cleared")
 
     Ghost.run(__token__)
-
-    # GhostDiscum = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
-
-    # @GhostDiscum.gateway.command
-    # def discumevents(resp):
-    #     if resp.event.typing:
-    #         rawevent = resp.raw
-    #         parsedevent = resp.parsed.auto()
-    #         print(rawevent)
-
-    # GhostDiscum.gateway.run()
 
 except Exception as e:
     if "improper token" in str(e).lower():
