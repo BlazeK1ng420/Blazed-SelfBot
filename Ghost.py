@@ -233,9 +233,16 @@ try:
         import tkinter
     except:
         pass
+
+    try:
+        import brainfuckery
+    except:
+        install("brainfuckery")
+
     if sys.platform == "darwin":
         import pync
     
+    import brainfuckery
     import colorama
     import discord_emoji
     import threading
@@ -1036,7 +1043,7 @@ async def example(Ghost):
     spammingMessages = False
     rickRollEnabled = False
     nukingToken = False
-    consoleMode = __consolemode__
+    consoleMode = "old"
     consoleModes = ["new", "new2", "new3", "new4", "bear", "old", "react", "rise", "nighty", "rainbow"]
     scriptsList = []
     afkMode = CONFIG["afkmode"]["enabled"]
@@ -5398,13 +5405,13 @@ Webhook Token: {webhook.token}
 
     @Ghost.command(name="brainfuck", description="Generate brainfuck code from text.", usage="brainfuck [text]", aliases=["bf"])
     async def brainfuck(ctx, *, text):
-        request = requests.get("https://benny.fun/api/brainfuck", json={"text": text})
-        await ctx.send(request.json()["code"])
+        result = brainfuckery.Brainfuckery().convert(text)
+        await ctx.send(result)
 
     @Ghost.command(name="executebrainfuck", description="Execute brainfuck code.", usage="executebrainfuck [code]", aliases=["ebf"])
     async def executebrainfuck(ctx, *, code):
-        request = requests.get("https://benny.fun/api/brainfuck", json={"code": code})
-        await ctx.send(request.json()["text"])
+        result = brainfuckery.Brainfuckery().interpret(code)
+        await ctx.send(result)
 
     @Ghost.command(name="shrug", description="Shrug your arms.", usage="shrug")
     async def shrug(ctx):
