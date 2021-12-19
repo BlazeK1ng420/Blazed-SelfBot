@@ -237,7 +237,7 @@ try:
     try:
         import brainfuckery
     except:
-        install("brainfuckery")
+        install("brainfuckery==1.0.1")
 
     if sys.platform == "darwin":
         import pync
