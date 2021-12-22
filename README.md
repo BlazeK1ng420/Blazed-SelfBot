@@ -1,4 +1,4 @@
-# 👻 G H Ø S T
+# G H Ø S T
 
 The official code for Ghost which was discontinued and released to the public.  
 Feel free to use any of the code found in this project for your own project.  
