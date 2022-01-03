@@ -64,6 +64,7 @@ logging.basicConfig(filename="logs/warning.log", level=logging.WARNING)
 logging.basicConfig(filename="logs/error.log", level=logging.ERROR)
 logging.basicConfig(filename="logs/critical.log", level=logging.CRITICAL)
 
+
 try: 
     # pythonVersion = float(str(sys.version_info[0])+"."+str(sys.version_info[1]))
     # if pythonVersion < 3.8:
@@ -2402,6 +2403,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**dice** » Roll a dice.
 `{Ghost.command_prefix}`**8ball [question]** » Ask the magic eight ball a question.
 `{Ghost.command_prefix}`**choice [choice1] [choice2]** » Pick a random choice.
+`{Ghost.command_prefix}`**range [number1] [number2]** » Choose a random number between two.
 `{Ghost.command_prefix}`**dox [@user]** » Dox the mentioned user.
 `{Ghost.command_prefix}`**fakenitro [url]** » Hide a link in a nitro URL.
 `{Ghost.command_prefix}`**purgehack** » Purge without permissions.
@@ -2439,6 +2441,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}dice » Roll a dice.
 {Ghost.command_prefix}8ball [question] » Ask the magic eight ball a question.
 {Ghost.command_prefix}choice [choice1] [choice2] » Pick a random choice.
+{Ghost.command_prefix}range [number1] [number2] » Choose a random number between two.
 {Ghost.command_prefix}dox [@user] » Dox the mentioned user.
 {Ghost.command_prefix}fakenitro [url] » Hide a link in a nitro URL.
 {Ghost.command_prefix}purgehack » Purge without permissions.
@@ -6736,7 +6739,7 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(user.mention, embed=embed)
         else:
             await ctx.send(f"Ayo {user.mention}, " + str(insult).lower())
-
+            
     @Ghost.command(name="yomomma", description="Random yo momma joke.", usage="yomomma", aliases=["mom", "mum"])
     async def yomomma(ctx):
         joke = requests.get("https://api.yomomma.info/").json()["joke"]
@@ -6947,6 +6950,18 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(embed=embed)
         else:
             await ctx.send(choice)
+
+    @Ghost.command(name="range", description="Pick a random number between two.", usage="random [number1] [number2]", aliases=["rangenumber"])
+    async def choice(ctx, arg1, arg2):
+        finalnumber = random.randint(int(arg1),int(arg2))
+        if __embedmode__:
+            embed = discord.Embed(title=f"{finalnumber}", color=__embedcolour__)
+            embed.set_thumbnail(url=__embedimage__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            embed.timestamp = datetime.now()
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send(finalnumber)
 
     # @Ghost.command(name="wyr", description="Would you rather questions.", usage="wyr")
     # async def wyr_(ctx):
