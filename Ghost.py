@@ -443,10 +443,6 @@ try:
             configJson["api_keys"] = {}
             configJson["api_keys"]["tenor"] = ""
 
-        if ("alexflipnote" not in configJson["api_keys"]):
-            print(printSpaces+"Adding alexflipnote to api keys.")
-            configJson["api_keys"]["alexflipnote"] = ""
-
         if ("afkmode" not in configFile):
             print(printSpaces+"Adding afkmode to config.")
             configJson["afkmode"] = {}
@@ -2481,7 +2477,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**pornhub ["text 1"] ["text 2"]** » Create a pornhub logo image.
 `{Ghost.command_prefix}`**salty [@user]** » Make someone salty.
 `{Ghost.command_prefix}`**ship [@user 1] [@user 2]** » Ship two people.
-`{Ghost.command_prefix}`**supreme [text]** » Create a supreme logo image.
 `{Ghost.command_prefix}`**trash [@user]** » Put someone in the trash.
 `{Ghost.command_prefix}`**what [image url]** » Make a what meme.
 
@@ -2516,7 +2511,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}pornhub ["text 1"] ["text 2"] » Create a pornhub logo image.
 {Ghost.command_prefix}salty [@user] » Make someone salty.
 {Ghost.command_prefix}ship [@user 1] [@user 2] » Ship two people.
-{Ghost.command_prefix}supreme [text] » Create a supreme logo image.
 {Ghost.command_prefix}trash [@user] » Put someone in the trash.
 {Ghost.command_prefix}what [image url] » Make a what meme.
 
@@ -6352,43 +6346,25 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="achievement", description="Create a fake minecraft achievement image.", usage='achievement ["text"] (icon)', aliases=["minecraftachievement"])
     async def achievement(ctx, text, icon=10):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
+        icon = str(icon)
+        text = text.replace(" ", "+")
+        image = requests.get(f"http://timbw.ddns.net:5000/achievement?text={text}&icon={icon}")
+        imageFile = open("image.png", "wb").write(image.content)
+        file = discord.File("image.png", filename="image.png")
+        if __embedmode__:
+            embed = discord.Embed(color=__embedcolour__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            embed.timestamp = datetime.now()
+            embed.set_image(url="attachment://image.png")
+            await ctx.send(file=file, embed=embed)
         else:
-            icon = str(icon)
-            text = text.replace(" ", "+")
-            image = requests.get(f"https://api.alexflipnote.dev/achievement?text={text}&icon={icon}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
-            imageFile = open("image.png", "wb").write(image.content)
-            file = discord.File("image.png", filename="image.png")
-            if __embedmode__:
-                embed = discord.Embed(color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                embed.set_image(url="attachment://image.png")
-                await ctx.send(file=file, embed=embed)
-            else:
-                await ctx.send(file=file)  
+            await ctx.send(file=file)  
             os.remove("image.png")     
 
     @Ghost.command(name="challenge", description="Create a fake minecraft challenge image.", usage='challenge ["text"] (icon)', aliases=["minecraftchallenge"])
-    async def challenge(ctx, text, icon=33):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+    async def challenge(ctx, text, icon=33):  
             text = text.replace(" ", "+")
-            image = requests.get(f"https://api.alexflipnote.dev/challenge?text={text}&icon={icon}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/challenge?text={text}&icon={icon}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6403,17 +6379,9 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="captcha", description="Create a fake reCaptcha.", usage="captcha [text]", aliases=["fakecaptcha"])
     async def captcha(ctx, *, text):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             text = text.replace(" ", "+")
-            image = requests.get(f"https://api.alexflipnote.dev/captcha?text={text}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/captcha?text={text}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6428,17 +6396,9 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="amiajoke", description="Make a user a joke.", usage="amiajoke [@user]", aliases=["amiajoketoyou"])
     async def amiajoke(ctx, user:discord.User):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             imageurl = avatarUrl(user.id, user.avatar)
-            image = requests.get(f"https://api.alexflipnote.dev/amiajoke?image={imageurl}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/amiajoke?image={imageurl}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6453,18 +6413,10 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="didyoumean", description="Create a google did you mean image.", usage='didyoumean ["text 1"] ["text 2"]', aliases=["googledidyoumean"])
     async def didyoumean(ctx, text1="Nighty", text2="Ghost"):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             text1 = text1.replace(" ", "+")
             text2 = text2.replace(" ", "+")
-            image = requests.get(f"https://api.alexflipnote.dev/didyoumean?top={text1}&bottom={text2}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/didyoumean?top={text1}&bottom={text2}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6479,18 +6431,10 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="drake", description="Create a drake meme image.", usage='drake ["text 1"] ["text 2"]', aliases=["drakememe"])
     async def drake(ctx, text1="Nighty Selfbot", text2="Ghost Selfbot"):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             text1 = text1.replace(" ", "+")
             text2 = text2.replace(" ", "+")
-            image = requests.get(f"https://api.alexflipnote.dev/drake?top={text1}&bottom={text2}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/drake?top={text1}&bottom={text2}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6505,17 +6449,9 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="facts", description="Create a facts meme image.", usage='facts [text]', aliases=["factsmeme"])
     async def facts(ctx, *, text):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             text = text.replace(" ", "+")
-            image = requests.get(f"https://api.alexflipnote.dev/drake?text={text}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/facts?text={text}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6530,16 +6466,8 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="jokeoverhead", description="Create a joke over head image.", usage="jokeoverhead [image url]")
     async def jokeoverhead(ctx, *, imageurl):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
-            image = requests.get(f"https://api.alexflipnote.dev/jokeoverhead?image={imageurl}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+              
+            image = requests.get(f"http://timbw.ddns.net:5000/jokeoverhead?image={imageurl}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6554,18 +6482,10 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="pornhub", description="Create a pornhub logo image.", usage='pornhub ["text 1"] ["text 2"]')
     async def pornhub(ctx, text1="Ghost", text2="Selfbot"):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             text1 = text1.replace(" ", "+")
             text2 = text2.replace(" ", "+")
-            image = requests.get(f"https://api.alexflipnote.dev/pornhub?text={text1}&text2={text2}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/pornhub?text={text1}&text2={text2}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6580,17 +6500,9 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="salty", description="Make someone salty.", usage="salty [@user]")
     async def jokeoverhead(ctx, user:discord.User):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             imageurl = avatarUrl(user.id, user.avatar)
-            image = requests.get(f"https://api.alexflipnote.dev/salty?image={imageurl}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/salty?image={imageurl}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6605,43 +6517,10 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="ship", description="Ship two people.", usage="ship [@user 1] [@user 2]")
     async def ship(ctx, user1:discord.User, user2:discord.User):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             user1 = avatarUrl(user1.id, user1.avatar)
             user2 = avatarUrl(user2.id, user2.avatar)
-            image = requests.get(f"https://api.alexflipnote.dev/ship?user={user1}&user2={user2}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
-            imageFile = open("image.png", "wb").write(image.content)
-            file = discord.File("image.png", filename="image.png")
-            if __embedmode__:
-                embed = discord.Embed(color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                embed.set_image(url="attachment://image.png")
-                await ctx.send(file=file, embed=embed)
-            else:
-                await ctx.send(file=file)  
-            os.remove("image.png")
-
-    @Ghost.command(name="supreme", description="Create a supreme logo image.", usage='supreme [text]')
-    async def supreme(ctx, *, text):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
-            text = text.replace(" ", "+")
-            image = requests.get(f"https://api.alexflipnote.dev/supreme?text={text}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/ship?user={user1}&user2={user2}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6656,18 +6535,10 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="trash", description="Put someone in the trash.", usage='trash [@user]')
     async def trash(ctx, user: discord.User):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
+              
             trash = avatarUrl(user.id, user.avatar)
             face = avatarUrl(Ghost.user.id, Ghost.user.avatar)
-            image = requests.get(f"https://api.alexflipnote.dev/trash?trash={trash}&face={face}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+            image = requests.get(f"http://timbw.ddns.net:5000/trash?trash={trash}&face={face}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
@@ -6682,16 +6553,8 @@ You have risk mode disabled, you cant use this command.
 
     @Ghost.command(name="what", description="Make a what meme.", usage='what [image url]')
     async def what(ctx, *, imageurl):
-        if CONFIG["api_keys"]["alexflipnote"] == "":
-            if __embedmode__:
-                embed = discord.Embed(description="This command requires an alexflipnote API key.", color=__embedcolour__)
-                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-                embed.timestamp = datetime.now()
-                await ctx.send(embed=embed)
-            else:
-                await ctx.send("This command requires an alexflipnote API key.")                     
-        else:                
-            image = requests.get(f"https://api.alexflipnote.dev/what?image={imageurl}", headers={"Authorization": CONFIG["api_keys"]["alexflipnote"]})
+              
+            image = requests.get(f"http://timbw.ddns.net:5000/what?image={imageurl}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
             if __embedmode__:
