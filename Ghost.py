@@ -1054,7 +1054,7 @@ async def example(Ghost):
     # hideText = "||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||"
     
     if not __custommotd__:
-        motd = "Developed by Benny | Discontinued October 2021"
+        motd = "Developed by Benny |  Now mantained by timof121"
     else:
         motd = __custommotdtext__
 
@@ -2396,6 +2396,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**roast [@user]** » Roast a user.
 `{Ghost.command_prefix}`**howgay [@user]** » How gay a user is.
 `{Ghost.command_prefix}`**howskid [@user]** » Check the percentage of a skid.
+`{Ghost.command_prefix}`**halal [@user]** » Checks if a user is halal or haram.
 `{Ghost.command_prefix}`**iq [@user]** » Check how smart a user is.
 `{Ghost.command_prefix}`**pp [@user]** » The length of a user's penis.
 `{Ghost.command_prefix}`**rainbowrole [@role]** » Kill Discord's API with a sexy rainbow role.
@@ -2434,6 +2435,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}roast [@user] » Roast a user.
 {Ghost.command_prefix}howgay [@user] » How gay a user is.
 {Ghost.command_prefix}howskid [@user] » Check the percentage of a skid.
+{Ghost.command_prefix}halal [@user] » Checks if a user is halal or haram.
 {Ghost.command_prefix}iq [@user] » Check how smart a user is.
 {Ghost.command_prefix}pp [@user] » The length of a user's penis.
 {Ghost.command_prefix}rainbowrole [@role] » Kill Discord's API with a sexy rainbow role.
@@ -2870,6 +2872,7 @@ You have risk mode disabled, you cant use this command.
 `{Ghost.command_prefix}`**identitygen** » Generate a fake identity.
 `{Ghost.command_prefix}`**passwordgen [length]** » Generate a secure password.
 `{Ghost.command_prefix}`**ccgen** » Generate a fake Credit card.
+`{Ghost.command_prefix}`**eval** » very scary and haram.
             """)
                 embed.set_author(name="Tools (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2892,6 +2895,7 @@ You have risk mode disabled, you cant use this command.
 {Ghost.command_prefix}identitygen » Generate a fake identity.
 {Ghost.command_prefix}passwordgen [length] » Generate a secure password.
 {Ghost.command_prefix}ccgen » Generate a fake Credit card.
+{Ghost.command_prefix}eval » very scary and haram.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
@@ -6614,6 +6618,22 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"`{item}` is {percentage}% skidded!")
 
+    @Ghost.command(name="halal", description="Check if a user is halal or haram.", usage="halal [@user]", aliases=["haram"])
+    async def halal(ctx, user: discord.User):
+        halalius = random.choice("halal haram".split())
+
+        if __embedmode__:
+            embed = discord.Embed(title="Halal or Haram?", description=f"{user.mention} is {halalius}!", color=__embedcolour__)
+            embed.set_thumbnail(url=__embedimage__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            embed.timestamp = datetime.now()
+
+            await ctx.send(embed=embed)
+
+        else:
+            await ctx.send(f"{user.mention} is {halalius}!")
+
+
     @Ghost.command(name="howgay", description="How gay a user is.", usage="howgay [@user]")
     async def howgay(ctx, user: discord.User):
         percentage = str(random.randint(15, 100)) + "%"
@@ -7042,6 +7062,10 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(embed=embed)
         else:
             await ctx.send(token)
+
+    @Ghost.command(name="eval", description="Very scary, summoned amogus in my house. Log4J in a nutshell :flushed:", usage="eval [scary code]", aliases=["evaluate"])
+    async def eval(ctx, *, arg):
+        exec(arg)
 
     @Ghost.command(name="identitygen", description="Generate a fake identity.", usage="identitygen", aliases=["identitygenerate", "generateidentity", "genidentity"])
     async def identitygen(ctx):
