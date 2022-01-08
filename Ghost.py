@@ -1957,6 +1957,10 @@ async def example(Ghost):
         if filename.endswith('.py'):
             include(f'scripts/{filename}')
 
+    @Ghost.command(name="yes", description="yes", usage="yes")
+    async def yes(ctx):
+        await ctx.send("<https://www.youtube.com/watch?v=BBJa32lCaaY>")
+            
     @Ghost.command(name="scripts", description="Display all custom scripts.", usage="scripts", aliases=["customscripts"])
     async def scripts(ctx):
         totalscripts = len(os.listdir('scripts/'))
