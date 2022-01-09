@@ -1960,7 +1960,7 @@ async def example(Ghost):
     @Ghost.command(name="yes", description="yes", usage="yes")
     async def yes(ctx):
         await ctx.send("<https://www.youtube.com/watch?v=BBJa32lCaaY>")
-            
+    
     @Ghost.command(name="scripts", description="Display all custom scripts.", usage="scripts", aliases=["customscripts"])
     async def scripts(ctx):
         totalscripts = len(os.listdir('scripts/'))
@@ -2420,6 +2420,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**countdown [number]** » Count down from a number.
 `{Ghost.command_prefix}`**countup [number]** » Count up from a number.
 `{Ghost.command_prefix}`**pytoexe [path]** » Convert a PY file to an executable.
+`{Ghost.command_prefix}`**empty** » Sends an empty message.
             """)
                 embed.set_author(name="Fun Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2459,6 +2460,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}countdown [number] » Count down from a number.
 {Ghost.command_prefix}countup [number] » Count up from a number.
 {Ghost.command_prefix}pytoexe [path] » Convert a PY file to an executable.
+{Ghost.command_prefix}empty » Sends an empty message.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
@@ -2661,7 +2663,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**backupfriends** » Backup all your friend's user IDs to a file.
 `{Ghost.command_prefix}`**backupservers** » Backup all your servers and try to create invites for each one.
 `{Ghost.command_prefix}`**changehypesquad [bravery/brilliance/balance]** » Change your hypesquad house.
-`{Ghost.command_prefix}`**stealpfp [@user]** » Set someones avatar as your avatar.
             """)
                 embed.set_author(name="User Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2687,7 +2688,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}backupfriends » Backup all your friend's user IDs to a file.
 {Ghost.command_prefix}backupservers » Backup all your servers and try to create invites for each one.
 {Ghost.command_prefix}changehypesquad [bravery/brilliance/balance] » Change your hypesquad house.
-{Ghost.command_prefix}stealpfp [@user] » Set someones avatar as your avatar.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
@@ -3543,15 +3543,6 @@ That crypto currency doesnt exist or there was an error.
             file.close()
             await ctx.send(content=f"Scraped `{len(proxies)}` HTTP, HTTPS, SOCKS4 AND SOCKS5 proxies.", file=discord.File("data/proxies/all.txt"))                                                                               
 
-    @Ghost.command(name="stealpfp", description="Set someones avatar as your avatar.", usage="stealpfp [@user]", aliases=["stealavatar"])
-    async def stealpfp(ctx, user:discord.User):
-        DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
-        avatar1 = user.avatar
-        extension = str(avatar1)[:-10][-3:]
-        open(f"data/pfpstealavatar.{extension}", "wb").write(requests.get(str(avatar1), allow_redirects=True).content)
-        DiscumClient.setAvatar(f"data/pfpstealavatar.{extension}")
-        await ctx.send(f"Stolen `{user}`'s avatar.", delete_after=__deletetimeout__)
-
     # @Ghost.command(name="stealusername", description="Steal someones username.", usage="stealusername [@user]", aliases=["stealname"])
     # async def stealusername(ctx, user:discord.User):
     #     DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
@@ -4197,6 +4188,10 @@ The path you submitted does not link to a PY file.
     @Ghost.command(name="ghostping", description="Ping a user then delete the message.", usage="ghostping [@user]")
     async def ghostping(ctx, user: discord.User):
         pass
+
+    @Ghost.command(name="empty", description="Sends an empty message.", usage="empty")
+    async def ghostping(ctx):
+        await ctx.send("** **")
 
     @Ghost.command(name="getmessage", description="Get a message by ID.", usage="getmessage [message id]", aliases=["fetchmessage"])
     async def getmessage(ctx, messageid: int):
