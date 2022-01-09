@@ -2420,7 +2420,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**countdown [number]** » Count down from a number.
 `{Ghost.command_prefix}`**countup [number]** » Count up from a number.
 `{Ghost.command_prefix}`**pytoexe [path]** » Convert a PY file to an executable.
-`{Ghost.command_prefix}`**empty** » Sends an empty message.
             """)
                 embed.set_author(name="Fun Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2460,8 +2459,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}countdown [number] » Count down from a number.
 {Ghost.command_prefix}countup [number] » Count up from a number.
 {Ghost.command_prefix}pytoexe [path] » Convert a PY file to an executable.
-{Ghost.command_prefix}empty » Sends an empty message.
-
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
@@ -4189,10 +4186,6 @@ The path you submitted does not link to a PY file.
     async def ghostping(ctx, user: discord.User):
         pass
 
-    @Ghost.command(name="empty", description="Sends an empty message.", usage="empty")
-    async def ghostping(ctx):
-        await ctx.send("** **")
-
     @Ghost.command(name="getmessage", description="Get a message by ID.", usage="getmessage [message id]", aliases=["fetchmessage"])
     async def getmessage(ctx, messageid: int):
         msg = await ctx.send("Getting the message . . .")
@@ -5438,7 +5431,7 @@ Webhook Token: {webhook.token}
     # async def hide(ctx, msg1, msg2):
     #     await ctx.send(msg1+hideText+msg2)
 
-    @Ghost.command(name="blank", description="Send a blank message", usage="blank")
+    @Ghost.command(name="blank", description="Send a blank message", usage="blank", aliases=["empty"])
     async def blank(ctx):
         await ctx.send("** **")
 
