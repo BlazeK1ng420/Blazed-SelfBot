@@ -442,6 +442,7 @@ try:
         if ("api_keys" not in configFile):
             print(printSpaces+"Adding api keys to config.")
             configJson["api_keys"] = {}
+            configJson["api_keys"]["hypixel"] = ""
             configJson["api_keys"]["tenor"] = ""
 
         if ("afkmode" not in configFile):
@@ -4214,18 +4215,27 @@ Message Link: {message.jump_url}
 
     @Ghost.command(name="watchdogstats", description="Get stats about Hypixel's Anticheat, Watchdog", usage="watchdogstats")
     async def watchdogstats(ctx):
-        data = requests.get("https://api.hypixel.net/punishmentstats?key=591c390d-6e97-4b39-abb3-ef3fb386aff0").json()
-        if __embedmode__:
-            embed = discord.Embed(title=f"Watchdog Stats", color=__embedcolour__)
-            embed.add_field(name="Total Bans", value="```" + str(data["watchdog_total"]) + "```", inline=True)
-            embed.add_field(name="Last Minute", value="```" + str(data["watchdog_lastMinute"]) + "```", inline=True)
-            embed.add_field(name="Daily Bans", value="```" + str(data["watchdog_rollingDaily"]) + "```", inline=True)
-            embed.set_thumbnail(url=__embedimage__)
-            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-            embed.timestamp = datetime.now()
-            await ctx.send(embed=embed, delete_after=__deletetimeout__)
+        if CONFIG["api_keys"]["hypixel"] == "":
+            if __embedmode__:
+                embed = discord.Embed(description="This command requires a hypixel API key.", color=__embedcolour__)
+                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+                embed.timestamp = datetime.now()
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("This command requires a tenor API key.")  
         else:
-            await ctx.send(f"""```ini
+            data = requests.get(f"https://api.hypixel.net/punishmentstats?key={CONFIG['api_keys']['hypixel']}").json()
+            if __embedmode__:
+                embed = discord.Embed(title=f"Watchdog Stats", color=__embedcolour__)
+                embed.add_field(name="Total Bans", value="```" + str(data["watchdog_total"]) + "```", inline=True)
+                embed.add_field(name="Last Minute", value="```" + str(data["watchdog_lastMinute"]) + "```", inline=True)
+                embed.add_field(name="Daily Bans", value="```" + str(data["watchdog_rollingDaily"]) + "```", inline=True)
+                embed.set_thumbnail(url=__embedimage__)
+                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+                embed.timestamp = datetime.now()
+                await ctx.send(embed=embed, delete_after=__deletetimeout__)
+            else:
+                await ctx.send(f"""```ini
 [ Watchdog Stats ]
 
 Total Bans: {data['watchdog_total']}
