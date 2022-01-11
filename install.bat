@@ -1,2 +1,1 @@
-py -m pip
-pip install -r requirements.txt
+py -m pip install -r requirements.txt
