@@ -2027,7 +2027,16 @@ Found {totalcmds} custom commands.
         file.write(f"[All Commands]\nTotal Commands: {totalCommands}\n \n" + content)
         file.close()
 
-        os.system("notepad data/features.txt")
+        if __embedmode__:
+            embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", description=f"These are all the commands", color=__embedcolour__)
+            embed.add_field(name="Commands", value="https://github.com/GhostSelfbot/Ghost/blob/dev/features.txt")
+            embed.set_author(name="All Ghost Commands")
+            embed.set_thumbnail(url=__embedimage__)
+            embed.set_image(url=__embedlargeimage__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            await ctx.send(embed=embed, delete_after=__deletetimeout__)
+        else:
+            await ctx.send("https://github.com/GhostSelfbot/Ghost/blob/dev/features.txt")
 
     @Ghost.command(name="search", description="Search for commands.", usage="search [term]")
     async def search(ctx, *, command = None):
@@ -2421,6 +2430,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**countdown [number]** » Count down from a number.
 `{Ghost.command_prefix}`**countup [number]** » Count up from a number.
 `{Ghost.command_prefix}`**pytoexe [path]** » Convert a PY file to an executable.
+`{Ghost.command_prefix}`**skin [name]** » Gets the skin of a MC user.
             """)
                 embed.set_author(name="Fun Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2460,6 +2470,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}countdown [number] » Count down from a number.
 {Ghost.command_prefix}countup [number] » Count up from a number.
 {Ghost.command_prefix}pytoexe [path] » Convert a PY file to an executable.
+{Ghost.command_prefix}skin [name] » Gets the skin of a MC user.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
@@ -4245,6 +4256,23 @@ Daily Bans: {data['watchdog_rollingDaily']}
 
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)
+
+    @Ghost.command(name="skin", description="Gets a MC user skin", usage="skin [MC user]")
+    async def skin(ctx, arg):
+        image = requests.get(f"https://minotar.net/skin/{arg}")
+        imageFile = open("image.png", "wb").write(image.content)
+        file = discord.File("image.png", filename="image.png")
+        if __embedmode__:
+            embed = discord.Embed(color=__embedcolour__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            embed.timestamp = datetime.now()
+            embed.set_image(url="attachment://image.png")
+            await ctx.send(file=file, embed=embed)
+        else:
+            await ctx.send(file=file)  
+            os.remove("image.png")
+
+
 
     @Ghost.command(name="ppin", description="Add a message to your personal pins.", usage="ppin [message id]", aliases=["personalpin", "addppin", "addpersonalpin"])
     async def ppin(ctx, msgId: int):
