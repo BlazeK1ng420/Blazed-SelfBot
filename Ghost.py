@@ -7233,7 +7233,7 @@ Address: {address}
     @Ghost.command(name="zalgo", description="Unleash the zalgo into your message.", usage="zalgo [text]")
     async def zalgo(ctx, *, text):
         text = text.replace(" ", "+")
-        await ctx.send(requests.get(f"https://ghost.cool/api/fun/zalgo?text={text}").text)
+        await ctx.send(requests.get(f"http://timbw.ddns.net:5000/zalgo?text={text}").json()["text"])
 
     @Ghost.command(name="upsidedown", description="Flip your text upsidedown.", usage="upsidedown [text]")
     async def upsidedown(ctx, *, text):
