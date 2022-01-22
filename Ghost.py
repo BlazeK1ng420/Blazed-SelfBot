@@ -754,7 +754,7 @@ async def example(Ghost):
     __embedimage__ = THEME["embedimage"]
     __embedlargeimage__ = THEME["embedlargeimage"]
     __embedfooterimage__ = THEME["embedfooterimage"]
-    __embedmode__ = CONFIG["embed_mode"]
+    __embedmode__ = "false"
     __consolemode__ = THEME["consolemode"]
 
     __ignoredservers__ = CONFIG["ignored_servers"]
