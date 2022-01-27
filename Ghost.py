@@ -1035,7 +1035,7 @@ async def example(Ghost):
     version = "2.3.8"
     cycleStatusText = ""
     cycleStatus = False
-    discordServer = "discord.gg/reKgzfRrpt"
+    discordServer = "discord.gg/aWTpaJV4cT"
     uwuifyEnabled = False
     channelBlankChar = "᲼"
     spammingMessages = False
