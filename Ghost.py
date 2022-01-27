@@ -442,6 +442,7 @@ try:
         if ("api_keys" not in configFile):
             print(printSpaces+"Adding api keys to config.")
             configJson["api_keys"] = {}
+            configJson["api_keys"]["hypixel"] = ""
             configJson["api_keys"]["tenor"] = ""
 
         if ("afkmode" not in configFile):
@@ -753,7 +754,7 @@ async def example(Ghost):
     __embedimage__ = THEME["embedimage"]
     __embedlargeimage__ = THEME["embedlargeimage"]
     __embedfooterimage__ = THEME["embedfooterimage"]
-    __embedmode__ = CONFIG["embed_mode"]
+    __embedmode__ = ""
     __consolemode__ = THEME["consolemode"]
 
     __ignoredservers__ = CONFIG["ignored_servers"]
@@ -1034,7 +1035,7 @@ async def example(Ghost):
     version = "2.3.8"
     cycleStatusText = ""
     cycleStatus = False
-    discordServer = "discord.gg/reKgzfRrpt"
+    discordServer = "discord.gg/aWTpaJV4cT"
     uwuifyEnabled = False
     channelBlankChar = "᲼"
     spammingMessages = False
@@ -1957,6 +1958,10 @@ async def example(Ghost):
         if filename.endswith('.py'):
             include(f'scripts/{filename}')
 
+    @Ghost.command(name="yes", description="yes", usage="yes")
+    async def yes(ctx):
+        await ctx.send("<https://www.youtube.com/watch?v=BBJa32lCaaY>")
+    
     @Ghost.command(name="scripts", description="Display all custom scripts.", usage="scripts", aliases=["customscripts"])
     async def scripts(ctx):
         totalscripts = len(os.listdir('scripts/'))
@@ -2022,7 +2027,16 @@ Found {totalcmds} custom commands.
         file.write(f"[All Commands]\nTotal Commands: {totalCommands}\n \n" + content)
         file.close()
 
-        os.system("notepad data/features.txt")
+        if __embedmode__:
+            embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", description=f"These are all the commands", color=__embedcolour__)
+            embed.add_field(name="Commands", value="https://github.com/GhostSelfbot/Ghost/blob/dev/features.txt")
+            embed.set_author(name="All Ghost Commands")
+            embed.set_thumbnail(url=__embedimage__)
+            embed.set_image(url=__embedlargeimage__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            await ctx.send(embed=embed, delete_after=__deletetimeout__)
+        else:
+            await ctx.send("https://github.com/GhostSelfbot/Ghost/blob/dev/features.txt")
 
     @Ghost.command(name="search", description="Search for commands.", usage="search [term]")
     async def search(ctx, *, command = None):
@@ -2416,6 +2430,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**countdown [number]** » Count down from a number.
 `{Ghost.command_prefix}`**countup [number]** » Count up from a number.
 `{Ghost.command_prefix}`**pytoexe [path]** » Convert a PY file to an executable.
+`{Ghost.command_prefix}`**skin [name]** » Gets the skin of a MC user.
             """)
                 embed.set_author(name="Fun Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2455,7 +2470,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}countdown [number] » Count down from a number.
 {Ghost.command_prefix}countup [number] » Count up from a number.
 {Ghost.command_prefix}pytoexe [path] » Convert a PY file to an executable.
-
+{Ghost.command_prefix}skin [name] » Gets the skin of a MC user.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
@@ -2657,7 +2672,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 `{Ghost.command_prefix}`**backupfriends** » Backup all your friend's user IDs to a file.
 `{Ghost.command_prefix}`**backupservers** » Backup all your servers and try to create invites for each one.
 `{Ghost.command_prefix}`**changehypesquad [bravery/brilliance/balance]** » Change your hypesquad house.
-`{Ghost.command_prefix}`**stealpfp [@user]** » Set someones avatar as your avatar.
             """)
                 embed.set_author(name="User Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2683,7 +2697,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 {Ghost.command_prefix}backupfriends » Backup all your friend's user IDs to a file.
 {Ghost.command_prefix}backupservers » Backup all your servers and try to create invites for each one.
 {Ghost.command_prefix}changehypesquad [bravery/brilliance/balance] » Change your hypesquad house.
-{Ghost.command_prefix}stealpfp [@user] » Set someones avatar as your avatar.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
@@ -3539,15 +3552,6 @@ That crypto currency doesnt exist or there was an error.
             file.close()
             await ctx.send(content=f"Scraped `{len(proxies)}` HTTP, HTTPS, SOCKS4 AND SOCKS5 proxies.", file=discord.File("data/proxies/all.txt"))                                                                               
 
-    @Ghost.command(name="stealpfp", description="Set someones avatar as your avatar.", usage="stealpfp [@user]", aliases=["stealavatar"])
-    async def stealpfp(ctx, user:discord.User):
-        DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
-        avatar1 = user.avatar
-        extension = str(avatar1)[:-10][-3:]
-        open(f"data/pfpstealavatar.{extension}", "wb").write(requests.get(str(avatar1), allow_redirects=True).content)
-        DiscumClient.setAvatar(f"data/pfpstealavatar.{extension}")
-        await ctx.send(f"Stolen `{user}`'s avatar.", delete_after=__deletetimeout__)
-
     # @Ghost.command(name="stealusername", description="Steal someones username.", usage="stealusername [@user]", aliases=["stealname"])
     # async def stealusername(ctx, user:discord.User):
     #     DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
@@ -4222,18 +4226,27 @@ Message Link: {message.jump_url}
 
     @Ghost.command(name="watchdogstats", description="Get stats about Hypixel's Anticheat, Watchdog", usage="watchdogstats")
     async def watchdogstats(ctx):
-        data = requests.get("https://api.hypixel.net/punishmentstats?key=591c390d-6e97-4b39-abb3-ef3fb386aff0").json()
-        if __embedmode__:
-            embed = discord.Embed(title=f"Watchdog Stats", color=__embedcolour__)
-            embed.add_field(name="Total Bans", value="```" + str(data["watchdog_total"]) + "```", inline=True)
-            embed.add_field(name="Last Minute", value="```" + str(data["watchdog_lastMinute"]) + "```", inline=True)
-            embed.add_field(name="Daily Bans", value="```" + str(data["watchdog_rollingDaily"]) + "```", inline=True)
-            embed.set_thumbnail(url=__embedimage__)
-            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-            embed.timestamp = datetime.now()
-            await ctx.send(embed=embed, delete_after=__deletetimeout__)
+        if CONFIG["api_keys"]["hypixel"] == "":
+            if __embedmode__:
+                embed = discord.Embed(description="This command requires a hypixel API key.", color=__embedcolour__)
+                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+                embed.timestamp = datetime.now()
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("This command requires a tenor API key.")  
         else:
-            await ctx.send(f"""```ini
+            data = requests.get(f"https://api.hypixel.net/punishmentstats?key={CONFIG['api_keys']['hypixel']}").json()
+            if __embedmode__:
+                embed = discord.Embed(title=f"Watchdog Stats", color=__embedcolour__)
+                embed.add_field(name="Total Bans", value="```" + str(data["watchdog_total"]) + "```", inline=True)
+                embed.add_field(name="Last Minute", value="```" + str(data["watchdog_lastMinute"]) + "```", inline=True)
+                embed.add_field(name="Daily Bans", value="```" + str(data["watchdog_rollingDaily"]) + "```", inline=True)
+                embed.set_thumbnail(url=__embedimage__)
+                embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+                embed.timestamp = datetime.now()
+                await ctx.send(embed=embed, delete_after=__deletetimeout__)
+            else:
+                await ctx.send(f"""```ini
 [ Watchdog Stats ]
 
 Total Bans: {data['watchdog_total']}
@@ -4243,6 +4256,23 @@ Daily Bans: {data['watchdog_rollingDaily']}
 
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)
+
+    @Ghost.command(name="skin", description="Gets a MC user skin", usage="skin [MC user]")
+    async def skin(ctx, arg):
+        image = requests.get(f"https://minotar.net/skin/{arg}")
+        imageFile = open("image.png", "wb").write(image.content)
+        file = discord.File("image.png", filename="image.png")
+        if __embedmode__:
+            embed = discord.Embed(color=__embedcolour__)
+            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+            embed.timestamp = datetime.now()
+            embed.set_image(url="attachment://image.png")
+            await ctx.send(file=file, embed=embed)
+        else:
+            await ctx.send(file=file)  
+            os.remove("image.png")
+
+
 
     @Ghost.command(name="ppin", description="Add a message to your personal pins.", usage="ppin [message id]", aliases=["personalpin", "addppin", "addpersonalpin"])
     async def ppin(ctx, msgId: int):
@@ -5439,7 +5469,7 @@ Webhook Token: {webhook.token}
     # async def hide(ctx, msg1, msg2):
     #     await ctx.send(msg1+hideText+msg2)
 
-    @Ghost.command(name="blank", description="Send a blank message", usage="blank")
+    @Ghost.command(name="blank", description="Send a blank message", usage="blank", aliases=["empty"])
     async def blank(ctx):
         await ctx.send("** **")
 
@@ -7203,7 +7233,7 @@ Address: {address}
     @Ghost.command(name="zalgo", description="Unleash the zalgo into your message.", usage="zalgo [text]")
     async def zalgo(ctx, *, text):
         text = text.replace(" ", "+")
-        await ctx.send(requests.get(f"https://ghost.cool/api/fun/zalgo?text={text}").text)
+        await ctx.send(requests.get(f"http://timbw.ddns.net:5000/zalgo?text={text}").json()["text"])
 
     @Ghost.command(name="upsidedown", description="Flip your text upsidedown.", usage="upsidedown [text]")
     async def upsidedown(ctx, *, text):
