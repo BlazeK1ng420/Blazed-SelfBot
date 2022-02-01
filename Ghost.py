@@ -7913,7 +7913,7 @@ Nitro: {nitro}
 # {__embedfooter__}```{avatar}""")  
 
         else:
-            await ctx.send("Failed to get information about this token. Probably invalid or from a delete user.")                  
+            await ctx.send("Failed to get information about this token. Probably invalid or from a deleted user.")                  
 
     @Ghost.command(name="userinfo", description="Information about the mentioned user.", usage="userinfo [@user]", aliases=["userlookup", "lookupuser"])
     async def userinfo(ctx, *, user: discord.User):
