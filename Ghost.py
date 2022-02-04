@@ -6909,16 +6909,11 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(choice)
 
     @Ghost.command(name="dice", description="Roll a dice.", usage="dice", aliases=["rolladice"])
-    async def dice(ctx):
-        choice = random.randint(1,6)
-        if __embedmode__:
-            embed = discord.Embed(title=f"{choice}", color=__embedcolour__)
-            embed.set_thumbnail(url=__embedimage__)
-            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-            embed.timestamp = datetime.now()
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send(choice)
+    async def dice(ctx, amnt: int=6):
+        result = str(random.randint(1, amnt))
+        await ctx.send(f"""
+:game_die: `{amnt}` sides dice
+You rolled a `{result}`.""")
 
     @Ghost.command(name="rps", description="Rock, paper, scissors.", usage="rps", aliases=["rockpaperscissors"])
     async def rps(ctx, move = None):
