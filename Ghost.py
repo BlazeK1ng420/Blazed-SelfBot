@@ -6610,6 +6610,15 @@ You have risk mode disabled, you cant use this command.
         data = response.json()
         await ctx.send(data['minion'])
         
+    @Ghost.command(name="communism", description="Turns a user into a communist with bennys api", usage='communism [@user]')
+    async def communism(ctx, user: discord.User):
+        communist = avatarUrl(user.id, user.avatar)
+        image = requests.get(f'https://api.benny.fun/v1/communism?image={communist}')
+        imageFile = open("communism.png", "wb").write(image.content)
+        file = discord.File("communism.png", filename="communism.png")
+        await ctx.send(file=file)
+        os.remove("communism.png")
+        
     @Ghost.command(name="purgehack", description="Purge without permissions.", usage="purgehack")
     async def purgehack(ctx):
         await ctx.send(f"** **\n"*100)
