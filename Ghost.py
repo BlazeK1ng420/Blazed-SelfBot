@@ -6628,6 +6628,15 @@ You have risk mode disabled, you cant use this command.
         await ctx.send(file=file)
         os.remove("bad.png")
         
+    @Ghost.command(name="fml", description"Sends a random persons message who hates their life", usage="fml")
+    async def fml(ctx):
+        response = requests.get('https://api.benny.fun/v1/fml')
+        data = response.json()
+        await ctx.send(f"""
+        ```Posted by {data['author']}
+        FML
+        {data['text']}```""")
+        
     @Ghost.command(name="purgehack", description="Purge without permissions.", usage="purgehack")
     async def purgehack(ctx):
         await ctx.send(f"** **\n"*100)
