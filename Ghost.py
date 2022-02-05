@@ -6618,6 +6618,15 @@ You have risk mode disabled, you cant use this command.
         file = discord.File("communism.png", filename="communism.png")
         await ctx.send(file=file)
         os.remove("communism.png")
+    
+    @Ghost.command(name="bad", description="Tells a user hes bad." usage="bad [@user]")
+    async def bad(ctx, user: discord.User):
+        bad = avatarUrl(user.id, user.avatar)
+        image=requests.get(f'https://api.benny.fun/v1/bad?image={bad}')
+        imageFile = open("bad.png", "wb").write(image.content)
+        file = discord.File("bad.png", filename="bad.png")
+        await ctx.send(file=file)
+        os.remove("bad.png")
         
     @Ghost.command(name="purgehack", description="Purge without permissions.", usage="purgehack")
     async def purgehack(ctx):
