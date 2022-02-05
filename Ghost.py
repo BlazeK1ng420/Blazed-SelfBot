@@ -6603,7 +6603,13 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send(file=file)  
             os.remove("image.png")
-
+            
+    @Ghost.command(name="minion", description="Get a minion meme with bennys api", usage='minion')
+    async def minion(ctx):
+        response = requests.get('https://api.benny.fun/v1/minion')
+        data = response.json()
+        await ctx.send(data['minion'])
+        
     @Ghost.command(name="purgehack", description="Purge without permissions.", usage="purgehack")
     async def purgehack(ctx):
         await ctx.send(f"** **\n"*100)
