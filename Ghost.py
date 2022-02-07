@@ -2373,9 +2373,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
                 await ctx.send(f"""```ini
 [ Text Commands (2/2) ]
 
-{Ghost.command_prefix}rembed (delay) [title] » Kill Discord's API with a sexy rainbow embedded message.
-{Ghost.command_prefix}cembed [title] [description] [colour] » Create a custom embedded message.
-{Ghost.command_prefix}embed [title] » Create an embedded message.
 {Ghost.command_prefix}suggest [suggestion] » Suggest something.
 {Ghost.command_prefix}privatemsg [message] » Send an encrypted message.
 {Ghost.command_prefix}privatemsgdecode [message] » Decode an encrypted message.
@@ -6909,24 +6906,24 @@ You have risk mode disabled, you cant use this command.
                 await role.edit(color=int(colour.replace('#', '0x'), 0))
         await role.edit(color=oldcolour)
 
-    @Ghost.command(name="rembed", description="Kill Discord's API with a sexy rainbow embedded message.", usage="rembed [text]", aliases=["rainbowembed"])
-    async def rembed(ctx, *, text):
-        if __embedmode__:
-            red = Color("#ff3d3d")
-            pink = Color("#f54287")
-            rainbow = list(red.range_to(pink, 25))
-            embed = discord.Embed(color=int("#ff3d3d".replace('#', '0x'), 0))
-            embed.set_author(name=text)
-            msg = await ctx.send(embed=embed)
-            for _ in range(5):
-                for x in rainbow:
-                    colour = f'{x}'
-                    newembed = discord.Embed(color=int(colour.replace('#', '0x'), 0))
-                    newembed.set_author(name=text)
-                    await msg.edit(embed=newembed)
-            await msg.edit(embed=discord.Embed(color=int("#f54287".replace("#", "0x"), 0)).set_author(name=text))
-        else:
-            await ctx.send("This command can only be used in embed mode.")
+#     @Ghost.command(name="rembed", description="Kill Discord's API with a sexy rainbow embedded message.", usage="rembed [text]", aliases=["rainbowembed"])
+#     async def rembed(ctx, *, text):
+#         if __embedmode__:
+#             red = Color("#ff3d3d")
+#             pink = Color("#f54287")
+#             rainbow = list(red.range_to(pink, 25))
+#             embed = discord.Embed(color=int("#ff3d3d".replace('#', '0x'), 0))
+#             embed.set_author(name=text)
+#             msg = await ctx.send(embed=embed)
+#             for _ in range(5):
+#                 for x in rainbow:ghttps://www.startpage.com
+#                     colour = f'{x}'
+#                     newembed = discord.Embed(color=int(colour.replace('#', '0x'), 0))
+#                     newembed.set_author(name=text)
+#                     await msg.edit(embed=newembed)
+#             await msg.edit(embed=discord.Embed(color=int("#f54287".replace("#", "0x"), 0)).set_author(name=text))
+#         else:
+#             await ctx.send("This command can only be used in embed mode.")
 
     @Ghost.command(name="coinflip", description="Flip a coin.", usage="coinflip", aliases=["flipacoin"])
     async def coinflip(ctx):
