@@ -6916,7 +6916,7 @@ You have risk mode disabled, you cant use this command.
 #             embed.set_author(name=text)
 #             msg = await ctx.send(embed=embed)
 #             for _ in range(5):
-#                 for x in rainbow:ghttps://www.startpage.com
+#                 for x in rainbow:
 #                     colour = f'{x}'
 #                     newembed = discord.Embed(color=int(colour.replace('#', '0x'), 0))
 #                     newembed.set_author(name=text)
