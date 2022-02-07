@@ -6619,7 +6619,7 @@ You have risk mode disabled, you cant use this command.
         await ctx.send(file=file)
         os.remove("communism.png")
     
-    @Ghost.command(name="bad", description="Tells a user hes bad." usage="bad [@user]")
+    @Ghost.command(name="bad", description="Tells a user hes bad.", usage="bad [@user]")
     async def bad(ctx, user: discord.User):
         bad = avatarUrl(user.id, user.avatar)
         image=requests.get(f'https://api.benny.fun/v1/bad?image={bad}')
@@ -6628,7 +6628,7 @@ You have risk mode disabled, you cant use this command.
         await ctx.send(file=file)
         os.remove("bad.png")
         
-    @Ghost.command(name="fml", description"Sends a random persons message who hates their life", usage="fml")
+    @Ghost.command(name="fml", description="Sends a random persons message who hates their life", usage="fml")
     async def fml(ctx):
         response = requests.get('https://api.benny.fun/v1/fml')
         data = response.json()
