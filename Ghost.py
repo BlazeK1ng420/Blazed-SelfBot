@@ -1055,7 +1055,7 @@ async def example(Ghost):
     # hideText = "||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||"
     
     if not __custommotd__:
-        motd = "Developed by Benny |  Now mantained by timof121"
+        motd = "Developed by Benny |  Now maintained by timof121"
     else:
         motd = __custommotdtext__
 
@@ -1958,11 +1958,11 @@ async def example(Ghost):
         if filename.endswith('.py'):
             include(f'scripts/{filename}')
 
-    @Ghost.command(name="yes", description="yes", usage="yes")
+    @Ghost.command(name="yes", description="yes", usage="yes", aliases=["ja", "po", "አዎ", "نعم", "այո", "bəli", "bai", "так", "হ্যাঁ", "da", "да", "sí", "oo", "inde", "是的", "Iè", "Ano", "jes", "jah", "Joo", "Oui", "si", "დიახ", "Ναί", "હા", "wi", "iya", "ae", "כן", "हां", "yog", "Igen", "Já", "Ya", "tá", "sì", "はい", "ya wis", "ಹೌದು", "иә", "បាទ", "yego", "네", "Erê", "Ооба", "ແມ່ນແລ້ວ", "sic", "Jā", "taip", "jo", "ENY", "ya", "അതെ", "iva", "āe", "होय", "тиймээ", "ဟုတ်တယ်", "हो", "ହଁ", "هو", "آره", "tak", "sim", "ਹਾਂ", "ioe", "tha", "ho joalo", "Ehe", "ها", "ඔව්", "Áno", "haa", "enya", "ndio", "бале", "ஆம்", "әйе", "అవును", "ใช่", "Evet", "hawa", "جی ہاں", "ھەئە", "ha", "Đúng", "oes", "Ewe", "יאָ", "beeni", "yebo", ])
     async def yes(ctx):
         await ctx.send("<https://www.youtube.com/watch?v=BBJa32lCaaY>")
     
-    @Ghost.command(name="scripts", description="Display all custom scripts.", usage="scripts", aliases=["customscripts"])
+    @Ghost.command(name="scripts", description="Display all custom scripts.", usage="scripts", aliases=["customscripts", "userscripts"])
     async def scripts(ctx):
         totalscripts = len(os.listdir('scripts/'))
         text = ""
@@ -1989,7 +1989,7 @@ Found {totalscripts} custom scripts
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Ghost.command(name="customcommands", description="Display all custom commands.", usage="customcommands", aliases=["ccmds"])
+    @Ghost.command(name="customcommands", description="Display all custom commands.", usage="customcommands", aliases=["ccmds", "usercommands", "ucmds"])
     async def customcommands(ctx):
         totalcmds = len(ccmd)
         ccmd2 = ""
@@ -2038,7 +2038,7 @@ Found {totalcmds} custom commands.
         else:
             await ctx.send("https://github.com/GhostSelfbot/Ghost/blob/dev/features.txt")
 
-    @Ghost.command(name="search", description="Search for commands.", usage="search [term]")
+    @Ghost.command(name="search", description="Search for commands.", usage="search [term]", aliases=["find", "searchcommand"])
     async def search(ctx, *, command = None):
         if command is None:
             if __embedmode__:
@@ -2373,9 +2373,6 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
                 await ctx.send(f"""```ini
 [ Text Commands (2/2) ]
 
-{Ghost.command_prefix}rembed (delay) [title] » Kill Discord's API with a sexy rainbow embedded message.
-{Ghost.command_prefix}cembed [title] [description] [colour] » Create a custom embedded message.
-{Ghost.command_prefix}embed [title] » Create an embedded message.
 {Ghost.command_prefix}suggest [suggestion] » Suggest something.
 {Ghost.command_prefix}privatemsg [message] » Send an encrypted message.
 {Ghost.command_prefix}privatemsgdecode [message] » Decode an encrypted message.
@@ -2474,7 +2471,7 @@ Community Themes, run {Ghost.command_prefix}ctheme (theme name) to download the 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Ghost.command(name="image", description="Image related commands.", usage="image")
+    @Ghost.command(name="image", description="Image related commands.", usage="image", aliases=["img"])
     async def image(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
@@ -2871,7 +2868,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                          
 
-    @Ghost.command(name="tools", description="Discord and other tools.", usage="tools")
+    @Ghost.command(name="tools", description="Discord and other tools.", usage="tools", aliases=["utilities", "utils"])
     async def tools(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
@@ -3365,7 +3362,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
         print_info("All messages have been read.")
         await ctx.send(f"Read a total of `{index}` channels and `{index2}` messages.")
 
-    @Ghost.command(name="specs", description="Your computers specifications.", usage="specs", aliases=["computerspecs", "pcspecs", "specifications"])
+    @Ghost.command(name="specs", description="Your computers specifications.", usage="specs", aliases=["computerspecs", "pcspecs", "specifications", "systeminfo"])
     async def specs(ctx):
         def get_size(bytes, suffix="B"):
             factor = 1024
@@ -3410,7 +3407,7 @@ RAM: {ram}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)
 
-    @Ghost.command(name="crypto", description="Get the current data on a cryptocurrency.", usage="crypto [currency]", aliases=["cryptodata"])
+    @Ghost.command(name="crypto", description="Get the current data on a cryptocurrency.", usage="crypto [currency]", aliases=["cryptodata", "cryptostats"])
     async def crypto(ctx, *, currency="bitcoin"):
         request = requests.get(f"https://api.coingecko.com/api/v3/coins/{currency}")
         if request.status_code == 200:
@@ -3485,7 +3482,7 @@ That crypto currency doesnt exist or there was an error.
 # {__embedfooter__}
 ```""")
 
-    @Ghost.command(name="proxies", description="Scrape an type of proxy.", usage="proxies [http, https, socks4, socks5, all]", aliases=["proxygen", "genproxies"])
+    @Ghost.command(name="proxies", description="Scrape an type of proxy.", usage="proxies [http, https, socks4, socks5, all]", aliases=["proxygen", "genproxies", "proxyscrape"])
     async def proxies(ctx, type):
         if type == "http":
             if not os.path.isdir("data/proxies/"): os.makedirs("data/proxies/");
@@ -3569,7 +3566,7 @@ That crypto currency doesnt exist or there was an error.
     #     DiscumClient.setAvatar(f"data/pfpstealavatar.{extension}") 
     #     DiscumClient.setUsername(username)           
 
-    @Ghost.command(name="cloneemoji", description="Clone an emoji to the command server.", usage="cloneemoji [emoji]", aliases=["stealemoji"])
+    @Ghost.command(name="cloneemoji", description="Clone an emoji to the command server.", usage="cloneemoji [emoji]", aliases=["stealemoji", "emojisteal", "copyemoji"])
     async def cloneemoji(ctx, *, msg):
         msg = re.sub("<:(.+):([0-9]+)>", "\\2", msg)
 
@@ -3593,7 +3590,7 @@ That crypto currency doesnt exist or there was an error.
         emoji = await ctx.guild.create_custom_emoji(name=match.name, image=response.content)
         await ctx.send(f"Successfully cloned `{emoji.name}`.")                
 
-    @Ghost.command(name="detections", description="A list of all detections.", usage="detections")
+    @Ghost.command(name="detections", description="A list of all detections.", usage="detections", aliases=["triggers"])
     async def detections(ctx):
         cfg = Config.getConfig()
         _list = []
@@ -3753,7 +3750,7 @@ That crypto currency doesnt exist or there was an error.
 # # {__embedfooter__}
 # ```""")
 
-    @Ghost.command(name="addccmd", description="Add a custom command.", usage="addccmd [name] [response]", aliases=["addcustomcommand"])
+    @Ghost.command(name="addccmd", description="Add a custom command.", usage="addccmd [name] [response]", aliases=["addcustomcommand", "addusercommand"])
     async def addccmd(ctx, name, *, response):
         global ccmd
         customCommands = json.load(open("customcommands.json"))
@@ -3771,7 +3768,7 @@ That crypto currency doesnt exist or there was an error.
         ccmd = json.load(open("customcommands.json"))
         await ctx.send(f"Removed `{Ghost.command_prefix}{name}` from your custom commands", delete_after=__deletetimeout__)            
 
-    @Ghost.command(name="boobs", description="Pictures or videos of boobs.", usage=f"boobs", aliases=["tits", "tit", "milkers", "titties", "boob"])
+    @Ghost.command(name="boobs", description="Pictures or videos of boobs.", usage=f"boobs", aliases=["tits", "tit", "milkers", "titties", "boob", "melons"])
     async def boobs(ctx):
         type = "boobs"
         image = get_nsfw(type)
@@ -3784,7 +3781,7 @@ That crypto currency doesnt exist or there was an error.
         else:  
             await ctx.send(image)
 
-    @Ghost.command(name="ass", description="Pictures or videos of ass.", usage=f"ass")
+    @Ghost.command(name="ass", description="Pictures or videos of ass.", usage=f"ass", aliases=["badonkadonk"])
     async def ass(ctx):
         type = "ass"
         image = get_nsfw(type)
@@ -3833,7 +3830,7 @@ That crypto currency doesnt exist or there was an error.
         else:  
             await ctx.send(image)  
 
-    @Ghost.command(name="hentai", description="Pictures or videos of hentai.", usage=f"hentai")
+    @Ghost.command(name="neko", description="Pictures or videos of nsfw nekos.", usage=f"hentai", aliases=["nsfwneko"])
     async def hentai(ctx):
         type = random.randint(1, 2)
         if type == 1:
@@ -4029,7 +4026,7 @@ Created a channel with the name {channelName}.
             uwuifyEnabled = True
             await ctx.send("All your messages will now be translated to uwu.", delete_after=__deletetimeout__)            
 
-    @Ghost.command(name="geoip", description="Get information from an IP address.", usage="geoip [ip]", aliases=["iplookup", "lookupip", "ipinfo"])
+    @Ghost.command(name="geoip", description="Get information from an IP address.", usage="geoip [ip]", aliases=["iplookup", "lookupip", "ipinfo", "iplocation"])
     async def geoip(ctx, ip):
         data = requests.get(f"http://ip-api.com/json/{ip}").json()
         data2 = requests.get(f"https://ipqualityscore.com/api/json/ip/oOswzMILsf8QA7JGtaQDdXARfDtbKW1K/{ip}").json()
@@ -4081,7 +4078,7 @@ Hostname: {hostname}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)      
 
-    @Ghost.command(name="invite", description="Get Ghost's Discord server invite link.", usage="invite")
+    @Ghost.command(name="invite", description="Get Ghost's Discord server invite link.", usage="invite", aliases=["serverinvite", "serverinv"])
     async def invite(ctx):
         print_info(f"Discord server invite: {discordServer}")
 
@@ -4198,7 +4195,7 @@ The path you submitted does not link to a PY file.
     async def ghostping(ctx, user: discord.User):
         pass
 
-    @Ghost.command(name="getmessage", description="Get a message by ID.", usage="getmessage [message id]", aliases=["fetchmessage"])
+    @Ghost.command(name="getmessage", description="Get a message by ID.", usage="getmessage [message id]", aliases=["fetchmessage", "getmsg", "fetchmsg"])
     async def getmessage(ctx, messageid: int):
         msg = await ctx.send("Getting the message . . .")
         message = await get_message(ctx, messageid)
@@ -4224,7 +4221,7 @@ Message Link: {message.jump_url}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)      
 
-    @Ghost.command(name="watchdogstats", description="Get stats about Hypixel's Anticheat, Watchdog", usage="watchdogstats")
+    @Ghost.command(name="watchdogstats", description="Get stats about Hypixel's Anticheat, Watchdog", usage="watchdogstats", aliases=["hypixelstats", "banstats", "acstats"])
     async def watchdogstats(ctx):
         if CONFIG["api_keys"]["hypixel"] == "":
             if __embedmode__:
@@ -4257,7 +4254,7 @@ Daily Bans: {data['watchdog_rollingDaily']}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)
 
-    @Ghost.command(name="skin", description="Gets a MC user skin", usage="skin [MC user]")
+    @Ghost.command(name="skin", description="Gets a MC user skin", usage="skin [MC user]", aliases=["minecaftskin", "mcskin"])
     async def skin(ctx, arg):
         image = requests.get(f"https://minotar.net/skin/{arg}")
         imageFile = open("image.png", "wb").write(image.content)
@@ -4294,7 +4291,7 @@ Daily Bans: {data['watchdog_rollingDaily']}
         else:
             await ctx.send(f"**📌 Personal Pin**\nPinned message `{message.content}` by `{message.author.name}#{message.author.discriminator}`.")
 
-    @Ghost.command(name="ppins", description="List all your pinned messages.", usage="ppins", aliases=["personalpins"])
+    @Ghost.command(name="ppins", description="List all your pinned messages.", usage="ppins", aliases=["personalpins", "listppins", "ppinlist"])
     async def ppins(ctx):
         data = json.load(open("data/personal-pins.json"))
 
@@ -4539,7 +4536,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                          
 
-    @Ghost.command(name="checktoken", description="Checks if a token is working.", usage="checktoken [token]")
+    @Ghost.command(name="checktoken", description="Checks if a token is working.", usage="checktoken [token]", aliases=["tokencheck"])
     async def checktoken(ctx, *, token):
         tokens = [token]
         valid = "invalid"
@@ -4978,7 +4975,7 @@ You have risk mode disabled, you cant use this command.
         Config.saveConfig(cfg)
         await ctx.send(f"Sounds set to `{cfg['sounds']}`.")
 
-    @Ghost.command(name="notifications", description="Toggle Ghost notifications.", usage="notifications", aliases=["togglenotifications", "notificationstoggle"])
+    @Ghost.command(name="notifications", description="Toggle Ghost notifications.", usage="notifications", aliases=["togglenotifications", "notificationstoggle", "togglenotifs"])
     async def notifications(ctx):
         cfg = Config.getConfig()
 
@@ -5417,7 +5414,7 @@ Webhook Token: {webhook.token}
             pass
         restart_bot()
 
-    @Ghost.command(name="firstmessage", description="Get the first message in the command channel.", usage="firstmessage")
+    @Ghost.command(name="firstmessage", description="Get the first message in the command channel.", usage="firstmessage", aliases=["firstmsg"])
     async def firstmessage(ctx):
         messages = await ctx.channel.history(limit=1, oldest_first=True).flatten()
         for message in messages:
@@ -5481,7 +5478,7 @@ Webhook Token: {webhook.token}
     async def lmgtfy(ctx, *, search):
         await ctx.send(f"https://lmgtfy.app/?q={search.replace(' ', '+')}")
 
-    @Ghost.command(name="selfbotcheck", description="Checks for users using a selfbot.", usage="selfbotcheck")
+    @Ghost.command(name="selfbotcheck", description="Checks for users using a selfbot.", usage="selfbotcheck", aliases=["sbcheck"])
     async def selfbotcheck(ctx):
         await ctx.send("Checking for users with a trash selfbot...\nPeople who react below are using a selfbot.")
         await ctx.send("GIVEAWAY")
@@ -6226,7 +6223,7 @@ You have risk mode disabled, you cant use this command.
             except:
                 pass
 
-    @Ghost.command(name="dadjoke", description="A random dad joke.", usage="dadjoke")
+    @Ghost.command(name="dadjoke", description="A random dad joke.", usage="dadjoke", aliases=["fuckofftypefunny"])
     async def dadjoke(ctx):
         url = "https://icanhazdadjoke.com/"
 
@@ -6258,7 +6255,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(question)                
 
-    @Ghost.command(name="randommessage", description="A random message.", usage="randommessage", aliases=["ranmessage"])
+    @Ghost.command(name="randommessage", description="A random message.", usage="randommessage", aliases=["ranmessage", "ranmsg",])
     async def randommessage(ctx):
         url = "https://ajith-messages.p.rapidapi.com/getMsgs"
 
@@ -6278,7 +6275,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(response_data["Message"])
 
-    @Ghost.command(name="meme", description="A random meme.", usage="meme", aliases=["randommeme"])
+    @Ghost.command(name="meme", description="A random meme.", usage="meme", aliases=["randommeme", "ranmeme"])
     async def meme(ctx):
         response = requests.get("https://meme-api.herokuapp.com/gimme")
         data = response.json()
@@ -6301,7 +6298,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed)
             else:
-                await ctx.send("This command requires a tenor API key.")                     
+                await ctx.send("This command requires a tenor API key.\nVisit <https://tenor.com/developer/keyregistration> for registration")                     
         else:                 
             search = search.replace(" ", "+")
             response = requests.get(f'https://g.tenor.com/v1/search?q={search}&key={CONFIG["api_keys"]["tenor"]}&limit=10000')
@@ -6316,7 +6313,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send(data['results'][random.randint(0, 49)]["media"][0]["gif"]["url"])     
 
-    @Ghost.command(name="cat", description="A random cat image.", usage="cat", aliases=["randomcat"])
+    @Ghost.command(name="cat", description="A random cat image.", usage="cat", aliases=["randomcat", "rancat"])
     async def cat(ctx):
         request = requests.get("https://cataas.com/cat?json=true").json()
         image = "https://cataas.com" + request["url"]
@@ -6329,7 +6326,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(image)
 
-    @Ghost.command(name="catgif", description="A random cat gif.", usage="catgif", aliases=["randomcatgif"])
+    @Ghost.command(name="catgif", description="A random cat gif.", usage="catgif", aliases=["randomcatgif", "rancatgif"])
     async def catgif(ctx):
         request = requests.get("https://cataas.com/cat/gif?json=true").json()
         image = "https://cataas.com" + request["url"]
@@ -6342,7 +6339,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(image)
 
-    @Ghost.command(name="dog", description="A random dog image.", usage="dog", aliases=["randomdog"])
+    @Ghost.command(name="dog", description="A random dog image.", usage="dog", aliases=["randomdog", "randog"])
     async def dog(ctx):
         response = requests.get('https://dog.ceo/api/breeds/image/random')
         data = response.json()
@@ -6355,7 +6352,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(data['message'])
 
-    @Ghost.command(name="shiba", description="A random shiba image.", usage="shiba", aliases=["randomshiba"])
+    @Ghost.command(name="shiba", description="A random shiba image.", usage="shiba", aliases=["randomshiba", "ranshiba"])
     async def shiba(ctx):
         response = requests.get('https://shibe.online/api/shibes?count=1&httpsUrls=true')
         data = response.json()
@@ -6368,7 +6365,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(data[0])                    
 
-    @Ghost.command(name="fox", description="A random fox image. (Thanks Imf44 <3)", usage="fox", aliases=["randomfox"])
+    @Ghost.command(name="fox", description="A random fox image. (Thanks Imf44 <3)", usage="fox", aliases=["randomfox", "ranfox"])
     async def fox(ctx):
         response = requests.get('https://randomfox.ca/floof/')
         data = response.json()
@@ -6381,7 +6378,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(data['message'])
 
-    @Ghost.command(name="achievement", description="Create a fake minecraft achievement image.", usage='achievement ["text"] (icon)', aliases=["minecraftachievement"])
+    @Ghost.command(name="achievement", description="Create a fake minecraft achievement image.", usage='achievement ["text"] (icon)', aliases=["minecraftachievement", "mcachievement"])
     async def achievement(ctx, text, icon=10):
         icon = str(icon)
         text = text.replace(" ", "+")
@@ -6398,7 +6395,7 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(file=file)  
             os.remove("image.png")     
 
-    @Ghost.command(name="challenge", description="Create a fake minecraft challenge image.", usage='challenge ["text"] (icon)', aliases=["minecraftchallenge"])
+    @Ghost.command(name="challenge", description="Create a fake minecraft challenge image.", usage='challenge ["text"] (icon)', aliases=["minecraftchallenge", "mcchallenge"])
     async def challenge(ctx, text, icon=33):  
             text = text.replace(" ", "+")
             image = requests.get(f"http://timbw.ddns.net:5000/challenge?text={text}&icon={icon}")
@@ -6517,7 +6514,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")               
 
-    @Ghost.command(name="pornhub", description="Create a pornhub logo image.", usage='pornhub ["text 1"] ["text 2"]')
+    @Ghost.command(name="pornhub", description="Create a pornhub logo image.", usage='pornhub ["text 1"] ["text 2"]', aliases=["phub"])
     async def pornhub(ctx, text1="Ghost", text2="Selfbot"):
               
             text1 = text1.replace(" ", "+")
@@ -6603,12 +6600,45 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send(file=file)  
             os.remove("image.png")
-
+            
+    @Ghost.command(name="minion", description="Get a minion meme with bennys api", usage='minion')
+    async def minion(ctx):
+        response = requests.get('https://api.benny.fun/v1/minion')
+        data = response.json()
+        await ctx.send(data['minion'])
+        
+    @Ghost.command(name="communism", description="Turns a user into a communist with bennys api", usage='communism [@user]')
+    async def communism(ctx, user: discord.User):
+        communist = avatarUrl(user.id, user.avatar)
+        image = requests.get(f'https://api.benny.fun/v1/communism?image={communist}')
+        imageFile = open("communism.png", "wb").write(image.content)
+        file = discord.File("communism.png", filename="communism.png")
+        await ctx.send(file=file)
+        os.remove("communism.png")
+    
+    @Ghost.command(name="bad", description="Tells a user hes bad.", usage="bad [@user]")
+    async def bad(ctx, user: discord.User):
+        bad = avatarUrl(user.id, user.avatar)
+        image=requests.get(f'https://api.benny.fun/v1/bad?image={bad}')
+        imageFile = open("bad.png", "wb").write(image.content)
+        file = discord.File("bad.png", filename="bad.png")
+        await ctx.send(file=file)
+        os.remove("bad.png")
+        
+    @Ghost.command(name="fml", description="Sends a random persons message who hates their life", usage="fml")
+    async def fml(ctx):
+        response = requests.get('https://api.benny.fun/v1/fml')
+        data = response.json()
+        await ctx.send(f"""
+        ```Posted by {data['author']}
+        FML
+        {data['text']}```""")
+        
     @Ghost.command(name="purgehack", description="Purge without permissions.", usage="purgehack")
     async def purgehack(ctx):
         await ctx.send(f"** **\n"*100)
 
-    @Ghost.command(name="iq", description="Check how smart a user is.", usage="iq [@user]")
+    @Ghost.command(name="iq", description="Check how smart a user is.", usage="iq [@user]", aliases=["iqcheck"])
     async def iq(ctx, user: discord.User):
         iq = random.randint(45, 135)
         smart = ""
@@ -6664,7 +6694,7 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(f"{user.mention} is {halalius}!")
 
 
-    @Ghost.command(name="howgay", description="How gay a user is.", usage="howgay [@user]")
+    @Ghost.command(name="howgay", description="How gay a user is.", usage="howgay [@user]", aliases=["gaycheck"])
     async def howgay(ctx, user: discord.User):
         percentage = str(random.randint(15, 100)) + "%"
         if __embedmode__:
@@ -6676,7 +6706,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"🏳️‍🌈 {user} is {percentage} gay")        
 
-    @Ghost.command(name="slots", description="Play the slot machine.", usage="slots")
+    @Ghost.command(name="slots", description="Play the slot machine.", usage="slots", aliases=["gamble"])
     async def slots(ctx):
 
         if __embedmode__:
@@ -6768,7 +6798,7 @@ You have risk mode disabled, you cant use this command.
         await game()
 
 
-    @Ghost.command(name="socialcredit", description="A users social credit score.", usage="socialcredit [@user]")
+    @Ghost.command(name="socialcredit", description="A users social credit score.", usage="socialcredit [@user]", aliases=["socialcreditcheck"])
     async def socialcredit(ctx, user: discord.User):
         credit = random.randint(-5000000, 10000000)
         if __embedmode__:
@@ -6790,7 +6820,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"Ayo {user.mention}, " + str(insult).lower())
             
-    @Ghost.command(name="yomomma", description="Random yo momma joke.", usage="yomomma", aliases=["mom", "mum"])
+    @Ghost.command(name="yomomma", description="Random yo momma joke.", usage="yomomma", aliases=["mom", "mum", "yomom"])
     async def yomomma(ctx):
         joke = requests.get("https://api.yomomma.info/").json()["joke"]
         if __embedmode__:
@@ -6807,7 +6837,7 @@ You have risk mode disabled, you cant use this command.
         await msg.edit(content=message + " hehe")
         await msg.edit(content=message)
 
-    @Ghost.command(name="pp", description="The length of a user's penis.", usage="pp (@user)", aliases=["dicksize", "cocksize", "penissize"])
+    @Ghost.command(name="pp", description="The length of a user's penis.", usage="pp (@user)", aliases=["dicksize", "cocksize", "penissize", "predictpenileprotractedness"])
     async def pp(ctx, user: discord.User = None):
         size = "8" + "="*random.randint(1, 12) + "D"
         if user is None:
@@ -6876,24 +6906,24 @@ You have risk mode disabled, you cant use this command.
                 await role.edit(color=int(colour.replace('#', '0x'), 0))
         await role.edit(color=oldcolour)
 
-    @Ghost.command(name="rembed", description="Kill Discord's API with a sexy rainbow embedded message.", usage="rembed [text]", aliases=["rainbowembed"])
-    async def rembed(ctx, *, text):
-        if __embedmode__:
-            red = Color("#ff3d3d")
-            pink = Color("#f54287")
-            rainbow = list(red.range_to(pink, 25))
-            embed = discord.Embed(color=int("#ff3d3d".replace('#', '0x'), 0))
-            embed.set_author(name=text)
-            msg = await ctx.send(embed=embed)
-            for _ in range(5):
-                for x in rainbow:
-                    colour = f'{x}'
-                    newembed = discord.Embed(color=int(colour.replace('#', '0x'), 0))
-                    newembed.set_author(name=text)
-                    await msg.edit(embed=newembed)
-            await msg.edit(embed=discord.Embed(color=int("#f54287".replace("#", "0x"), 0)).set_author(name=text))
-        else:
-            await ctx.send("This command can only be used in embed mode.")
+#     @Ghost.command(name="rembed", description="Kill Discord's API with a sexy rainbow embedded message.", usage="rembed [text]", aliases=["rainbowembed"])
+#     async def rembed(ctx, *, text):
+#         if __embedmode__:
+#             red = Color("#ff3d3d")
+#             pink = Color("#f54287")
+#             rainbow = list(red.range_to(pink, 25))
+#             embed = discord.Embed(color=int("#ff3d3d".replace('#', '0x'), 0))
+#             embed.set_author(name=text)
+#             msg = await ctx.send(embed=embed)
+#             for _ in range(5):
+#                 for x in rainbow:
+#                     colour = f'{x}'
+#                     newembed = discord.Embed(color=int(colour.replace('#', '0x'), 0))
+#                     newembed.set_author(name=text)
+#                     await msg.edit(embed=newembed)
+#             await msg.edit(embed=discord.Embed(color=int("#f54287".replace("#", "0x"), 0)).set_author(name=text))
+#         else:
+#             await ctx.send("This command can only be used in embed mode.")
 
     @Ghost.command(name="coinflip", description="Flip a coin.", usage="coinflip", aliases=["flipacoin"])
     async def coinflip(ctx):
@@ -6909,16 +6939,11 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(choice)
 
     @Ghost.command(name="dice", description="Roll a dice.", usage="dice", aliases=["rolladice"])
-    async def dice(ctx):
-        choice = random.randint(1,6)
-        if __embedmode__:
-            embed = discord.Embed(title=f"{choice}", color=__embedcolour__)
-            embed.set_thumbnail(url=__embedimage__)
-            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-            embed.timestamp = datetime.now()
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send(choice)
+    async def dice(ctx, amnt: int=6):
+        result = str(random.randint(1, amnt))
+        await ctx.send(f"""
+:game_die: `{amnt}` sides dice
+You rolled a `{result}`.""")
 
     @Ghost.command(name="rps", description="Rock, paper, scissors.", usage="rps", aliases=["rockpaperscissors"])
     async def rps(ctx, move = None):
@@ -6988,7 +7013,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(question + "\n" + choice)
 
-    @Ghost.command(name="choice", description="Pick a random choice.", usage="choice [choice1] [choice2]", aliases=["pick"])
+    @Ghost.command(name="choice", description="Pick a random choice.", usage="choice [choice1] [choice2]", aliases=["pick", "decide"])
     async def choice(ctx, choice1, choice2):
         choices = [choice1, choice2]
         choice = random.choice(choices)
@@ -7001,7 +7026,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(choice)
 
-    @Ghost.command(name="range", description="Pick a random number between two.", usage="random [number1] [number2]", aliases=["rangenumber"])
+    @Ghost.command(name="range", description="Pick a random number between two.", usage="random [number1] [number2]", aliases=["rangenumber", "pickrannumber"])
     async def choice(ctx, arg1, arg2):
         finalnumber = random.randint(int(arg1),int(arg2))
         if __embedmode__:
@@ -7026,14 +7051,14 @@ You have risk mode disabled, you cant use this command.
     #     # await message.add_reaction("\U0001F7E6")
     #     # await message.add_reaction("\U0001F7E5")
 
-    @Ghost.command(name="dox", description="Dox the mentioned user.", usage="dox [@user]")
+    @Ghost.command(name="dox", description="Dox the mentioned user.", usage="dox [@user]", aliases=["fakedox"])
     async def dox(ctx, *, user: discord.User):
         randint1 = random.randint(100, 270)
         randint2 = random.randint(100, 270)
         randint3 = random.randint(10, 40)
         randint4 = random.randint(100, 270)
-        countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]
-        computer = ['Windows', 'Mac', 'Linux', 'IOS', 'Android', 'Unknown']
+        countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe","Reddit Isle"]
+        computer = ['Windows', 'Mac', 'Linux', 'IOS', 'Android', 'Unknown', 'TempleOS', 'Archbtw']
         if __embedmode__:
             embed = discord.Embed(title=f"Doxxed {user.name}", color=__embedcolour__)
             embed.add_field(name="IP Address", value=f"```{randint1}.{randint2}.{randint3}.{randint4}```")
@@ -7046,18 +7071,18 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"Doxxed {user.name}\nIP Address: {randint1}.{randint2}.{randint3}.{randint4}\nCountry: " + random.choice(countries) + "\nComputer: " + random.choice(computer))
 
-    @Ghost.command(name="fakenitro", description="Hide a link in a nitro URL.", usage="fakenitro [url]")
-    async def fakenitro(ctx, *, url):
-        code = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(16))
-        nitro = "https://discord.gift/" + code
-        if __embedmode__:
-            embed = discord.Embed(title=f"Nitro", color=__embedcolour__, description=f"[{nitro}]({url})")
-            embed.set_thumbnail(url=__embedimage__)
-            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-            embed.timestamp = datetime.now()
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("This command can only be used in embed mode.")
+#    @Ghost.command(name="fakenitro", description="Hide a link in a nitro URL.", usage="fakenitro [url]")
+#    async def fakenitro(ctx, *, url):
+#        code = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(16))
+#        nitro = "https://discord.gift/" + code
+#        if __embedmode__:
+#            embed = discord.Embed(title=f"Nitro", color=__embedcolour__, description=f"[{nitro}]({url})")
+#            embed.set_thumbnail(url=__embedimage__)
+#            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+#            embed.timestamp = datetime.now()
+#            await ctx.send(embed=embed)
+#        else:
+#            await ctx.send("This command can only be used in embed mode.")
 
     @Ghost.command(name="nitrogen", description="Generate a nitro code.", usage="nitrogen", aliases=["nitrogenerate", "generatenitro", "gennitro"])
     async def nitrogen(ctx):
@@ -7097,7 +7122,7 @@ You have risk mode disabled, you cant use this command.
     async def eval(ctx, *, arg):
         exec(arg)
 
-    @Ghost.command(name="identitygen", description="Generate a fake identity.", usage="identitygen", aliases=["identitygenerate", "generateidentity", "genidentity"])
+    @Ghost.command(name="identitygen", description="Generate a fake identity.", usage="identitygen", aliases=["identitygenerate", "generateidentity", "genidentity", "idgen", "genid"])
     async def identitygen(ctx):
 
         firstname = fake.first_name()
@@ -7205,25 +7230,25 @@ Address: {address}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Ghost.command(name="cembed", description="Create a custom embedded message.", usage='cembed [title] [description] [colour]', aliases=["customembed"])
-    async def cembed(ctx, title, description, colour):
-        if __embedmode__:
-            colour = int(colour.replace('#', '0x'), 0)
-            embed = discord.Embed(title=title, description=description, color=colour)
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("This command can only be used in embed mode.")
+#    @Ghost.command(name="cembed", description="Create a custom embedded message.", usage='cembed [title] [description] [colour]', aliases=["customembed"])
+#    async def cembed(ctx, title, description, colour):
+#        if __embedmode__:
+#            colour = int(colour.replace('#', '0x'), 0)
+#            embed = discord.Embed(title=title, description=description, color=colour)
+#            await ctx.send(embed=embed)
+#        else:
+#            await ctx.send("This command can only be used in embed mode.")
 
-    @Ghost.command(name="embed", description="Create an embedded message.", usage="embed [title]")
-    async def embed(ctx, *, title):
-        if __embedmode__:
-            embed = discord.Embed(title=title, color=__embedcolour__)
-            embed.set_thumbnail(url=__embedimage__)
-            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
-            embed.timestamp = datetime.now()
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("This command can only be used in embed mode.")
+#    @Ghost.command(name="embed", description="Create an embedded message.", usage="embed [title]")
+#    async def embed(ctx, *, title):
+#        if __embedmode__:
+#            embed = discord.Embed(title=title, color=__embedcolour__)
+#            embed.set_thumbnail(url=__embedimage__)
+#            embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
+#            embed.timestamp = datetime.now()
+#            await ctx.send(embed=embed)
+#        else:
+#            await ctx.send("This command can only be used in embed mode.")
 
     @Ghost.command(name="leet", description="Turn your text into 1337 text.", usage="leet [text]", aliases=["1337", "leetspeak"])
     async def leet(ctx, *, text):
@@ -7409,7 +7434,7 @@ Address: {address}
                 output = output + letter
         await ctx.send(output)
 
-    @Ghost.command(name="regional", description="Replace all letters with emoji.", usage="regional [text]")
+    @Ghost.command(name="regional", description="Replace all letters with emoji.", usage="regional [text]", aliases=["emojireplace", "change2emoji"])
     async def regional(ctx, *, text):
         text = text.lower()
 
