@@ -1,29 +1,5 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-
-# Copyright (C) 2021 Ben Tettmar
-
-# Permission is hereby granted, free of charge, to any person obtaining a copy of
-# this software and associated documentation files (the "Software"), to deal in
-# the Software without restriction, including without limitation the rights to
-# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-# of the Software, and to permit persons to whom the Software is furnished to do
-# so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
-# THE SOFTWARE IS ALSO NOT PROVIDED WITH SUPPORT AND IF YOU REQUIRE SUPPORT 
-# THEN PLEASE EITHER USE A DIFFERENT PEICE OF SOFTWARE OR PAY THE DEVELOPER
-
 import os
 from re import T
 
@@ -33,12 +9,12 @@ printSpaces = ""
 if os.name == "nt":
     os.system("cls")
     # os.system("mode 100,25")
-    os.system("title Stoner")
+    os.system("title Blaze")
 if os.name == "posix":
     os.system("clear")
 
 print(" ")
-print(f"{printSpaces}Loading Stoner...")
+print(f"{printSpaces}Loading Blaze...")
 print(" ")
 
 import sys
@@ -341,13 +317,13 @@ try:
             configJson.pop("selfbot_detect")
             print(printSpaces+"Removing selfbot detect from config.")
 
-        if ("stonerping_detect" in configFile):
-            configJson.pop("stonerping_detect")
-            print(printSpaces+"Removing stonerping detect from config.")
+        if ("blazeping_detect" in configFile):
+            configJson.pop("blazeping_detect")
+            print(printSpaces+"Removing blazeping detect from config.")
 
-        if ("stonerping" not in configJson["webhooks"]):
-            configJson["webhooks"]["stonerping"] = ""
-            print(printSpaces+"Adding stonerping webhook to config.")
+        if ("blazeping" not in configJson["webhooks"]):
+            configJson["webhooks"]["blazeping"] = ""
+            print(printSpaces+"Adding blazeping webhook to config.")
 
         if ("friendsupdate" not in configJson["webhooks"]):
             configJson["webhooks"]["friendsupdate"] = ""
@@ -377,8 +353,8 @@ try:
             configJson["detections"] = {}
             configJson["detections"]["selfbot"] = bool(True)
             print(printSpaces+"Adding selfbot detection to config.")
-            configJson["detections"]["stonerping"] = bool(True)
-            print(printSpaces+"Adding stonerping detection to config.")
+            configJson["detections"]["blazeping"] = bool(True)
+            print(printSpaces+"Adding blazeping detection to config.")
             configJson["detections"]["bans"] = bool(True)
             print(printSpaces+"Adding ban detection to config.")
 
@@ -414,8 +390,8 @@ try:
             print(printSpaces+"Adding privnote ignored servers to config.")
             configJson["ignored_servers"]["giveaways"] = []
             print(printSpaces+"Adding giveaways ignored servers to config.")
-            configJson["ignored_servers"]["stonerpings"] = []
-            print(printSpaces+"Adding stonerpings ignored servers to config.")
+            configJson["ignored_servers"]["blazepings"] = []
+            print(printSpaces+"Adding blazepings ignored servers to config.")
             configJson["ignored_servers"]["selfbots"] = []
             print(printSpaces+"Adding selfbots ignored servers to config.")
             configJson["ignored_servers"]["bans"] = []
@@ -472,13 +448,13 @@ try:
     if not os.path.exists('data/'): os.makedirs('data/');
     if not os.path.exists('themes/'): os.makedirs('themes/');
     if not os.path.exists('sounds/'): os.makedirs('sounds/');
-    if not os.path.isfile("data/icon.png"): open("data/icon.png", "wb").write(requests.get("https://raw.githubusercontent.com/StonerSelfbot/Branding/main/stoner.png", allow_redirects=True).content)
-    # if not os.path.isfile('icon.ico'): open('icon.ico', 'wb').write(requests.get('https://stoner.cool/favicon.ico', allow_redirects=True).content);  
-    # if not os.path.isfile('sounds/connected.mp3'): open('sounds/connected.mp3', 'wb').write(requests.get('https://stoner.cool/assets/sounds/connected.mp3', allow_redirects=True).content);  
-    # if not os.path.isfile('sounds/error.mp3'): open('sounds/error.mp3', 'wb').write(requests.get('https://stoner.cool/assets/sounds/error.mp3', allow_redirects=True).content);  
-    # if not os.path.isfile('sounds/notification.mp3'): open('sounds/notification.mp3', 'wb').write(requests.get('https://stoner.cool/assets/sounds/notification.mp3', allow_redirects=True).content);  
-    # if not os.path.isfile('sounds/success.mp3'): open('sounds/success.mp3', 'wb').write(requests.get('https://stoner.cool/assets/sounds/success.mp3', allow_redirects=True).content);  
-    # if not os.path.isfile('sounds/giveaway-win.mp3'): open('sounds/giveaway-win.mp3', 'wb').write(requests.get('https://stoner.cool/assets/sounds/giveaway-win.mp3', allow_redirects=True).content);  
+    if not os.path.isfile("data/icon.png"): open("data/icon.png", "wb").write(requests.get("https://raw.githubusercontent.com/BlazeSelfbot/Branding/main/blaze.png", allow_redirects=True).content)
+    # if not os.path.isfile('icon.ico'): open('icon.ico', 'wb').write(requests.get('https://blaze.cool/favicon.ico', allow_redirects=True).content);  
+    # if not os.path.isfile('sounds/connected.mp3'): open('sounds/connected.mp3', 'wb').write(requests.get('https://blaze.cool/assets/sounds/connected.mp3', allow_redirects=True).content);  
+    # if not os.path.isfile('sounds/error.mp3'): open('sounds/error.mp3', 'wb').write(requests.get('https://blaze.cool/assets/sounds/error.mp3', allow_redirects=True).content);  
+    # if not os.path.isfile('sounds/notification.mp3'): open('sounds/notification.mp3', 'wb').write(requests.get('https://blaze.cool/assets/sounds/notification.mp3', allow_redirects=True).content);  
+    # if not os.path.isfile('sounds/success.mp3'): open('sounds/success.mp3', 'wb').write(requests.get('https://blaze.cool/assets/sounds/success.mp3', allow_redirects=True).content);  
+    # if not os.path.isfile('sounds/giveaway-win.mp3'): open('sounds/giveaway-win.mp3', 'wb').write(requests.get('https://blaze.cool/assets/sounds/giveaway-win.mp3', allow_redirects=True).content);  
     # if not os.path.exists('trump-tweets/'): os.makedirs('trump-tweets/');
     # if not os.path.exists('trump-tweets/assets'): os.makedirs('trump-tweets/assets');
     # if not os.path.isfile('trump-tweets/assets/bg.png'):
@@ -489,15 +465,15 @@ try:
     #     font = 'https://bennyware.xyz/files/roboto.ttf'
     #     font_r = requests.get(font, allow_redirects=True)
     #     open('trump-tweets/assets/roboto.ttf', 'wb').write(font_r.content)
-    # open('data/icon.png', 'wb').write(requests.get('http://stoner.cool/assets/icon.png', allow_redirects=True).content)
+    # open('data/icon.png', 'wb').write(requests.get('http://blaze.cool/assets/icon.png', allow_redirects=True).content)
     if not os.path.isfile('config.json'):
         f = open('config.json', "w")
         f.write("""
 {
     "token": "",
     "prefix": ".",
-    "delete_timeout": 10,
-    "theme": "Stoner"
+    "delete_timeout": 5,
+    "theme": "Blaze"
 }
         """)
         f.close()
@@ -530,7 +506,7 @@ try:
     "details": "Getting high in the BotMatrix...",
     "state": "",
     "large_image_key": "icon",
-    "large_image_text": "stoner.cool"
+    "large_image_text": "Cha-Cha Real Smooth~"
 }
         """)
         f.close()
@@ -539,25 +515,25 @@ try:
         jsonFile = json.load(open("richpresence.json"))
         if jsonFile["client_id"] == 807369019744059403:
             jsonFile["client_id"] = 877223591828136006
-        if jsonFile["details"] == "Using Stoner selfbot...":
-            jsonFile["details"] = "Using Stoner..."
+        if jsonFile["details"] == "Using Blaze selfbot...":
+            jsonFile["details"] = "Using Blaze..."
         if "small_image_key" not in jsonFile:
             jsonFile["small_image_key"] = "small"
         if "small_image_text" not in jsonFile:
             jsonFile["small_image_text"] = "best sb for £2"
         json.dump(jsonFile, open("richpresence.json", "w"), sort_keys=False, indent=4)
 
-    if not os.path.isfile('themes/Stoner.json'):
-        f = open('themes/Stoner.json', "w")
+    if not os.path.isfile('themes/Blaze.json'):
+        f = open('themes/Blaze.json', "w")
         f.write("""
 {
-    "embedtitle": "Stoner",
-    "embedcolour": "#3B79FF",
-    "consolecolour": "#3B79FF",
-    "embedfooter": "stoner.cool",
-    "embedfooterimage": "https://stoner.cool/assets/icon.gif",
-    "globalemoji": ":blue_heart:",
-    "embedimage": "https://stoner.cool/assets/icon.gif"
+    "embedtitle": "BlazeIsBae",
+    "embedcolour": "#ff00ff",
+    "consolecolour": "#ff00ff",
+    "embedfooter": "Cha-Cha Real Smooth~",
+    "embedfooterimage": "https://cdn-icons-png.flaticon.com/512/3442/3442835.png",
+    "globalemoji": ":heart_on_fire:",
+    "embedimage": "https://cdn-icons-png.flaticon.com/512/3442/3442835.png"
 }
         """)
         f.close()
@@ -632,7 +608,7 @@ Never gonna tell a lie and hurt...""")
     if not os.path.isfile("scripts/consolecommand-example.py"):
         f = open("scripts/consolecommand-example.py", "w")
         f.write("""
-@Stoner.command(name="consolecommand", description="console command test", usage="consoletest", aliases=["consoleCommand-consoletest"])
+@Blaze.command(name="consolecommand", description="console command test", usage="consoletest", aliases=["consoleCommand-consoletest"])
 async def consoletest(ctx):
     print("This is a command that can be executed in the console.")
     print("You can create this commands by adding consoleCommand-{commandname} in the commands aliases.")
@@ -644,15 +620,15 @@ async def consoletest(ctx):
     if not os.path.isfile('scripts/example.py'):
         f = open('scripts/example.py', "w")
         f.write('''
-@Stoner.command(name="example", description="Example custom script.", usage="example")
-async def example(Stoner):
+@Blaze.command(name="example", description="Example custom script.", usage="example")
+async def example(Blaze):
     exampleEmbed = discord.Embed(
         title="Example Embed",
         description="""
         An example embed to display what you can do in scripts.
         Check `scripts/example.py` to see the code!
         ** **
-        Stoner scripts are all created in python using discord.py so you can use any feature from discord.py.
+        Blaze scripts are all created in python using discord.py so you can use any feature from discord.py.
         """,
         color=__embedcolour__
     )
@@ -669,7 +645,7 @@ async def example(Stoner):
     exampleEmbed.set_thumbnail(url=__embedimage__)
     exampleEmbed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
 
-    await Stoner.send("Hello World!", embed=exampleEmbed)
+    await Blaze.send("Hello World!", embed=exampleEmbed)
     ''')
         f.close()
     if json.load(open("config.json"))["token"] == "":
@@ -690,7 +666,7 @@ async def example(Stoner):
     def updateTheme(theme):
         themeJson = json.load(open(f"themes/{theme}"))
         if "consolecolour" not in themeJson:
-            themeJson["consolecolour"] = "#3B79FF"
+            themeJson["consolecolour"] = "#ff00ff"
         if "consolemode" not in themeJson:
             themeJson["consolemode"] = "new"
         if "embedlargeimage" not in themeJson:
@@ -723,7 +699,7 @@ async def example(Stoner):
     __nitrowebhook__ = CONFIG["webhooks"]["nitro"]
     __privnotewebhook__ = CONFIG["webhooks"]["privnote"]
     __giveawaywebhook__ = CONFIG["webhooks"]["giveaway"]
-    __stonerpingwebhook__ = CONFIG["webhooks"]["stonerping"]
+    __blazepingwebhook__ = CONFIG["webhooks"]["blazeping"]
     __friendsupdatewebhook__ = CONFIG["webhooks"]["friendsupdate"]
     __dmtypingwebhook__ = CONFIG["webhooks"]["dmtyping"]
     __guildleavewebhook__ = CONFIG["webhooks"]["guildleave"]
@@ -736,7 +712,7 @@ async def example(Stoner):
     __custommotdtext__ = CONFIG["motd"]["custom_text"]
 
     __selfbotdetect__ = CONFIG["detections"]["selfbot"]
-    __stonerpingdetect__ = CONFIG["detections"]["stonerping"]
+    __blazepingdetect__ = CONFIG["detections"]["blazeping"]
     __bandetect__ = CONFIG["detections"]["bans"]
     __deletedmessagesdetect__ = CONFIG["detections"]["deletedmessages"]
     __webhookmodificationdetect__ = CONFIG["detections"]["webhookmodification"]
@@ -760,7 +736,7 @@ async def example(Stoner):
     __ignoredservers__ = CONFIG["ignored_servers"]
 
     __consolecolour__ = THEME["consolecolour"]
-    __stonerloaded__ = False
+    __blazeloaded__ = False
 
     __guildleaveignoredservers__ = CONFIG["ignored_servers"]["guildleave"]
 
@@ -789,12 +765,12 @@ async def example(Stoner):
         #     spaces += " "
         print(f"{printSpaces}{spaces} {fg.cYellow}{firstmessage}: {fg.cGrey}{secondmessage}")
     def is_me(m):
-        return m.author == Stoner.user
+        return m.author == Blaze.user
     def restart_bot():
         python = sys.executable
         os.execl(python, python, * sys.argv)
     def close_bot():
-        os.system("taskkill /IM Stoner.exe")
+        os.system("taskkill /IM Blaze.exe")
     def is_windows():
         return os.name == "nt"
     def is_linux():
@@ -843,7 +819,7 @@ async def example(Stoner):
                 plyer.notification.notify(
                     title=title,
                     message=message,
-                    app_name="Stoner",
+                    app_name="Blaze",
                     app_icon="icon.ico",
                     timeout=duration,
                     toast=True
@@ -951,7 +927,7 @@ async def example(Stoner):
         def changePrefix(newPrefix):
             global __prefix__
             __prefix__ = newPrefix
-            Stoner.command_prefix = newPrefix
+            Blaze.command_prefix = newPrefix
             cfg = Config.getConfig()
             cfg["prefix"] = newPrefix
             Config.saveConfig(cfg)
@@ -1015,7 +991,7 @@ async def example(Stoner):
 
     if is_windows():
         os.system("cls")
-        os.system(f"title Stoner")
+        os.system(f"title Blaze")
     elif is_linux():
         os.system("clear")
 
@@ -1023,9 +999,9 @@ async def example(Stoner):
         status = requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).json()["status"]
     else:
         status = "online"
-    Stoner = commands.Bot(command_prefix=__prefix__, self_bot=True, status=discord.Status.try_value(status))
-    Stoner.remove_command('help')
-    Stoner.launch_time = datetime.utcnow()
+    Blaze = commands.Bot(command_prefix=__prefix__, self_bot=True, status=discord.Status.try_value(status))
+    Blaze.remove_command('help')
+    Blaze.launch_time = datetime.utcnow()
     botStartTime = time.time()
 
     giveawayBots = []
@@ -1055,11 +1031,11 @@ async def example(Stoner):
     # hideText = "||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||"
     
     if not __custommotd__:
-        motd = "Developed by Benny |  Now mantained by timof121"
+        motd = "Get Rekkt By Blaze"
     else:
         motd = __custommotdtext__
 
-    @Stoner.event
+    @Blaze.event
     async def on_connect():
         if str(sounddevice.query_devices()) != "":
             try:
@@ -1070,7 +1046,7 @@ async def example(Stoner):
 
         if is_windows():
             os.system("cls")
-            os.system(f"title Stoner [{version}] [{Stoner.user}]")
+            os.system(f"title Blaze [{version}] [{Blaze.user}]")
 
         if is_linux():
             os.system("clear")
@@ -1082,17 +1058,17 @@ async def example(Stoner):
             loop.run_until_complete(constant_input(bot))
             loop.close()
 
-        threading.Thread(target=constant_input2, args=(Stoner,)).start()
+        threading.Thread(target=constant_input2, args=(Blaze,)).start()
 
         if consoleMode.lower() == "new":
             print("")
             print(fg.consoleColour + "")                    
-            print(" ██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗".center(width))
-            print("██╔════╝ ██║  ██║██╔═══██╗██╔════╝╚══██╔══╝".center(width))
-            print("██║  ███╗███████║██║   ██║███████╗   ██║   ".center(width))
-            print("██║   ██║██╔══██║██║   ██║╚════██║   ██║   ".center(width))
-            print("╚██████╔╝██║  ██║╚██████╔╝███████║   ██║   ".center(width))
-            print(" ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ".center(width))
+            print("██████╗ ██╗      █████╗ ███████╗███████╗".center(width))
+            print("██╔══██╗██║     ██╔══██╗╚══███╔╝██╔════╝".center(width))
+            print("██████╔╝██║     ███████║  ███╔╝ █████╗".center(width))
+            print("██╔══██╗██║     ██╔══██║ ███╔╝  ██╔══╝".center(width))
+            print("██████╔╝███████╗██║  ██║███████╗███████╗".center(width))
+            print("╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝".center(width))
             print("")
             print(fg.cWhite + f"{motd}".center(width))
             print(fg.consoleColour + '─'*width)
@@ -1100,12 +1076,12 @@ async def example(Stoner):
         if consoleMode.lower() == "rainbow":
             print("")
             print(fg.consoleColour + "")                    
-            print(fg.cRed + " ██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗".center(width))
-            print(fg.cOrange + "██╔════╝ ██║  ██║██╔═══██╗██╔════╝╚══██╔══╝".center(width))
-            print(fg.cYellow + "██║  ███╗███████║██║   ██║███████╗   ██║   ".center(width))
-            print(fg.cGreen + "██║   ██║██╔══██║██║   ██║╚════██║   ██║   ".center(width))
-            print(fg.cBlue + "╚██████╔╝██║  ██║╚██████╔╝███████║   ██║   ".center(width))
-            print(fg.cPurple + " ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ".center(width))
+            print(fg.cRed + "   ██████╗ ██╗      █████╗ ███████╗███████╗".center(width))
+            print(fg.cOrange + "██╔══██╗██║     ██╔══██╗╚══███╔╝██╔════╝".center(width))
+            print(fg.cYellow + "██████╔╝██║     ███████║  ███╔╝ █████╗".center(width))
+            print(fg.cGreen + " ██╔══██╗██║     ██╔══██║ ███╔╝  ██╔══╝ ".center(width))
+            print(fg.cBlue + "  ██████╔╝███████╗██║  ██║███████╗███████╗".center(width))
+            print(fg.cPurple + "╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝ ".center(width))
             print("")
             print(fg.cWhite + f"{motd}".center(width))
             print(fg.consoleColour + '─'*width)
@@ -1224,7 +1200,7 @@ async def example(Stoner):
             print("██║  ██║██║███████║███████╗    ███████║███████╗███████╗██║     ██████╔╝╚██████╔╝   ██║   ".center(width))
             print("╚═╝  ╚═╝╚═╝╚══════╝╚══════╝    ╚══════╝╚══════╝╚══════╝╚═╝     ╚═════╝  ╚═════╝    ╚═╝   ".center(width))
             print("╭─━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━─╮")
-            print(fg.cGrey + f"Connected: {Stoner.user} | Prefix: {Stoner.command_prefix} | Servers: {len(Stoner.guilds)}".center(width))
+            print(fg.cGrey + f"Connected: {Blaze.user} | Prefix: {Blaze.command_prefix} | Servers: {len(Blaze.guilds)}".center(width))
             print(fg.cBlue + "╰─━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━─╯")
             print("")
             print(fg.cBlue + '━'*width)
@@ -1246,8 +1222,8 @@ async def example(Stoner):
             print(f"                      {fg.cBlue}╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ")   
             print("")
             print(f"{fg.cWhite}Status:    {fg.cGreen}Connected")
-            print(f"{fg.cWhite}Account:   {Stoner.user} [{len(Stoner.guilds)} servers] [{len(get_friends(__token__))} friends]")
-            print(f"{fg.cWhite}Prefix:    {Stoner.command_prefix}")
+            print(f"{fg.cWhite}Account:   {Blaze.user} [{len(Blaze.guilds)} servers] [{len(get_friends(__token__))} friends]")
+            print(f"{fg.cWhite}Prefix:    {Blaze.command_prefix}")
             print(fg.cWhite + '─'*os.get_terminal_size().columns)                                                          
 
             # def getCurrentTime():
@@ -1257,7 +1233,7 @@ async def example(Stoner):
             # def print_info(message):
             #     print(f"{fg.cGrey}{getCurrentTime()} | {fg.cYellow}[Information] {fg.cGrey} | {message}")
             # def print_cmd(command):
-            #     print(f"{fg.cGrey}{getCurrentTime()} | {fg.consoleColour}[Command] {fg.cGrey} | {Stoner.command_prefix}{command}")
+            #     print(f"{fg.cGrey}{getCurrentTime()} | {fg.consoleColour}[Command] {fg.cGrey} | {Blaze.command_prefix}{command}")
             # def print_sharecmd(author, command):
             #     print(f"{fg.cGrey}[{getCurrentTime()}] {fg.consoleColour}[SHARE COMMAND] {fg.cWhite}({author}) {command}")
             # def print_error(error):
@@ -1270,11 +1246,11 @@ async def example(Stoner):
             #     print(f"{fg.cGrey}{getCurrentTime()} | {fg.cOrange}[Sniper] {fg.cGrey} | {firstmessage} | {secondmessage}")
 
         if "beta" in version.lower():
-            print_important("You're currently using a beta build of Stoner.")
+            print_important("You're currently using a beta build of Blaze.")
             print_important("If you notice any bugs please report them to the developer.")
             print(" ")
         elif "dev" in version.lower():
-            print_important("You're currently using a developer build of Stoner.")
+            print_important("You're currently using a developer build of Blaze.")
             print_important("If you notice any bugs please report them to the developer.")
             print(" ")                
 
@@ -1302,10 +1278,10 @@ async def example(Stoner):
             f.write(f"{base64_logindata}")
             f.close()                  
             
-        print_info(f"Stoner can now be used with {Stoner.command_prefix} prefix.")
-        send_notification("Stoner", "Successfully connected!", 10)  
-        global __stonerloaded__
-        __stonerloaded__ = True
+        print_info(f"Blaze can now be used with {Blaze.command_prefix} prefix.")
+        send_notification("Blaze", "Successfully connected!", 10)  
+        global __blazeloaded__
+        __blazeloaded__ = True
         if Config.getConfig()["sounds"]:
             if str(sounddevice.query_devices()) != "":
                 pygame.mixer.music.load(resource_path("sounds/connected.mp3"))
@@ -1343,11 +1319,11 @@ async def example(Stoner):
                 msg = message
                 return msg
 
-    @Stoner.event
+    @Blaze.event
     async def on_error(event):
         logging.error(str(event))
 
-    @Stoner.event
+    @Blaze.event
     async def on_command(ctx):
         try:
             await ctx.message.delete()
@@ -1355,7 +1331,7 @@ async def example(Stoner):
             pass
         print_cmd(f"{ctx.command.name}")
 
-    @Stoner.event
+    @Blaze.event
     async def on_command_error(ctx, error):
         logging.error(str(error))
         if isinstance(error, commands.CommandNotFound):
@@ -1371,9 +1347,9 @@ async def example(Stoner):
             except:
                 pass            
 
-    @Stoner.event
+    @Blaze.event
     async def on_message_delete(message):
-        if __stonerloaded__:
+        if __blazeloaded__:
             if Config.getConfig()["detections"]["deletedmessages"]:
                 if message.guild.id not in __ignoredservers__["deletedmessages"]:
                     print_detect("Deleted Message")
@@ -1388,10 +1364,10 @@ async def example(Stoner):
                     except:
                         pass  
 
-            if Config.getConfig()["detections"]["stonerping"]:
-                if Stoner.user.mentioned_in(message):
-                    if message.guild.id not in __ignoredservers__["stonerpings"]:
-                        print_detect("Stoner Ping")
+            if Config.getConfig()["detections"]["blazeping"]:
+                if Blaze.user.mentioned_in(message):
+                    if message.guild.id not in __ignoredservers__["blazepings"]:
+                        print_detect("Blaze Ping")
                         print_sniper_info("Content", str(message.content))
                         print_sniper_info("Author", str(message.author))
                         try:
@@ -1406,35 +1382,35 @@ async def example(Stoner):
                             if str(sounddevice.query_devices()) != "":          
                                 pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                                 pygame.mixer.music.play(1)                        
-                        send_notification("Stoner Ping", f"You were stoner pinged in {message.guild} by {message.author}.", 10)
-                        if __stonerpingwebhook__ != "":
-                            webhook = DiscordWebhook(url=__stonerpingwebhook__)
-                            embed = DiscordEmbed(title='Stoner Ping', color=__embedcolourraw__[1:], description=f"`{message.author}` stoner pinged you in `{message.channel}` (`{message.guild}`)")
+                        send_notification("Blaze Ping", f"You were blaze pinged in {message.guild} by {message.author}.", 10)
+                        if __blazepingwebhook__ != "":
+                            webhook = DiscordWebhook(url=__blazepingwebhook__)
+                            embed = DiscordEmbed(title='Blaze Ping', color=__embedcolourraw__[1:], description=f"`{message.author}` blaze pinged you in `{message.channel}` (`{message.guild}`)")
                             embed.set_thumbnail(url=__embedimage__)
                             embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
                             embed.set_timestamp()
                             webhook.add_embed(embed)
                             response = webhook.execute()                        
 
-    @Stoner.event
+    @Blaze.event
     async def on_member_ban(guild, user):
-        if __stonerloaded__:
+        if __blazeloaded__:
             if Config.getConfig()["detections"]["bans"]:
                 if guild.id not in __ignoredservers__["bans"]:
                     print_detect("Banned")
                     print_sniper_info("Member", f"{user}")
                     print_sniper_info("Member ID", f"{user.id}")
                     print_sniper_info("Guild", f"{guild.name}")    
-                if str(Stoner.user) == str(user):
+                if str(Blaze.user) == str(user):
                     if Config.getConfig()["sounds"]:   
                         if str(sounddevice.query_devices()) != "":          
                             pygame.mixer.music.load(resource_path("sounds/notification.mp3"))
                             pygame.mixer.music.play(1)  
                     send_notification("Ban Detect", f"You were banned in {guild.name}.", 10)                                          
 
-    @Stoner.event
+    @Blaze.event
     async def on_guild_remove(guild):
-        if __stonerloaded__:
+        if __blazeloaded__:
             if Config.getConfig()["detections"]["guildleave"]:
                 if guild.id not in __guildleaveignoredservers__:
                     print_detect("Guild Left")
@@ -1454,9 +1430,9 @@ async def example(Stoner):
                         webhook.add_embed(embed)
                         response = webhook.execute()                        
 
-    @Stoner.event
+    @Blaze.event
     async def on_webhooks_update(channel):
-        if __stonerloaded__:
+        if __blazeloaded__:
             if Config.getConfig()["detections"]["webhookmodification"]:
                 if channel.guild.id not in __ignoredservers__["webhookmodifications"]:
                     print_detect("Webhook Modification")
@@ -1469,9 +1445,9 @@ async def example(Stoner):
                     except:
                         pass
 
-    @Stoner.event
+    @Blaze.event
     async def on_relationship_add(relationship):
-        if __stonerloaded__:
+        if __blazeloaded__:
             if Config.getConfig()["detections"]["friendsupdate"]:
                 if isinstance(relationship.type, discord.RelationshipType.incoming_request):
                     print_detect("Incoming Friend Request")
@@ -1502,9 +1478,9 @@ async def example(Stoner):
                         webhook.add_embed(embed)
                         response = webhook.execute()                                                 
 
-    @Stoner.event
+    @Blaze.event
     async def on_relationship_remove(relationship):
-        if __stonerloaded__:
+        if __blazeloaded__:
             if Config.getConfig()["detections"]["friendsupdate"]:
                 if isinstance(relationship.type, discord.RelationshipType.outgoing_request):
                     print_detect("Outgoing Friend Request")
@@ -1549,9 +1525,9 @@ async def example(Stoner):
                         webhook.add_embed(embed)
                         response = webhook.execute()                             
 
-    @Stoner.event
+    @Blaze.event
     async def on_typing(channel, user, when):
-        if __stonerloaded__:
+        if __blazeloaded__:
             if isinstance(channel, discord.DMChannel):
                 if Config.getConfig()["detections"]["dmtyping"]:
                     print_detect(f"DM Typing")
@@ -1573,9 +1549,9 @@ async def example(Stoner):
                         webhook.add_embed(embed)
                         response = webhook.execute()                                                         
 
-    @Stoner.event
+    @Blaze.event
     async def on_guild_channel_create(channel):
-        if __stonerloaded__:
+        if __blazeloaded__:
             if Config.getConfig()["snipers"]["tickets"]:
                 if "ticket" in channel.name:
                     if channel.guild.id not in __ignoredservers__["tickets"]:
@@ -1614,12 +1590,12 @@ async def example(Stoner):
                                     webhook.add_embed(embed)
                                     response = webhook.execute()                                                                 
 
-    @Stoner.event
+    @Blaze.event
     async def on_message(message):
-        if __stonerloaded__:
+        if __blazeloaded__:
             messageSendTime = datetime.now()
 
-            if message.author.id != Stoner.user.id:
+            if message.author.id != Blaze.user.id:
 
                 if afkMode:
                     if isinstance(message.channel, discord.DMChannel):
@@ -1859,7 +1835,7 @@ async def example(Stoner):
                                     pygame.mixer.music.play(1)
 
                             # if "congratulations" in message.content.lower():
-                            #     if f"<@{Stoner.user.id}>" in message.content.lower():
+                            #     if f"<@{Blaze.user.id}>" in message.content.lower():
                             #         prize = message.content.split("!")[1].split("**")[1]
                             #         print_sniper("Giveaway")
                             #         print(f" {fg.cYellow}You won!!!")
@@ -1923,7 +1899,7 @@ async def example(Stoner):
                                         webhook.add_embed(embed)
                                         response = webhook.execute()   
 
-            if message.author.id == Stoner.user.id:
+            if message.author.id == Blaze.user.id:
                 ccmd = json.load(open("customcommands.json"))
                 for key in ccmd:
                     cmd = key
@@ -1952,17 +1928,17 @@ async def example(Stoner):
                         
             #print(str(message.author) + " : " + str(message.content))
 
-        await Stoner.process_commands(message)  
+        await Blaze.process_commands(message)  
 
     for filename in os.listdir('scripts/'):
         if filename.endswith('.py'):
             include(f'scripts/{filename}')
 
-    @Stoner.command(name="yes", description="yes", usage="yes")
+    @Blaze.command(name="yes", description="yes", usage="yes")
     async def yes(ctx):
         await ctx.send("<https://www.youtube.com/watch?v=BBJa32lCaaY>")
     
-    @Stoner.command(name="scripts", description="Display all custom scripts.", usage="scripts", aliases=["customscripts"])
+    @Blaze.command(name="scripts", description="Display all custom scripts.", usage="scripts", aliases=["customscripts"])
     async def scripts(ctx):
         totalscripts = len(os.listdir('scripts/'))
         text = ""
@@ -1980,7 +1956,7 @@ async def example(Stoner):
             embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Custom Scripts ]
 
 Found {totalscripts} custom scripts
@@ -1989,7 +1965,7 @@ Found {totalscripts} custom scripts
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="customcommands", description="Display all custom commands.", usage="customcommands", aliases=["ccmds"])
+    @Blaze.command(name="customcommands", description="Display all custom commands.", usage="customcommands", aliases=["ccmds"])
     async def customcommands(ctx):
         totalcmds = len(ccmd)
         ccmd2 = ""
@@ -2006,7 +1982,7 @@ Found {totalscripts} custom scripts
             embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Custom Commands ]
 
 Found {totalcmds} custom commands.
@@ -2015,12 +1991,12 @@ Found {totalcmds} custom commands.
 
 {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="allcmds", description="Print a list of all the commands.", usage="allcmds", aliases=["features"])
+    @Blaze.command(name="allcmds", description="Print a list of all the commands.", usage="allcmds", aliases=["features"])
     async def allcmds(ctx):
         await ctx.message.delete()
         content = ""
-        totalCommands = len(Stoner.commands)
-        for command in Stoner.commands:
+        totalCommands = len(Blaze.commands)
+        for command in Blaze.commands:
             content += f"{command.usage} : {command.description}\n"    
 
         file = open("data/features.txt", "w")
@@ -2029,16 +2005,16 @@ Found {totalcmds} custom commands.
 
         if __embedmode__:
             embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", description=f"These are all the commands", color=__embedcolour__)
-            embed.add_field(name="Commands", value="https://github.com/StonerSelfbot/Stoner/blob/dev/features.txt")
-            embed.set_author(name="All Stoner Commands")
+            embed.add_field(name="Commands", value="https://github.com/BlazeSelfbot/Blaze/blob/dev/features.txt")
+            embed.set_author(name="All Blaze Commands")
             embed.set_thumbnail(url=__embedimage__)
             embed.set_image(url=__embedlargeimage__)
             embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         else:
-            await ctx.send("https://github.com/StonerSelfbot/Stoner/blob/dev/features.txt")
+            await ctx.send("https://github.com/BlazeSelfbot/Blaze/blob/dev/features.txt")
 
-    @Stoner.command(name="search", description="Search for commands.", usage="search [term]")
+    @Blaze.command(name="search", description="Search for commands.", usage="search [term]")
     async def search(ctx, *, command = None):
         if command is None:
             if __embedmode__:
@@ -2050,7 +2026,7 @@ Found {totalcmds} custom commands.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Search ]
 
 Please enter a command to search for.
@@ -2062,11 +2038,11 @@ Please enter a command to search for.
             text = ""
             text2 = ""
             searchedItems = 0
-            for cmd in Stoner.commands:
+            for cmd in Blaze.commands:
                 if command in cmd.name or command in cmd.description or command in cmd.aliases:
                     searchedItems += 1
-                    text += f"`{Stoner.command_prefix}`**{cmd.usage}** » {cmd.description}\n"
-                    text2 += f"{Stoner.command_prefix}{cmd.usage} » {cmd.description}\n"
+                    text += f"`{Blaze.command_prefix}`**{cmd.usage}** » {cmd.description}\n"
+                    text2 += f"{Blaze.command_prefix}{cmd.usage} » {cmd.description}\n"
 
             try:
                 if __embedmode__:
@@ -2077,7 +2053,7 @@ Please enter a command to search for.
                     embed.timestamp = datetime.now()
                     await ctx.send(embed=embed, delete_after=__deletetimeout__)
                 else:
-                    await ctx.send(f"""```ini
+                    await ctx.send(f"""```>>>
 [ Searched for {command} ]
 
 {text2}
@@ -2093,40 +2069,40 @@ Please enter a command to search for.
                     embed.timestamp = datetime.now()
                     await ctx.send(embed=embed, delete_after=__deletetimeout__)
                 else:
-                    await ctx.send(f"""```ini
+                    await ctx.send(f"""```>>>
 [ Check console for search results ]
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
                 print(f"[ Search results for {command} ]\n{text2}")
 
-    @Stoner.command(name="help", description="The help command.", usage="help (command)", aliases=["cmds", "commands"])
+    @Blaze.command(name="help", description="The help command.", usage="help (command)", aliases=["cmds", "commands"])
     async def help(ctx, *, command = None):
-        totalcmds = len(Stoner.commands)-len(scriptsList)
+        totalcmds = len(Blaze.commands)-len(scriptsList)
         if command is None:
             if __embedmode__:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
 Arguments in `[]` are required, arguments in `()` are optional.
 
-`{Stoner.command_prefix}`**text (page 1/2)** » Text commands.
-`{Stoner.command_prefix}`**fun (page 1)** » Fun commands.
-`{Stoner.command_prefix}`**image (page 1)** » Image commands.
-`{Stoner.command_prefix}`**moderation (page 1)** » Moderation commands.
-`{Stoner.command_prefix}`**info (page 1)** » Info commands.
-`{Stoner.command_prefix}`**user (page 1)** » User commands.
-`{Stoner.command_prefix}`**selfbot (page 1)** » Selfbot commands.
-`{Stoner.command_prefix}`**webhook (page 1)** » Webhook commands.
-`{Stoner.command_prefix}`**abuse (page 1)** » Abuse commands.
-`{Stoner.command_prefix}`**themes (page 1)** » Theme commands.
-`{Stoner.command_prefix}`**giveaway (page 1)** » Giveaway commands.
-`{Stoner.command_prefix}`**nsfw (page 1)** » NSFW commands.
-`{Stoner.command_prefix}`**proxy (page 1)** » Proxy commands.
-`{Stoner.command_prefix}`**tools (page 1)** » Discord and other tools.
-`{Stoner.command_prefix}`**customcommands** » Your custom commands.
-`{Stoner.command_prefix}`**customscripts** » Your scripts.
+`{Blaze.command_prefix}`**text (page 1/2)** » Text commands.
+`{Blaze.command_prefix}`**fun (page 1)** » Fun commands.
+`{Blaze.command_prefix}`**image (page 1)** » Image commands.
+`{Blaze.command_prefix}`**moderation (page 1)** » Moderation commands.
+`{Blaze.command_prefix}`**info (page 1)** » Info commands.
+`{Blaze.command_prefix}`**user (page 1)** » User commands.
+`{Blaze.command_prefix}`**selfbot (page 1)** » Selfbot commands.
+`{Blaze.command_prefix}`**webhook (page 1)** » Webhook commands.
+`{Blaze.command_prefix}`**abuse (page 1)** » Abuse commands.
+`{Blaze.command_prefix}`**themes (page 1)** » Theme commands.
+`{Blaze.command_prefix}`**giveaway (page 1)** » Giveaway commands.
+`{Blaze.command_prefix}`**nsfw (page 1)** » NSFW commands.
+`{Blaze.command_prefix}`**proxy (page 1)** » Proxy commands.
+`{Blaze.command_prefix}`**tools (page 1)** » Discord and other tools.
+`{Blaze.command_prefix}`**customcommands** » Your custom commands.
+`{Blaze.command_prefix}`**customscripts** » Your scripts.
 
-`{Stoner.command_prefix}`**search [term]** » Search for a command.
-`{Stoner.command_prefix}`**help (command)** » Help for a specific command.
+`{Blaze.command_prefix}`**search [term]** » Search for a command.
+`{Blaze.command_prefix}`**help (command)** » Help for a specific command.
 
 There is a total of `{totalcmds}` commands.
             """)
@@ -2137,37 +2113,37 @@ There is a total of `{totalcmds}` commands.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ {__embedtitle__} ]
 
 Arguments in [] are required, arguments in () are optional.
 
-{Stoner.command_prefix}text (page 1/2) » Text commands.
-{Stoner.command_prefix}fun (page 1) » Fun commands.
-{Stoner.command_prefix}image (page 1) » Image commands.
-{Stoner.command_prefix}moderation (page 1) » Moderation commands.
-{Stoner.command_prefix}info (page 1) » Info commands.
-{Stoner.command_prefix}user (page 1) » User commands.
-{Stoner.command_prefix}selfbot (page 1) » Selfbot commands.
-{Stoner.command_prefix}webhook (page 1) » Webhook commands.
-{Stoner.command_prefix}abuse (page 1) » Abuse commands.
-{Stoner.command_prefix}themes (page 1) » Theme commands.
-{Stoner.command_prefix}giveaway (page 1) » Giveaway commands.
-{Stoner.command_prefix}nsfw (page 1) » NSFW commands.
-{Stoner.command_prefix}proxy (page 1) » Proxy commands.
-{Stoner.command_prefix}tools (page 1) » Discord and other tools.
-{Stoner.command_prefix}customcommands » Your custom commands.
-{Stoner.command_prefix}customscripts » Your scripts.
+{Blaze.command_prefix}text (page 1/2) » Text commands.
+{Blaze.command_prefix}fun (page 1) » Fun commands.
+{Blaze.command_prefix}image (page 1) » Image commands.
+{Blaze.command_prefix}moderation (page 1) » Moderation commands.
+{Blaze.command_prefix}info (page 1) » Info commands.
+{Blaze.command_prefix}user (page 1) » User commands.
+{Blaze.command_prefix}selfbot (page 1) » Selfbot commands.
+{Blaze.command_prefix}webhook (page 1) » Webhook commands.
+{Blaze.command_prefix}abuse (page 1) » Abuse commands.
+{Blaze.command_prefix}themes (page 1) » Theme commands.
+{Blaze.command_prefix}giveaway (page 1) » Giveaway commands.
+{Blaze.command_prefix}nsfw (page 1) » NSFW commands.
+{Blaze.command_prefix}proxy (page 1) » Proxy commands.
+{Blaze.command_prefix}tools (page 1) » Discord and other tools.
+{Blaze.command_prefix}customcommands » Your custom commands.
+{Blaze.command_prefix}customscripts » Your scripts.
 
-{Stoner.command_prefix}search [term] » Search for a command.
-{Stoner.command_prefix}help (command) » Help for a specific command.
+{Blaze.command_prefix}search [term] » Search for a command.
+{Blaze.command_prefix}help (command) » Help for a specific command.
 
 There is a total of {totalcmds} commands.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
         else:
-            for cmd in Stoner.commands:
+            for cmd in Blaze.commands:
                 if command == cmd.name or command in cmd.aliases:
                     if not cmd.aliases:
                         cmd.aliases.append("No aliases")
@@ -2182,7 +2158,7 @@ There is a total of {totalcmds} commands.
                         embed.timestamp = datetime.now()
                         await ctx.send(embed=embed, delete_after=__deletetimeout__)
                     else:
-                        await ctx.send(f"""```ini
+                        await ctx.send(f"""```>>>
 [ {cmd.name} ]
 
 Usage: {cmd.usage}
@@ -2191,7 +2167,7 @@ Description: {cmd.description}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="themes", description="Theme related commands.", usage="themes")
+    @Blaze.command(name="themes", description="Theme related commands.", usage="themes")
     async def themes(ctx):
         themes = ""
         for theme in os.listdir("themes"):
@@ -2203,7 +2179,7 @@ Description: {cmd.description}
             embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__)
             embed.add_field(name="Current Theme", value=f"{__theme__}", inline=False)
             embed.add_field(name="Other Themes", value=f"{themes}", inline=False)
-            embed.add_field(name="Commands", value=f"`{Stoner.command_prefix}`**newtheme [name]** » Create a new theme with the given name.\n`{Stoner.command_prefix}`**deltheme [name]** » Delete the named theme.\n`{Stoner.command_prefix}`**theme [theme]** » Change your current theme.\n`{Stoner.command_prefix}`**ctheme** » Community themes.", inline=False)
+            embed.add_field(name="Commands", value=f"`{Blaze.command_prefix}`**newtheme [name]** » Create a new theme with the given name.\n`{Blaze.command_prefix}`**deltheme [name]** » Delete the named theme.\n`{Blaze.command_prefix}`**theme [theme]** » Change your current theme.\n`{Blaze.command_prefix}`**ctheme** » Community themes.", inline=False)
             embed.set_author(name="Theme Commands")
             embed.set_thumbnail(url=__embedimage__)
             embed.set_image(url=__embedlargeimage__)
@@ -2211,7 +2187,7 @@ Description: {cmd.description}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Theme Commands ]
 
 Current Theme: {__theme__}
@@ -2220,22 +2196,22 @@ Current Theme: {__theme__}
 {themes}
 
 [ Commands ]
-{Stoner.command_prefix}newtheme [name] » Create a new theme with the given name.
-{Stoner.command_prefix}deltheme [name] » Delete the named theme.
-{Stoner.command_prefix}theme [theme] » Change your current theme.
-{Stoner.command_prefix}cthemes » Community themes.
+{Blaze.command_prefix}newtheme [name] » Create a new theme with the given name.
+{Blaze.command_prefix}deltheme [name] » Delete the named theme.
+{Blaze.command_prefix}theme [theme] » Change your current theme.
+{Blaze.command_prefix}cthemes » Community themes.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="ctheme", description="Community themes.", usage="ctheme", aliases=["communitythemes", "cloudthemes", "cthemes"])
+    @Blaze.command(name="ctheme", description="Community themes.", usage="ctheme", aliases=["communitythemes", "cloudthemes", "cthemes"])
     async def ctheme(ctx, *, dl = None):
         if dl is None:
-            url = "https://raw.githubusercontent.com/StonerSelfbot/Community-Themes/main/themes.txt"
+            url = "https://raw.githubusercontent.com/BlazeSelfbot/Community-Themes/main/themes.txt"
             themes = requests.get(url).text.split("\n")
 
             if __embedmode__:
-                embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", description=f"Community Themes, run `{Stoner.command_prefix}ctheme (theme name)` to download the theme.\n ", color=__embedcolour__)
+                embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", description=f"Community Themes, run `{Blaze.command_prefix}ctheme (theme name)` to download the theme.\n ", color=__embedcolour__)
                 embed.add_field(name="Theme List", value='\n'.join(themes))
                 embed.set_author(name="Community Themes")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2244,10 +2220,10 @@ Current Theme: {__theme__}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Community Themes ]
 
-Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the theme.
+Community Themes, run {Blaze.command_prefix}ctheme (theme name) to download the theme.
 
 
 [ Theme List ]
@@ -2257,13 +2233,13 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
         else:
-            request = requests.get("https://raw.githubusercontent.com/StonerSelfbot/Community-Themes/main/themes.txt")
+            request = requests.get("https://raw.githubusercontent.com/BlazeSelfbot/Community-Themes/main/themes.txt")
             themes = []
             for line in request.text.split("\n"):
                 themes.append(line.replace("\r", ""))
 
             if dl in themes:
-                url = f'https://raw.githubusercontent.com/StonerSelfbot/Community-Themes/main/{dl}.json'
+                url = f'https://raw.githubusercontent.com/BlazeSelfbot/Community-Themes/main/{dl}.json'
                 data = requests.get(url, allow_redirects=True)
                 open(f'themes/{dl}.json', 'wb').write(data.content)
 
@@ -2275,33 +2251,33 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
                     embed.timestamp = datetime.now()
                     await ctx.send(embed=embed, delete_after=__deletetimeout__)
                 else:
-                    await ctx.send(f"""```ini
+                    await ctx.send(f"""```>>>
 [ Theme downloaded successfully ]
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="text", description="Text related commands.", usage="text (page)")
+    @Blaze.command(name="text", description="Text related commands.", usage="text (page)")
     async def text(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**js [message]** » Send all your messages in a JavaScript code block.
-`{Stoner.command_prefix}`**lua [message]** » Send all your messages in a Lua code block.
-`{Stoner.command_prefix}`**php [message]** » Send all your messages in a PHP code block.
-`{Stoner.command_prefix}`**html [message]** » Send all your messages in a HTML code block.
-`{Stoner.command_prefix}`**css [message]** » Send all your messages in a CSS code block.
-`{Stoner.command_prefix}`**yaml [message]** » Send all your messages in a YAML code block.
-`{Stoner.command_prefix}`**json [message]** » Send all your messages in a JSON code block.
-`{Stoner.command_prefix}`**cpp [message]** » Send all your messages in a C++ code block.
-`{Stoner.command_prefix}`**cs [message]** » Send all your messages in a C# code block.
-`{Stoner.command_prefix}`**java [message]** » Send all your messages in a Java code block.
-`{Stoner.command_prefix}`**python [message]** » Send all your messages in a Python code block.
-`{Stoner.command_prefix}`**secret [message]** » Send all your messages in a secret block.
-`{Stoner.command_prefix}`**secretletters [message]** » Put all lettes from your message into separate secret blocks
-`{Stoner.command_prefix}`**regional [message]** » Replace all letters with emoji.
-`{Stoner.command_prefix}`**bold [message]** » Send all your messages in bold.
-`{Stoner.command_prefix}`**italic [message]** » Send all your messages in italics.
+`{Blaze.command_prefix}`**js [message]** » Send all your messages in a JavaScript code block.
+`{Blaze.command_prefix}`**lua [message]** » Send all your messages in a Lua code block.
+`{Blaze.command_prefix}`**php [message]** » Send all your messages in a PHP code block.
+`{Blaze.command_prefix}`**html [message]** » Send all your messages in a HTML code block.
+`{Blaze.command_prefix}`**css [message]** » Send all your messages in a CSS code block.
+`{Blaze.command_prefix}`**yaml [message]** » Send all your messages in a YAML code block.
+`{Blaze.command_prefix}`**json [message]** » Send all your messages in a JSON code block.
+`{Blaze.command_prefix}`**cpp [message]** » Send all your messages in a C++ code block.
+`{Blaze.command_prefix}`**cs [message]** » Send all your messages in a C# code block.
+`{Blaze.command_prefix}`**java [message]** » Send all your messages in a Java code block.
+`{Blaze.command_prefix}`**python [message]** » Send all your messages in a Python code block.
+`{Blaze.command_prefix}`**secret [message]** » Send all your messages in a secret block.
+`{Blaze.command_prefix}`**secretletters [message]** » Put all lettes from your message into separate secret blocks
+`{Blaze.command_prefix}`**regional [message]** » Replace all letters with emoji.
+`{Blaze.command_prefix}`**bold [message]** » Send all your messages in bold.
+`{Blaze.command_prefix}`**italic [message]** » Send all your messages in italics.
             """)
                 embed.set_author(name="Text Commands (1/2)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2311,30 +2287,30 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)
             elif page == 2:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**rembed (delay) [title]** » Kill Discord's API with a sexy rainbow embedded message.
-`{Stoner.command_prefix}`**cembed [title] [description] [colour]** » Create a custom embedded message.
-`{Stoner.command_prefix}`**embed [title]** » Create an embedded message.
-`{Stoner.command_prefix}`**suggest [suggestion]** » Suggest something.
-`{Stoner.command_prefix}`**privatemsg [message]** » Send an encrypted message.
-`{Stoner.command_prefix}`**privatemsgdecode [message]** » Decode an encrypted message.
-`{Stoner.command_prefix}`**blank** » Send a blank message
-`{Stoner.command_prefix}`**length [string]** » Get the length of a string.
-`{Stoner.command_prefix}`**chatbypass [text]** » Bypass chat language restrictions.
-`{Stoner.command_prefix}`**shrug** » Shrug your arms.
-`{Stoner.command_prefix}`**tableflip** » Flip the table.
-`{Stoner.command_prefix}`**unflip** » Put the table back.
-`{Stoner.command_prefix}`**lmgtfy [search]** » Let me Google that for you.
-`{Stoner.command_prefix}`**typing [start/stop]** » Start or stop typing.
-`{Stoner.command_prefix}`**aesthetic [text]** » Send your text s p a c e d out.
-`{Stoner.command_prefix}`**lowercase [msg]** » Send your message in lowercase.
-`{Stoner.command_prefix}`**uppercase [msg]** » Send your message in uppercase.
-`{Stoner.command_prefix}`**sentencecase [msg]** » Send your messages in sentence case.
-`{Stoner.command_prefix}`**ascii [text]** » Send your message in ascii.
-`{Stoner.command_prefix}`**zalgo [text]** » Unleash the zalgo into your message.  
-`{Stoner.command_prefix}`**leet [text]** » Turn your text into 1337 text.
-`{Stoner.command_prefix}`**fakeedited [message]** » "Edit" a message.
-`{Stoner.command_prefix}`**brainfuck [text]** » Generate brainfuck code from text.
-`{Stoner.command_prefix}`**executebrainfuck [code]** » Execute brainfuck code.
+`{Blaze.command_prefix}`**rembed (delay) [title]** » Kill Discord's API with a sexy rainbow embedded message.
+`{Blaze.command_prefix}`**cembed [title] [description] [colour]** » Create a custom embedded message.
+`{Blaze.command_prefix}`**embed [title]** » Create an embedded message.
+`{Blaze.command_prefix}`**suggest [suggestion]** » Suggest something.
+`{Blaze.command_prefix}`**privatemsg [message]** » Send an encrypted message.
+`{Blaze.command_prefix}`**privatemsgdecode [message]** » Decode an encrypted message.
+`{Blaze.command_prefix}`**blank** » Send a blank message
+`{Blaze.command_prefix}`**length [string]** » Get the length of a string.
+`{Blaze.command_prefix}`**chatbypass [text]** » Bypass chat language restrictions.
+`{Blaze.command_prefix}`**shrug** » Shrug your arms.
+`{Blaze.command_prefix}`**tableflip** » Flip the table.
+`{Blaze.command_prefix}`**unflip** » Put the table back.
+`{Blaze.command_prefix}`**lmgtfy [search]** » Let me Google that for you.
+`{Blaze.command_prefix}`**typing [start/stop]** » Start or stop typing.
+`{Blaze.command_prefix}`**aesthetic [text]** » Send your text s p a c e d out.
+`{Blaze.command_prefix}`**lowercase [msg]** » Send your message in lowercase.
+`{Blaze.command_prefix}`**uppercase [msg]** » Send your message in uppercase.
+`{Blaze.command_prefix}`**sentencecase [msg]** » Send your messages in sentence case.
+`{Blaze.command_prefix}`**ascii [text]** » Send your message in ascii.
+`{Blaze.command_prefix}`**zalgo [text]** » Unleash the zalgo into your message.  
+`{Blaze.command_prefix}`**leet [text]** » Turn your text into 1337 text.
+`{Blaze.command_prefix}`**fakeedited [message]** » "Edit" a message.
+`{Blaze.command_prefix}`**brainfuck [text]** » Generate brainfuck code from text.
+`{Blaze.command_prefix}`**executebrainfuck [code]** » Execute brainfuck code.
             """)
                 embed.set_author(name="Text Commands (2/2)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2346,91 +2322,91 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
                 pass
         else:
             if page == 1:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Text Commands (1/2) ]
 
-{Stoner.command_prefix}js [message] » Send all your messages in a JavaScript code block.
-{Stoner.command_prefix}lua [message] » Send all your messages in a Lua code block.
-{Stoner.command_prefix}php [message] » Send all your messages in a PHP code block.
-{Stoner.command_prefix}html [message] » Send all your messages in a HTML code block.
-{Stoner.command_prefix}css [message] » Send all your messages in a CSS code block.
-{Stoner.command_prefix}yaml [message] » Send all your messages in a YAML code block.
-{Stoner.command_prefix}json [message] » Send all your messages in a JSON code block.
-{Stoner.command_prefix}cpp [message] » Send all your messages in a C++ code block.
-{Stoner.command_prefix}cs [message] » Send all your messages in a C# code block.
-{Stoner.command_prefix}java [message] » Send all your messages in a Java code block.
-{Stoner.command_prefix}python [message] » Send all your messages in a Python code block.
-{Stoner.command_prefix}secret [message] » Send all your messages in a secret block.
-{Stoner.command_prefix}secretletters [message] » Put all lettes from your message into separate secret blocks
-{Stoner.command_prefix}regional [message] » Replace all letters with emoji.
-{Stoner.command_prefix}bold [message] » Send all your messages in bold.
-{Stoner.command_prefix}italic [message] » Send all your messages in italics.
+{Blaze.command_prefix}js [message] » Send all your messages in a JavaScript code block.
+{Blaze.command_prefix}lua [message] » Send all your messages in a Lua code block.
+{Blaze.command_prefix}php [message] » Send all your messages in a PHP code block.
+{Blaze.command_prefix}html [message] » Send all your messages in a HTML code block.
+{Blaze.command_prefix}css [message] » Send all your messages in a CSS code block.
+{Blaze.command_prefix}yaml [message] » Send all your messages in a YAML code block.
+{Blaze.command_prefix}json [message] » Send all your messages in a JSON code block.
+{Blaze.command_prefix}cpp [message] » Send all your messages in a C++ code block.
+{Blaze.command_prefix}cs [message] » Send all your messages in a C# code block.
+{Blaze.command_prefix}java [message] » Send all your messages in a Java code block.
+{Blaze.command_prefix}python [message] » Send all your messages in a Python code block.
+{Blaze.command_prefix}secret [message] » Send all your messages in a secret block.
+{Blaze.command_prefix}secretletters [message] » Put all lettes from your message into separate secret blocks
+{Blaze.command_prefix}regional [message] » Replace all letters with emoji.
+{Blaze.command_prefix}bold [message] » Send all your messages in bold.
+{Blaze.command_prefix}italic [message] » Send all your messages in italics.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
             elif page == 2:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Text Commands (2/2) ]
 
-{Stoner.command_prefix}rembed (delay) [title] » Kill Discord's API with a sexy rainbow embedded message.
-{Stoner.command_prefix}cembed [title] [description] [colour] » Create a custom embedded message.
-{Stoner.command_prefix}embed [title] » Create an embedded message.
-{Stoner.command_prefix}suggest [suggestion] » Suggest something.
-{Stoner.command_prefix}privatemsg [message] » Send an encrypted message.
-{Stoner.command_prefix}privatemsgdecode [message] » Decode an encrypted message.
-{Stoner.command_prefix}blank » Send a blank message
-{Stoner.command_prefix}length [string] » Get the length of a string.
-{Stoner.command_prefix}chatbypass [text] » Bypass chat language restrictions.
-{Stoner.command_prefix}shrug » Shrug your arms.
-{Stoner.command_prefix}tableflip » Flip the table.
-{Stoner.command_prefix}unflip » Put the table back.
-{Stoner.command_prefix}lmgtfy [search] » Let me Google that for you.
-{Stoner.command_prefix}typing [start/stop] » Start or stop typing.
-{Stoner.command_prefix}aesthetic [text] » Send your text s p a c e d out.
-{Stoner.command_prefix}lowercase [msg] » Send your message in lowercase.
-{Stoner.command_prefix}uppercase [msg] » Send your message in uppercase.
-{Stoner.command_prefix}sentencecase [msg] » Send your messages in sentence case.
-{Stoner.command_prefix}ascii [text] » Send your message in ascii.
-{Stoner.command_prefix}zalgo [text] » Unleash the zalgo into your message. 
-{Stoner.command_prefix}leet [text] » Turn your text into 1337 text.
-{Stoner.command_prefix}fakeedited [message] » "Edit" a message.
+{Blaze.command_prefix}rembed (delay) [title] » Kill Discord's API with a sexy rainbow embedded message.
+{Blaze.command_prefix}cembed [title] [description] [colour] » Create a custom embedded message.
+{Blaze.command_prefix}embed [title] » Create an embedded message.
+{Blaze.command_prefix}suggest [suggestion] » Suggest something.
+{Blaze.command_prefix}privatemsg [message] » Send an encrypted message.
+{Blaze.command_prefix}privatemsgdecode [message] » Decode an encrypted message.
+{Blaze.command_prefix}blank » Send a blank message
+{Blaze.command_prefix}length [string] » Get the length of a string.
+{Blaze.command_prefix}chatbypass [text] » Bypass chat language restrictions.
+{Blaze.command_prefix}shrug » Shrug your arms.
+{Blaze.command_prefix}tableflip » Flip the table.
+{Blaze.command_prefix}unflip » Put the table back.
+{Blaze.command_prefix}lmgtfy [search] » Let me Google that for you.
+{Blaze.command_prefix}typing [start/stop] » Start or stop typing.
+{Blaze.command_prefix}aesthetic [text] » Send your text s p a c e d out.
+{Blaze.command_prefix}lowercase [msg] » Send your message in lowercase.
+{Blaze.command_prefix}uppercase [msg] » Send your message in uppercase.
+{Blaze.command_prefix}sentencecase [msg] » Send your messages in sentence case.
+{Blaze.command_prefix}ascii [text] » Send your message in ascii.
+{Blaze.command_prefix}zalgo [text] » Unleash the zalgo into your message. 
+{Blaze.command_prefix}leet [text] » Turn your text into 1337 text.
+{Blaze.command_prefix}fakeedited [message] » "Edit" a message.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="fun", description="Fun related commands.", usage="fun")
+    @Blaze.command(name="fun", description="Fun related commands.", usage="fun")
     async def fun(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**slots** » Play the slot machine.
-`{Stoner.command_prefix}`**yomomma** » Random yo momma joke.
-`{Stoner.command_prefix}`**socialcredit [@user]** » A users social credit score. 
-`{Stoner.command_prefix}`**roast [@user]** » Roast a user.
-`{Stoner.command_prefix}`**howgay [@user]** » How gay a user is.
-`{Stoner.command_prefix}`**howskid [@user]** » Check the percentage of a skid.
-`{Stoner.command_prefix}`**halal [@user]** » Checks if a user is halal or haram.
-`{Stoner.command_prefix}`**iq [@user]** » Check how smart a user is.
-`{Stoner.command_prefix}`**pp [@user]** » The length of a user's penis.
-`{Stoner.command_prefix}`**rainbowrole [@role]** » Kill Discord's API with a sexy rainbow role.
-`{Stoner.command_prefix}`**coinflip** » Flip a coin.
-`{Stoner.command_prefix}`**dice** » Roll a dice.
-`{Stoner.command_prefix}`**8ball [question]** » Ask the magic eight ball a question.
-`{Stoner.command_prefix}`**choice [choice1] [choice2]** » Pick a random choice.
-`{Stoner.command_prefix}`**range [number1] [number2]** » Choose a random number between two.
-`{Stoner.command_prefix}`**dox [@user]** » Dox the mentioned user.
-`{Stoner.command_prefix}`**fakenitro [url]** » Hide a link in a nitro URL.
-`{Stoner.command_prefix}`**purgehack** » Purge without permissions.
-`{Stoner.command_prefix}`**dadjoke** » A random dad joke.
-`{Stoner.command_prefix}`**randommessage** » A random message.
-`{Stoner.command_prefix}`**randomquestion** » A random question.
-`{Stoner.command_prefix}`**rickroll** » Send never gonna give you up lyrics one by one.
-`{Stoner.command_prefix}`**stoprickroll** » Stop sending rick astley lyrics.
-`{Stoner.command_prefix}`**countdown [number]** » Count down from a number.
-`{Stoner.command_prefix}`**countup [number]** » Count up from a number.
-`{Stoner.command_prefix}`**pytoexe [path]** » Convert a PY file to an executable.
-`{Stoner.command_prefix}`**skin [name]** » Gets the skin of a MC user.
+`{Blaze.command_prefix}`**slots** » Play the slot machine.
+`{Blaze.command_prefix}`**yomomma** » Random yo momma joke.
+`{Blaze.command_prefix}`**socialcredit [@user]** » A users social credit score. 
+`{Blaze.command_prefix}`**roast [@user]** » Roast a user.
+`{Blaze.command_prefix}`**howgay [@user]** » How gay a user is.
+`{Blaze.command_prefix}`**howskid [@user]** » Check the percentage of a skid.
+`{Blaze.command_prefix}`**halal [@user]** » Checks if a user is halal or haram.
+`{Blaze.command_prefix}`**iq [@user]** » Check how smart a user is.
+`{Blaze.command_prefix}`**pp [@user]** » The length of a user's penis.
+`{Blaze.command_prefix}`**rainbowrole [@role]** » Kill Discord's API with a sexy rainbow role.
+`{Blaze.command_prefix}`**coinflip** » Flip a coin.
+`{Blaze.command_prefix}`**dice** » Roll a dice.
+`{Blaze.command_prefix}`**8ball [question]** » Ask the magic eight ball a question.
+`{Blaze.command_prefix}`**choice [choice1] [choice2]** » Pick a random choice.
+`{Blaze.command_prefix}`**range [number1] [number2]** » Choose a random number between two.
+`{Blaze.command_prefix}`**dox [@user]** » Dox the mentioned user.
+`{Blaze.command_prefix}`**fakenitro [url]** » Hide a link in a nitro URL.
+`{Blaze.command_prefix}`**purgehack** » Purge without permissions.
+`{Blaze.command_prefix}`**dadjoke** » A random dad joke.
+`{Blaze.command_prefix}`**randommessage** » A random message.
+`{Blaze.command_prefix}`**randomquestion** » A random question.
+`{Blaze.command_prefix}`**rickroll** » Send never gonna give you up lyrics one by one.
+`{Blaze.command_prefix}`**stoprickroll** » Stop sending rick astley lyrics.
+`{Blaze.command_prefix}`**countdown [number]** » Count down from a number.
+`{Blaze.command_prefix}`**countup [number]** » Count up from a number.
+`{Blaze.command_prefix}`**pytoexe [path]** » Convert a PY file to an executable.
+`{Blaze.command_prefix}`**skin [name]** » Gets the skin of a MC user.
             """)
                 embed.set_author(name="Fun Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2441,64 +2417,64 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
             else:
                 pass
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Fun Commands ]
 
-{Stoner.command_prefix}slots » Play the slot machine.
-{Stoner.command_prefix}yomomma » Random yo momma joke.
-{Stoner.command_prefix}socialcredit [@user] » A users social credit score. 
-{Stoner.command_prefix}roast [@user] » Roast a user.
-{Stoner.command_prefix}howgay [@user] » How gay a user is.
-{Stoner.command_prefix}howskid [@user] » Check the percentage of a skid.
-{Stoner.command_prefix}halal [@user] » Checks if a user is halal or haram.
-{Stoner.command_prefix}iq [@user] » Check how smart a user is.
-{Stoner.command_prefix}pp [@user] » The length of a user's penis.
-{Stoner.command_prefix}rainbowrole [@role] » Kill Discord's API with a sexy rainbow role.
-{Stoner.command_prefix}coinflip » Flip a coin.
-{Stoner.command_prefix}dice » Roll a dice.
-{Stoner.command_prefix}8ball [question] » Ask the magic eight ball a question.
-{Stoner.command_prefix}choice [choice1] [choice2] » Pick a random choice.
-{Stoner.command_prefix}range [number1] [number2] » Choose a random number between two.
-{Stoner.command_prefix}dox [@user] » Dox the mentioned user.
-{Stoner.command_prefix}fakenitro [url] » Hide a link in a nitro URL.
-{Stoner.command_prefix}purgehack » Purge without permissions.
-{Stoner.command_prefix}dadjoke » A random dad joke.
-{Stoner.command_prefix}randommessage » A random message.
-{Stoner.command_prefix}randomquestion » A random question.
-{Stoner.command_prefix}rickroll » Send never gonna give you up lyrics one by one.
-{Stoner.command_prefix}stoprickroll » Stop sending rick astley lyrics.
-{Stoner.command_prefix}countdown [number] » Count down from a number.
-{Stoner.command_prefix}countup [number] » Count up from a number.
-{Stoner.command_prefix}pytoexe [path] » Convert a PY file to an executable.
-{Stoner.command_prefix}skin [name] » Gets the skin of a MC user.
+{Blaze.command_prefix}slots » Play the slot machine.
+{Blaze.command_prefix}yomomma » Random yo momma joke.
+{Blaze.command_prefix}socialcredit [@user] » A users social credit score. 
+{Blaze.command_prefix}roast [@user] » Roast a user.
+{Blaze.command_prefix}howgay [@user] » How gay a user is.
+{Blaze.command_prefix}howskid [@user] » Check the percentage of a skid.
+{Blaze.command_prefix}halal [@user] » Checks if a user is halal or haram.
+{Blaze.command_prefix}iq [@user] » Check how smart a user is.
+{Blaze.command_prefix}pp [@user] » The length of a user's penis.
+{Blaze.command_prefix}rainbowrole [@role] » Kill Discord's API with a sexy rainbow role.
+{Blaze.command_prefix}coinflip » Flip a coin.
+{Blaze.command_prefix}dice » Roll a dice.
+{Blaze.command_prefix}8ball [question] » Ask the magic eight ball a question.
+{Blaze.command_prefix}choice [choice1] [choice2] » Pick a random choice.
+{Blaze.command_prefix}range [number1] [number2] » Choose a random number between two.
+{Blaze.command_prefix}dox [@user] » Dox the mentioned user.
+{Blaze.command_prefix}fakenitro [url] » Hide a link in a nitro URL.
+{Blaze.command_prefix}purgehack » Purge without permissions.
+{Blaze.command_prefix}dadjoke » A random dad joke.
+{Blaze.command_prefix}randommessage » A random message.
+{Blaze.command_prefix}randomquestion » A random question.
+{Blaze.command_prefix}rickroll » Send never gonna give you up lyrics one by one.
+{Blaze.command_prefix}stoprickroll » Stop sending rick astley lyrics.
+{Blaze.command_prefix}countdown [number] » Count down from a number.
+{Blaze.command_prefix}countup [number] » Count up from a number.
+{Blaze.command_prefix}pytoexe [path] » Convert a PY file to an executable.
+{Blaze.command_prefix}skin [name] » Gets the skin of a MC user.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="image", description="Image related commands.", usage="image")
+    @Blaze.command(name="image", description="Image related commands.", usage="image")
     async def image(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**meme** » A random meme.
-`{Stoner.command_prefix}`**cat** » A random cat image.
-`{Stoner.command_prefix}`**dog** » A random dog image.
-`{Stoner.command_prefix}`**shiba** » A random shiba image.
-`{Stoner.command_prefix}`**fox** » A random fox image. (Thanks Imf44 <3)
-`{Stoner.command_prefix}`**avatar [@user]** » Get the mentioned user's avatar.
-`{Stoner.command_prefix}`**servericon** » Get the server's icon. 
-`{Stoner.command_prefix}`**achievement ["text"] (icon)** » Create a fake minecraft achievement image.
-`{Stoner.command_prefix}`**challenge ["text"] (icon)** » Create a fake minecraft challenge image.
-`{Stoner.command_prefix}`**captcha [text]** » Create a fake reCaptcha.
-`{Stoner.command_prefix}`**amiajoke [@user]** » Make a user a joke.
-`{Stoner.command_prefix}`**didyoumean ["text 1"] ["text 2"]** » Create a google did you mean image.
-`{Stoner.command_prefix}`**drake ["text 1"] ["text 2"]** » Create a drake meme image.
-`{Stoner.command_prefix}`**facts [text]** » Create a facts meme image.
-`{Stoner.command_prefix}`**jokeoverhead [image url]** » Create a joke over head image.
-`{Stoner.command_prefix}`**pornhub ["text 1"] ["text 2"]** » Create a pornhub logo image.
-`{Stoner.command_prefix}`**salty [@user]** » Make someone salty.
-`{Stoner.command_prefix}`**ship [@user 1] [@user 2]** » Ship two people.
-`{Stoner.command_prefix}`**trash [@user]** » Put someone in the trash.
-`{Stoner.command_prefix}`**what [image url]** » Make a what meme.
+`{Blaze.command_prefix}`**meme** » A random meme.
+`{Blaze.command_prefix}`**cat** » A random cat image.
+`{Blaze.command_prefix}`**dog** » A random dog image.
+`{Blaze.command_prefix}`**shiba** » A random shiba image.
+`{Blaze.command_prefix}`**fox** » A random fox image. (Thanks Imf44 <3)
+`{Blaze.command_prefix}`**avatar [@user]** » Get the mentioned user's avatar.
+`{Blaze.command_prefix}`**servericon** » Get the server's icon. 
+`{Blaze.command_prefix}`**achievement ["text"] (icon)** » Create a fake minecraft achievement image.
+`{Blaze.command_prefix}`**challenge ["text"] (icon)** » Create a fake minecraft challenge image.
+`{Blaze.command_prefix}`**captcha [text]** » Create a fake reCaptcha.
+`{Blaze.command_prefix}`**amiajoke [@user]** » Make a user a joke.
+`{Blaze.command_prefix}`**didyoumean ["text 1"] ["text 2"]** » Create a google did you mean image.
+`{Blaze.command_prefix}`**drake ["text 1"] ["text 2"]** » Create a drake meme image.
+`{Blaze.command_prefix}`**facts [text]** » Create a facts meme image.
+`{Blaze.command_prefix}`**jokeoverhead [image url]** » Create a joke over head image.
+`{Blaze.command_prefix}`**pornhub ["text 1"] ["text 2"]** » Create a pornhub logo image.
+`{Blaze.command_prefix}`**salty [@user]** » Make someone salty.
+`{Blaze.command_prefix}`**ship [@user 1] [@user 2]** » Ship two people.
+`{Blaze.command_prefix}`**trash [@user]** » Put someone in the trash.
+`{Blaze.command_prefix}`**what [image url]** » Make a what meme.
 
             """)
                 embed.set_author(name="Image Commands (1/1)")
@@ -2510,43 +2486,43 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
             else:
                 pass         
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Image Commands ]
 
-{Stoner.command_prefix}meme » A random meme.
-{Stoner.command_prefix}cat » A random cat image.
-{Stoner.command_prefix}dog » A random dog image.
-{Stoner.command_prefix}shiba » A random shiba image.
-{Stoner.command_prefix}fox » A random fox image. (Thanks Imf44 <3)
-{Stoner.command_prefix}avatar [@user] » Get the mentioned user's avatar.
-{Stoner.command_prefix}servericon » Get the server's icon. 
-{Stoner.command_prefix}achievement ["text"] (icon) » Create a fake minecraft achievement image.
-{Stoner.command_prefix}challenge ["text"] (icon) » Create a fake minecraft challenge image.
-{Stoner.command_prefix}captcha [text] » Create a fake reCaptcha.
-{Stoner.command_prefix}amiajoke [@user] » Make a user a joke.
-{Stoner.command_prefix}didyoumean ["text 1"] ["text 2"] » Create a google did you mean image.
-{Stoner.command_prefix}drake ["text 1"] ["text 2"] » Create a drake meme image.
-{Stoner.command_prefix}facts [text] » Create a facts meme image.
-{Stoner.command_prefix}jokeoverhead [image url] » Create a joke over head image.
-{Stoner.command_prefix}pornhub ["text 1"] ["text 2"] » Create a pornhub logo image.
-{Stoner.command_prefix}salty [@user] » Make someone salty.
-{Stoner.command_prefix}ship [@user 1] [@user 2] » Ship two people.
-{Stoner.command_prefix}trash [@user] » Put someone in the trash.
-{Stoner.command_prefix}what [image url] » Make a what meme.
+{Blaze.command_prefix}meme » A random meme.
+{Blaze.command_prefix}cat » A random cat image.
+{Blaze.command_prefix}dog » A random dog image.
+{Blaze.command_prefix}shiba » A random shiba image.
+{Blaze.command_prefix}fox » A random fox image. (Thanks Imf44 <3)
+{Blaze.command_prefix}avatar [@user] » Get the mentioned user's avatar.
+{Blaze.command_prefix}servericon » Get the server's icon. 
+{Blaze.command_prefix}achievement ["text"] (icon) » Create a fake minecraft achievement image.
+{Blaze.command_prefix}challenge ["text"] (icon) » Create a fake minecraft challenge image.
+{Blaze.command_prefix}captcha [text] » Create a fake reCaptcha.
+{Blaze.command_prefix}amiajoke [@user] » Make a user a joke.
+{Blaze.command_prefix}didyoumean ["text 1"] ["text 2"] » Create a google did you mean image.
+{Blaze.command_prefix}drake ["text 1"] ["text 2"] » Create a drake meme image.
+{Blaze.command_prefix}facts [text] » Create a facts meme image.
+{Blaze.command_prefix}jokeoverhead [image url] » Create a joke over head image.
+{Blaze.command_prefix}pornhub ["text 1"] ["text 2"] » Create a pornhub logo image.
+{Blaze.command_prefix}salty [@user] » Make someone salty.
+{Blaze.command_prefix}ship [@user 1] [@user 2] » Ship two people.
+{Blaze.command_prefix}trash [@user] » Put someone in the trash.
+{Blaze.command_prefix}what [image url] » Make a what meme.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="nsfw", description="NSFW related commands.", usage="nsfw")
+    @Blaze.command(name="nsfw", description="NSFW related commands.", usage="nsfw")
     async def nsfw(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**boobs** » Pictures or videos of boobs.
-`{Stoner.command_prefix}`**ass** » Pictures or videos of ass.
-`{Stoner.command_prefix}`**pussy** » Pictures or videos of pussy.
-`{Stoner.command_prefix}`**porngif** » Porn gifs.
-`{Stoner.command_prefix}`**hentai** » Pictures or videos of hentai.
+`{Blaze.command_prefix}`**boobs** » Pictures or videos of boobs.
+`{Blaze.command_prefix}`**ass** » Pictures or videos of ass.
+`{Blaze.command_prefix}`**pussy** » Pictures or videos of pussy.
+`{Blaze.command_prefix}`**porngif** » Porn gifs.
+`{Blaze.command_prefix}`**hentai** » Pictures or videos of hentai.
             """)
                 embed.set_author(name="NSFW Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2557,37 +2533,37 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
             else:
                 pass         
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ NSFW Commands ]
 
-{Stoner.command_prefix}boobs » Pictures or videos of boobs.
-{Stoner.command_prefix}ass » Pictures or videos of ass.
-{Stoner.command_prefix}pussy » Pictures or videos of pussy.
-{Stoner.command_prefix}porngif » Porn gifs.
-{Stoner.command_prefix}hentai » Pictures or videos of hentai.
+{Blaze.command_prefix}boobs » Pictures or videos of boobs.
+{Blaze.command_prefix}ass » Pictures or videos of ass.
+{Blaze.command_prefix}pussy » Pictures or videos of pussy.
+{Blaze.command_prefix}porngif » Porn gifs.
+{Blaze.command_prefix}hentai » Pictures or videos of hentai.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="moderation", description="Moderation related commands.", usage="moderation")
+    @Blaze.command(name="moderation", description="Moderation related commands.", usage="moderation")
     async def moderation(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**ban [@user]** » Ban the mentioned user.
-`{Stoner.command_prefix}`**unban [id]** » Unban the mentioned id.
-`{Stoner.command_prefix}`**banlist** » See the server's ban list.
-`{Stoner.command_prefix}`**kick [@user]** » Kick the mentioned user.
-`{Stoner.command_prefix}`**mute [@user]** » Mute the menitioned user.
-`{Stoner.command_prefix}`**unmute [@user]** » Unmute the mentioned user.
-`{Stoner.command_prefix}`**newrole [name]** » Create a new role.
-`{Stoner.command_prefix}`**delrole [@role]** » Delete the mentioned role.
-`{Stoner.command_prefix}`**purge [amount]** » Purge X amount of messages.
-`{Stoner.command_prefix}`**lock** » Lock the command channel.
-`{Stoner.command_prefix}`**unlock** » Unlock the command channel.
-`{Stoner.command_prefix}`**lockdown** » Lock the entire server.
-`{Stoner.command_prefix}`**unlockdown** » Unlock the entire server.
-`{Stoner.command_prefix}`**spacechannel [channel name]** » Create a channel with spaces.
+`{Blaze.command_prefix}`**ban [@user]** » Ban the mentioned user.
+`{Blaze.command_prefix}`**unban [id]** » Unban the mentioned id.
+`{Blaze.command_prefix}`**banlist** » See the server's ban list.
+`{Blaze.command_prefix}`**kick [@user]** » Kick the mentioned user.
+`{Blaze.command_prefix}`**mute [@user]** » Mute the menitioned user.
+`{Blaze.command_prefix}`**unmute [@user]** » Unmute the mentioned user.
+`{Blaze.command_prefix}`**newrole [name]** » Create a new role.
+`{Blaze.command_prefix}`**delrole [@role]** » Delete the mentioned role.
+`{Blaze.command_prefix}`**purge [amount]** » Purge X amount of messages.
+`{Blaze.command_prefix}`**lock** » Lock the command channel.
+`{Blaze.command_prefix}`**unlock** » Unlock the command channel.
+`{Blaze.command_prefix}`**lockdown** » Lock the entire server.
+`{Blaze.command_prefix}`**unlockdown** » Unlock the entire server.
+`{Blaze.command_prefix}`**spacechannel [channel name]** » Create a channel with spaces.
             """)
                 embed.set_author(name="Moderation Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2598,39 +2574,39 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
             else:
                 pass
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Moderation Commands ]
 
-{Stoner.command_prefix}ban [@user] » Ban the mentioned user.
-{Stoner.command_prefix}unban [id] » Unban the mentioned id.
-{Stoner.command_prefix}banlist » See the server's ban list.
-{Stoner.command_prefix}kick [@user] » Kick the mentioned user.
-{Stoner.command_prefix}mute [@user] » Mute the menitioned user.
-{Stoner.command_prefix}unmute [@user] » Unmute the mentioned user.
-{Stoner.command_prefix}newrole [name] » Create a new role.
-{Stoner.command_prefix}delrole [@role] » Delete the mentioned role.
-{Stoner.command_prefix}purge [amount] » Purge X amount of messages.
-{Stoner.command_prefix}lock » Lock the command channel.
-{Stoner.command_prefix}unlock » Unlock the command channel.
-{Stoner.command_prefix}lockdown » Lock the entire server.
-{Stoner.command_prefix}unlockdown » Unlock the entire server.
-{Stoner.command_prefix}spacechannel [channel name] » Create a channel with spaces.
+{Blaze.command_prefix}ban [@user] » Ban the mentioned user.
+{Blaze.command_prefix}unban [id] » Unban the mentioned id.
+{Blaze.command_prefix}banlist » See the server's ban list.
+{Blaze.command_prefix}kick [@user] » Kick the mentioned user.
+{Blaze.command_prefix}mute [@user] » Mute the menitioned user.
+{Blaze.command_prefix}unmute [@user] » Unmute the mentioned user.
+{Blaze.command_prefix}newrole [name] » Create a new role.
+{Blaze.command_prefix}delrole [@role] » Delete the mentioned role.
+{Blaze.command_prefix}purge [amount] » Purge X amount of messages.
+{Blaze.command_prefix}lock » Lock the command channel.
+{Blaze.command_prefix}unlock » Unlock the command channel.
+{Blaze.command_prefix}lockdown » Lock the entire server.
+{Blaze.command_prefix}unlockdown » Unlock the entire server.
+{Blaze.command_prefix}spacechannel [channel name] » Create a channel with spaces.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="info", description="Info related commands.", usage="info")
+    @Blaze.command(name="info", description="Info related commands.", usage="info")
     async def info(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**userinfo [@user]** » Information about the mentioned user.
-`{Stoner.command_prefix}`**serverinfo** » Information about the command server.
-`{Stoner.command_prefix}`**watchdogstats** » Get stats about Hypixel's Anticheat, Watchdog.
-`{Stoner.command_prefix}`**getmessage [message id]** » Get a message by ID.
-`{Stoner.command_prefix}`**geoip [ip]** » Get information from an IP address.
-`{Stoner.command_prefix}`**ping [ip/domain]** » Ping a domain or ip address. 
-`{Stoner.command_prefix}`**crypto [currency]** » Get the current data on a cryptocurrency.
+`{Blaze.command_prefix}`**userinfo [@user]** » Information about the mentioned user.
+`{Blaze.command_prefix}`**serverinfo** » Information about the command server.
+`{Blaze.command_prefix}`**watchdogstats** » Get stats about Hypixel's Anticheat, Watchdog.
+`{Blaze.command_prefix}`**getmessage [message id]** » Get a message by ID.
+`{Blaze.command_prefix}`**geoip [ip]** » Get information from an IP address.
+`{Blaze.command_prefix}`**ping [ip/domain]** » Ping a domain or ip address. 
+`{Blaze.command_prefix}`**crypto [currency]** » Get the current data on a cryptocurrency.
             """)
                 embed.set_author(name="Info Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2641,37 +2617,37 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
             else:
                 pass           
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Info Commands ]
 
-{Stoner.command_prefix}userinfo [@user] » Information about the mentioned user.
-{Stoner.command_prefix}serverinfo » Information about the command server.
-{Stoner.command_prefix}watchdogstats » Get stats about Hypixel's Anticheat, Watchdog.
-{Stoner.command_prefix}getmessage [message id] » Get a message by ID.
-{Stoner.command_prefix}geoip [ip] » Get information from an IP address.
-{Stoner.command_prefix}ping [ip/domain] » Ping a domain or ip address.
-{Stoner.command_prefix}crypto [currency] » Get the current data on a cryptocurrency.
+{Blaze.command_prefix}userinfo [@user] » Information about the mentioned user.
+{Blaze.command_prefix}serverinfo » Information about the command server.
+{Blaze.command_prefix}watchdogstats » Get stats about Hypixel's Anticheat, Watchdog.
+{Blaze.command_prefix}getmessage [message id] » Get a message by ID.
+{Blaze.command_prefix}geoip [ip] » Get information from an IP address.
+{Blaze.command_prefix}ping [ip/domain] » Ping a domain or ip address.
+{Blaze.command_prefix}crypto [currency] » Get the current data on a cryptocurrency.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="user", description="User related commands.", usage="user")
+    @Blaze.command(name="user", description="User related commands.", usage="user")
     async def user(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**purgeself [amount]** » Purge your messages.
-`{Stoner.command_prefix}`**statuscycle** » Start a custom status cycle.
-`{Stoner.command_prefix}`**statuscycletext [text]** » Set the text used in status cycle.
-`{Stoner.command_prefix}`**clearstatus** » Clear your status.
-`{Stoner.command_prefix}`**nickname [text]** » Set your nickname to anything.
-`{Stoner.command_prefix}`**clearnickname** » Clear your nickname.
-`{Stoner.command_prefix}`**ppin [message id]** » Add a message to your personal pins.
-`{Stoner.command_prefix}`**ppins** » List all your pinned messages.
-`{Stoner.command_prefix}`**ppindel [pin id]** » Delete a pin from your personal pins.
-`{Stoner.command_prefix}`**backupfriends** » Backup all your friend's user IDs to a file.
-`{Stoner.command_prefix}`**backupservers** » Backup all your servers and try to create invites for each one.
-`{Stoner.command_prefix}`**changehypesquad [bravery/brilliance/balance]** » Change your hypesquad house.
+`{Blaze.command_prefix}`**purgeself [amount]** » Purge your messages.
+`{Blaze.command_prefix}`**statuscycle** » Start a custom status cycle.
+`{Blaze.command_prefix}`**statuscycletext [text]** » Set the text used in status cycle.
+`{Blaze.command_prefix}`**clearstatus** » Clear your status.
+`{Blaze.command_prefix}`**nickname [text]** » Set your nickname to anything.
+`{Blaze.command_prefix}`**clearnickname** » Clear your nickname.
+`{Blaze.command_prefix}`**ppin [message id]** » Add a message to your personal pins.
+`{Blaze.command_prefix}`**ppins** » List all your pinned messages.
+`{Blaze.command_prefix}`**ppindel [pin id]** » Delete a pin from your personal pins.
+`{Blaze.command_prefix}`**backupfriends** » Backup all your friend's user IDs to a file.
+`{Blaze.command_prefix}`**backupservers** » Backup all your servers and try to create invites for each one.
+`{Blaze.command_prefix}`**changehypesquad [bravery/brilliance/balance]** » Change your hypesquad house.
             """)
                 embed.set_author(name="User Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2682,47 +2658,47 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
             else:
                 pass         
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ User Commands ]
 
-{Stoner.command_prefix}purgeself [amount] » Purge your messages.
-{Stoner.command_prefix}statuscycle » Start a custom status cycle.
-{Stoner.command_prefix}statuscycletext [text] » Set the text used in status cycle.
-{Stoner.command_prefix}clearstatus » Clear your status.
-{Stoner.command_prefix}nickname [text] » Set your nickname to anything.
-{Stoner.command_prefix}clearnickname » Clear your nickname.
-{Stoner.command_prefix}ppin [message id] » Add a message to your personal pins.
-{Stoner.command_prefix}ppins » List all your pinned messages.
-{Stoner.command_prefix}ppindel [pin id] » Delete a pin from your personal pins. 
-{Stoner.command_prefix}backupfriends » Backup all your friend's user IDs to a file.
-{Stoner.command_prefix}backupservers » Backup all your servers and try to create invites for each one.
-{Stoner.command_prefix}changehypesquad [bravery/brilliance/balance] » Change your hypesquad house.
+{Blaze.command_prefix}purgeself [amount] » Purge your messages.
+{Blaze.command_prefix}statuscycle » Start a custom status cycle.
+{Blaze.command_prefix}statuscycletext [text] » Set the text used in status cycle.
+{Blaze.command_prefix}clearstatus » Clear your status.
+{Blaze.command_prefix}nickname [text] » Set your nickname to anything.
+{Blaze.command_prefix}clearnickname » Clear your nickname.
+{Blaze.command_prefix}ppin [message id] » Add a message to your personal pins.
+{Blaze.command_prefix}ppins » List all your pinned messages.
+{Blaze.command_prefix}ppindel [pin id] » Delete a pin from your personal pins. 
+{Blaze.command_prefix}backupfriends » Backup all your friend's user IDs to a file.
+{Blaze.command_prefix}backupservers » Backup all your servers and try to create invites for each one.
+{Blaze.command_prefix}changehypesquad [bravery/brilliance/balance] » Change your hypesquad house.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="selfbot", description="Selfbot related commands.", usage="selfbot")
+    @Blaze.command(name="selfbot", description="Selfbot related commands.", usage="selfbot")
     async def selfbot(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**afkmode** » Toggle afk mode.
-`{Stoner.command_prefix}`**settings** » The bot's settings.
-`{Stoner.command_prefix}`**restart** » Restart Stoner selfbot.
-`{Stoner.command_prefix}`**prefix [prefix]** » Set the command prefix.
-`{Stoner.command_prefix}`**dumpchat [amount] (channel id) (oldest first, true/false)** » Get the chat's history.
-`{Stoner.command_prefix}`**invite** » Get Stoner's Discord server invite link.
-`{Stoner.command_prefix}`**addccmd [name] [response]** » Add a custom command.
-`{Stoner.command_prefix}`**delccmd [name]** » Delete a custom command.
-`{Stoner.command_prefix}`**detections** » A list of all detections.
-`{Stoner.command_prefix}`**snipers** » A list of all snipers.
-`{Stoner.command_prefix}`**enablesniper [type]** » Enable a sniper.
-`{Stoner.command_prefix}`**disablesniper [type]** » Disable a sniper.
-`{Stoner.command_prefix}`**enabledetect [type]** » Enable a detection.
-`{Stoner.command_prefix}`**disabledetect [type]** » Disable a detection.
-`{Stoner.command_prefix}`**riskmode** » Disable and enable risk mode.
-`{Stoner.command_prefix}`**sounds** » Toggle Stoner notification sounds.
-`{Stoner.command_prefix}`**notifications** » Toggle Stoner notification.
+`{Blaze.command_prefix}`**afkmode** » Toggle afk mode.
+`{Blaze.command_prefix}`**settings** » The bot's settings.
+`{Blaze.command_prefix}`**restart** » Restart Blaze selfbot.
+`{Blaze.command_prefix}`**prefix [prefix]** » Set the command prefix.
+`{Blaze.command_prefix}`**dumpchat [amount] (channel id) (oldest first, true/false)** » Get the chat's history.
+`{Blaze.command_prefix}`**invite** » Get Blaze's Discord server invite link.
+`{Blaze.command_prefix}`**addccmd [name] [response]** » Add a custom command.
+`{Blaze.command_prefix}`**delccmd [name]** » Delete a custom command.
+`{Blaze.command_prefix}`**detections** » A list of all detections.
+`{Blaze.command_prefix}`**snipers** » A list of all snipers.
+`{Blaze.command_prefix}`**enablesniper [type]** » Enable a sniper.
+`{Blaze.command_prefix}`**disablesniper [type]** » Disable a sniper.
+`{Blaze.command_prefix}`**enabledetect [type]** » Enable a detection.
+`{Blaze.command_prefix}`**disabledetect [type]** » Disable a detection.
+`{Blaze.command_prefix}`**riskmode** » Disable and enable risk mode.
+`{Blaze.command_prefix}`**sounds** » Toggle Blaze notification sounds.
+`{Blaze.command_prefix}`**notifications** » Toggle Blaze notification.
             """)
                 embed.set_author(name="Selfbot Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2733,39 +2709,39 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
             else:
                 pass           
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Selfbot Commands ]
 
-{Stoner.command_prefix}settings » The bot's settings.
-{Stoner.command_prefix}restart » Restart Stoner selfbot.
-{Stoner.command_prefix}prefix [prefix] » Set the command prefix.
-{Stoner.command_prefix}dumpchat [amount] (channel id) (oldest first, true/false) » Get the chat's history.
-{Stoner.command_prefix}invite » Get Stoner's Discord server invite link.
-{Stoner.command_prefix}addccmd [name] [response] » Add a custom command.
-{Stoner.command_prefix}delccmd [name] » Delete a custom command.
-{Stoner.command_prefix}detections » A list of all detections.
-{Stoner.command_prefix}snipers » A list of all snipers.
-{Stoner.command_prefix}enablesniper [type] » Enable a sniper.
-{Stoner.command_prefix}disablesniper [type] » Disable a sniper.
-{Stoner.command_prefix}enabledetect [type] » Enable a detection.
-{Stoner.command_prefix}disabledetect [type] » Disable a detection.
-{Stoner.command_prefix}riskmode » Disable and enable risk mode.
-{Stoner.command_prefix}sounds » Toggle Stoner notification sounds.
-{Stoner.command_prefix}notifications » Toggle Stoner notification.
+{Blaze.command_prefix}settings » The bot's settings.
+{Blaze.command_prefix}restart » Restart Blaze selfbot.
+{Blaze.command_prefix}prefix [prefix] » Set the command prefix.
+{Blaze.command_prefix}dumpchat [amount] (channel id) (oldest first, true/false) » Get the chat's history.
+{Blaze.command_prefix}invite » Get Blaze's Discord server invite link.
+{Blaze.command_prefix}addccmd [name] [response] » Add a custom command.
+{Blaze.command_prefix}delccmd [name] » Delete a custom command.
+{Blaze.command_prefix}detections » A list of all detections.
+{Blaze.command_prefix}snipers » A list of all snipers.
+{Blaze.command_prefix}enablesniper [type] » Enable a sniper.
+{Blaze.command_prefix}disablesniper [type] » Disable a sniper.
+{Blaze.command_prefix}enabledetect [type] » Enable a detection.
+{Blaze.command_prefix}disabledetect [type] » Disable a detection.
+{Blaze.command_prefix}riskmode » Disable and enable risk mode.
+{Blaze.command_prefix}sounds » Toggle Blaze notification sounds.
+{Blaze.command_prefix}notifications » Toggle Blaze notification.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="webhook", description="Webhook related commands.", usage="webhook")
+    @Blaze.command(name="webhook", description="Webhook related commands.", usage="webhook")
     async def webhook(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**delwebhook [id]** » Delete a webhook from the ID.
-`{Stoner.command_prefix}`**newwebhook [name]** » Create a webhook in the command channel.
-`{Stoner.command_prefix}`**spamwebhook [amount] [url] (message)** » Spam the shit out of a webhook.
-`{Stoner.command_prefix}`**webhooksetup** » Creates a new server with webhooks.
-`{Stoner.command_prefix}`**webhookinfo [id]** » Information about the webhook.
+`{Blaze.command_prefix}`**delwebhook [id]** » Delete a webhook from the ID.
+`{Blaze.command_prefix}`**newwebhook [name]** » Create a webhook in the command channel.
+`{Blaze.command_prefix}`**spamwebhook [amount] [url] (message)** » Spam the shit out of a webhook.
+`{Blaze.command_prefix}`**webhooksetup** » Creates a new server with webhooks.
+`{Blaze.command_prefix}`**webhookinfo [id]** » Information about the webhook.
             """)
                 embed.set_author(name="Webhook Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2776,46 +2752,46 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
             else:
                 pass
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Webhook Commands ]
 
-{Stoner.command_prefix}delwebhook [id] » Delete a webhook from the ID.
-{Stoner.command_prefix}newwebhook [name] » Create a webhook in the command channel.
-{Stoner.command_prefix}spamwebhook [amount] [url] (message) » Spam the shit out of a webhook.
-{Stoner.command_prefix}webhooksetup » Creates a new server with webhooks.
-{Stoner.command_prefix}webhookinfo [id] » Information about the webhook.
+{Blaze.command_prefix}delwebhook [id] » Delete a webhook from the ID.
+{Blaze.command_prefix}newwebhook [name] » Create a webhook in the command channel.
+{Blaze.command_prefix}spamwebhook [amount] [url] (message) » Spam the shit out of a webhook.
+{Blaze.command_prefix}webhooksetup » Creates a new server with webhooks.
+{Blaze.command_prefix}webhookinfo [id] » Information about the webhook.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="abuse", description="Abuse related commands.", usage="abuse")
+    @Blaze.command(name="abuse", description="Abuse related commands.", usage="abuse")
     async def abuse(ctx, page:int = 1):
         if __riskmode__:
             if __embedmode__:
                 if page == 1:
                     embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**spam [amount] [delay] [message]** » Spam X amount of times.
-`{Stoner.command_prefix}`**stopspam** » Stop spamming messages.
-`{Stoner.command_prefix}`**dmspam [amount] [delay] [@user] [message]** » Spam DM messages X amount of times.
-`{Stoner.command_prefix}`**channelspam [amount] [delay] [message]** » Spam a message X amount of times in every channel.
-`{Stoner.command_prefix}`**threadspam [delay] [amount] [addusers | true/false] [name] [startmessage]** » Spam create threads with a starting message.
-`{Stoner.command_prefix}`**ttsspam [amount] [delay] [message]** » Spam TTS messages X amount of times.
-`{Stoner.command_prefix}`**reactspam [emoji] [messages]** » Spam reactions on X amount of messages.
-`{Stoner.command_prefix}`**massstonerping [delay] [@user]** » Stoner Ping the user in every channel.
-`{Stoner.command_prefix}`**stonerping [@user]** » Ping a user then delete the message.
-`{Stoner.command_prefix}`**massping (amount of messages) (send delay)** » Ping a mass amount of people in the command server.
-`{Stoner.command_prefix}`**massnick [nickname]** » Change the nickname of all members in the command server.
-`{Stoner.command_prefix}`**massdm [delay] [amount] [message]** » Send a DM message to everyone in the server.
-`{Stoner.command_prefix}`**nukeserver** » Delete all roles and channels in the command server.
-`{Stoner.command_prefix}`**destroyserver** » Completely destroy the command server.
-`{Stoner.command_prefix}`**deletechannels** » Delete all of the command server's channels.
-`{Stoner.command_prefix}`**deleteroles** » Delete all of the command server's roles.
-`{Stoner.command_prefix}`**spamchannels [amount] (name)** » Spam create channels with a desired name. (Thanks Port <3)
-`{Stoner.command_prefix}`**spamroles [amount] (name)** » Spam create roles with a desired name.
-`{Stoner.command_prefix}`**raidjoin [delay] [invite]** » Make all your account tokens join a server.
-`{Stoner.command_prefix}`**tokenraid [amount] [channel id] (message)** » Raid a server with all your account tokens.
-`{Stoner.command_prefix}`**massban** » Ban all the members in the command server.
-`{Stoner.command_prefix}`**masskick** » Kick all the members in the command server.
+`{Blaze.command_prefix}`**spam [amount] [delay] [message]** » Spam X amount of times.
+`{Blaze.command_prefix}`**stopspam** » Stop spamming messages.
+`{Blaze.command_prefix}`**dmspam [amount] [delay] [@user] [message]** » Spam DM messages X amount of times.
+`{Blaze.command_prefix}`**channelspam [amount] [delay] [message]** » Spam a message X amount of times in every channel.
+`{Blaze.command_prefix}`**threadspam [delay] [amount] [addusers | true/false] [name] [startmessage]** » Spam create threads with a starting message.
+`{Blaze.command_prefix}`**ttsspam [amount] [delay] [message]** » Spam TTS messages X amount of times.
+`{Blaze.command_prefix}`**reactspam [emoji] [messages]** » Spam reactions on X amount of messages.
+`{Blaze.command_prefix}`**massblazeping [delay] [@user]** » Blaze Ping the user in every channel.
+`{Blaze.command_prefix}`**blazeping [@user]** » Ping a user then delete the message.
+`{Blaze.command_prefix}`**massping (amount of messages) (send delay)** » Ping a mass amount of people in the command server.
+`{Blaze.command_prefix}`**massnick [nickname]** » Change the nickname of all members in the command server.
+`{Blaze.command_prefix}`**massdm [delay] [amount] [message]** » Send a DM message to everyone in the server.
+`{Blaze.command_prefix}`**nukeserver** » Delete all roles and channels in the command server.
+`{Blaze.command_prefix}`**destroyserver** » Completely destroy the command server.
+`{Blaze.command_prefix}`**deletechannels** » Delete all of the command server's channels.
+`{Blaze.command_prefix}`**deleteroles** » Delete all of the command server's roles.
+`{Blaze.command_prefix}`**spamchannels [amount] (name)** » Spam create channels with a desired name. (Thanks Port <3)
+`{Blaze.command_prefix}`**spamroles [amount] (name)** » Spam create roles with a desired name.
+`{Blaze.command_prefix}`**raidjoin [delay] [invite]** » Make all your account tokens join a server.
+`{Blaze.command_prefix}`**tokenraid [amount] [channel id] (message)** » Raid a server with all your account tokens.
+`{Blaze.command_prefix}`**massban** » Ban all the members in the command server.
+`{Blaze.command_prefix}`**masskick** » Kick all the members in the command server.
                 """)
                     embed.set_author(name="Abuse Commands (1/1)")
                     embed.set_thumbnail(url=__embedimage__)
@@ -2826,31 +2802,31 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
                 else:
                     pass         
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
-{Stoner.command_prefix}spam [amount] [delay] [message] » Spam X amount of times.
-{Stoner.command_prefix}stopspam » Stop spamming messages.
-{Stoner.command_prefix}dmspam [amount] [delay] [@user] [message] » Spam DM messages X amount of times.
-{Stoner.command_prefix}channelspam [amount] [delay] [message] » Spam X amount of times in all channels.
-{Stoner.command_prefix}threadspam [delay] [amount] [name] [startmessage] » Spam create threads with a starting message.
-{Stoner.command_prefix}ttsspam [amount] [delay] [message] » Spam TTS messages X amount of times.
-{Stoner.command_prefix}reactspam [emoji] [messages] » Spam reactions on X amount of messages.
-{Stoner.command_prefix}massstonerping [delay] [@user] » Stoner Ping the user in every channel.
-{Stoner.command_prefix}stonerping [@user] » Ping a user then delete the message.
-{Stoner.command_prefix}massping » Ping a mass amount of people in the command server.
-{Stoner.command_prefix}massnick [nickname] » Change the nickname of all members in the command server.
-{Stoner.command_prefix}massdm [delay] [amount] [message] » Send a DM message to everyone in the server.
-{Stoner.command_prefix}nukeserver » Delete all roles and channels in the command server.
-{Stoner.command_prefix}destroyserver » Completely destroy the command server.
-{Stoner.command_prefix}deletechannels » Delete all of the command server's channels.
-{Stoner.command_prefix}deleteroles » Delete all of the command server's roles.
-{Stoner.command_prefix}spamchannels [amount] (name) » Spam create channels with a desired name. (Thanks Port <3)
-{Stoner.command_prefix}spamroles [amount] (name) » Spam create roles with a desired name.
-{Stoner.command_prefix}raidjoin [delay] [invite] » Make all your account tokens join a server.
-{Stoner.command_prefix}tokenraid [amount] [channel id] (message) » Raid a server with all your account tokens.
-{Stoner.command_prefix}massban » Ban all the members in the command server.
-{Stoner.command_prefix}masskick » Kick all the members in the command server.
+{Blaze.command_prefix}spam [amount] [delay] [message] » Spam X amount of times.
+{Blaze.command_prefix}stopspam » Stop spamming messages.
+{Blaze.command_prefix}dmspam [amount] [delay] [@user] [message] » Spam DM messages X amount of times.
+{Blaze.command_prefix}channelspam [amount] [delay] [message] » Spam X amount of times in all channels.
+{Blaze.command_prefix}threadspam [delay] [amount] [name] [startmessage] » Spam create threads with a starting message.
+{Blaze.command_prefix}ttsspam [amount] [delay] [message] » Spam TTS messages X amount of times.
+{Blaze.command_prefix}reactspam [emoji] [messages] » Spam reactions on X amount of messages.
+{Blaze.command_prefix}massblazeping [delay] [@user] » Blaze Ping the user in every channel.
+{Blaze.command_prefix}blazeping [@user] » Ping a user then delete the message.
+{Blaze.command_prefix}massping » Ping a mass amount of people in the command server.
+{Blaze.command_prefix}massnick [nickname] » Change the nickname of all members in the command server.
+{Blaze.command_prefix}massdm [delay] [amount] [message] » Send a DM message to everyone in the server.
+{Blaze.command_prefix}nukeserver » Delete all roles and channels in the command server.
+{Blaze.command_prefix}destroyserver » Completely destroy the command server.
+{Blaze.command_prefix}deletechannels » Delete all of the command server's channels.
+{Blaze.command_prefix}deleteroles » Delete all of the command server's roles.
+{Blaze.command_prefix}spamchannels [amount] (name) » Spam create channels with a desired name. (Thanks Port <3)
+{Blaze.command_prefix}spamroles [amount] (name) » Spam create roles with a desired name.
+{Blaze.command_prefix}raidjoin [delay] [invite] » Make all your account tokens join a server.
+{Blaze.command_prefix}tokenraid [amount] [channel id] (message) » Raid a server with all your account tokens.
+{Blaze.command_prefix}massban » Ban all the members in the command server.
+{Blaze.command_prefix}masskick » Kick all the members in the command server.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
@@ -2863,7 +2839,7 @@ Community Themes, run {Stoner.command_prefix}ctheme (theme name) to download the
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -2871,21 +2847,21 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                          
 
-    @Stoner.command(name="tools", description="Discord and other tools.", usage="tools")
+    @Blaze.command(name="tools", description="Discord and other tools.", usage="tools")
     async def tools(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}", color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**tokeninfo [token]** » Information about a token. 
-`{Stoner.command_prefix}`**nuketoken [token]** » Nuke a token.
-`{Stoner.command_prefix}`**checktoken [token]** » Checks if a token is working.
-`{Stoner.command_prefix}`**checktokens** » Check your tokens. 
-`{Stoner.command_prefix}`**nitrogen** » Generate a nitro code.
-`{Stoner.command_prefix}`**tokengen** » Generate a discord user token.
-`{Stoner.command_prefix}`**identitygen** » Generate a fake identity.
-`{Stoner.command_prefix}`**passwordgen [length]** » Generate a secure password.
-`{Stoner.command_prefix}`**ccgen** » Generate a fake Credit card.
-`{Stoner.command_prefix}`**eval** » very scary and haram.
+`{Blaze.command_prefix}`**tokeninfo [token]** » Information about a token. 
+`{Blaze.command_prefix}`**nuketoken [token]** » Nuke a token.
+`{Blaze.command_prefix}`**checktoken [token]** » Checks if a token is working.
+`{Blaze.command_prefix}`**checktokens** » Check your tokens. 
+`{Blaze.command_prefix}`**nitrogen** » Generate a nitro code.
+`{Blaze.command_prefix}`**tokengen** » Generate a discord user token.
+`{Blaze.command_prefix}`**identitygen** » Generate a fake identity.
+`{Blaze.command_prefix}`**passwordgen [length]** » Generate a secure password.
+`{Blaze.command_prefix}`**ccgen** » Generate a fake Credit card.
+`{Blaze.command_prefix}`**eval** » very scary and haram.
             """)
                 embed.set_author(name="Tools (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2896,32 +2872,32 @@ You have risk mode disabled, you cant use this command.
             else:
                 pass         
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Tools ]
 
-{Stoner.command_prefix}tokeninfo [token] » Information about a token.
-{Stoner.command_prefix}nuketoken [token] » Nuke a token.
-{Stoner.command_prefix}checktoken [token] » Checks if a token is working.
-{Stoner.command_prefix}checktokens » Check your tokens.
-{Stoner.command_prefix}nitrogen » Generate a nitro code.
-{Stoner.command_prefix}tokengen » Generate a discord user token.
-{Stoner.command_prefix}identitygen » Generate a fake identity.
-{Stoner.command_prefix}passwordgen [length] » Generate a secure password.
-{Stoner.command_prefix}ccgen » Generate a fake Credit card.
-{Stoner.command_prefix}eval » very scary and haram.
+{Blaze.command_prefix}tokeninfo [token] » Information about a token.
+{Blaze.command_prefix}nuketoken [token] » Nuke a token.
+{Blaze.command_prefix}checktoken [token] » Checks if a token is working.
+{Blaze.command_prefix}checktokens » Check your tokens.
+{Blaze.command_prefix}nitrogen » Generate a nitro code.
+{Blaze.command_prefix}tokengen » Generate a discord user token.
+{Blaze.command_prefix}identitygen » Generate a fake identity.
+{Blaze.command_prefix}passwordgen [length] » Generate a secure password.
+{Blaze.command_prefix}ccgen » Generate a fake Credit card.
+{Blaze.command_prefix}eval » very scary and haram.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="giveaway", description="Giveaway related commands.", usage="giveaway")
+    @Blaze.command(name="giveaway", description="Giveaway related commands.", usage="giveaway")
     async def giveaway(ctx, page:int = 1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}",
                                     color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**gstart [duration] [winners] [prize]** » Start a giveaway in the same channel
-`{Stoner.command_prefix}`**gend [message id]** » End a giveaway
-`{Stoner.command_prefix}`**greroll [message id]** » Re-roll a giveaway
+`{Blaze.command_prefix}`**gstart [duration] [winners] [prize]** » Start a giveaway in the same channel
+`{Blaze.command_prefix}`**gend [message id]** » End a giveaway
+`{Blaze.command_prefix}`**greroll [message id]** » Re-roll a giveaway
             """)
                 embed.set_author(name="Giveaway Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2932,27 +2908,27 @@ You have risk mode disabled, you cant use this command.
             else:
                 pass              
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Giveaway Commands ]
 
-{Stoner.command_prefix}gstart [duration] [winners] [prize] » Start a giveaway in the same channel
-{Stoner.command_prefix}gend [message id] » End a giveaway
-{Stoner.command_prefix}greroll [message id] » Re-roll a giveaway
+{Blaze.command_prefix}gstart [duration] [winners] [prize] » Start a giveaway in the same channel
+{Blaze.command_prefix}gend [message id] » End a giveaway
+{Blaze.command_prefix}greroll [message id] » Re-roll a giveaway
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="proxy", description="Proxy related commands.", usage="proxy")
+    @Blaze.command(name="proxy", description="Proxy related commands.", usage="proxy")
     async def proxy(ctx, page:int=1):
         if __embedmode__:
             if page == 1:
                 embed = discord.Embed(title=f"{__embedemoji__} **{__embedtitle__}** {__embedemoji__}",
                                     color=__embedcolour__, description=f"""
-`{Stoner.command_prefix}`**proxies http** » Scrape HTTP proxies.
-`{Stoner.command_prefix}`**proxies https** » Scrape HTTPS proxies.
-`{Stoner.command_prefix}`**proxies socks4** » Scrape SOCKS4 proxies.
-`{Stoner.command_prefix}`**proxies socks5** » Scrape SOCKS5 proxies.
-`{Stoner.command_prefix}`**proxies all** » Scrape HTTP, HTTPS, SOCKS4 AND SOCKS5 proxies.
+`{Blaze.command_prefix}`**proxies http** » Scrape HTTP proxies.
+`{Blaze.command_prefix}`**proxies https** » Scrape HTTPS proxies.
+`{Blaze.command_prefix}`**proxies socks4** » Scrape SOCKS4 proxies.
+`{Blaze.command_prefix}`**proxies socks5** » Scrape SOCKS5 proxies.
+`{Blaze.command_prefix}`**proxies all** » Scrape HTTP, HTTPS, SOCKS4 AND SOCKS5 proxies.
             """)
                 embed.set_author(name="Proxy Commands (1/1)")
                 embed.set_thumbnail(url=__embedimage__)
@@ -2963,25 +2939,25 @@ You have risk mode disabled, you cant use this command.
             else:
                 pass              
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Proxy Commands ]
 
-{Stoner.command_prefix}proxies http » Scrape HTTP proxies.
-{Stoner.command_prefix}proxies https » Scrape HTTPS proxies.
-{Stoner.command_prefix}proxies socks4 » Scrape SOCKS4 proxies.
-{Stoner.command_prefix}proxies socks5 » Scrape SOCKS5 proxies.
-{Stoner.command_prefix}proxies all » Scrape HTTP, HTTPS, SOCKS4 AND SOCKS5 proxies.
+{Blaze.command_prefix}proxies http » Scrape HTTP proxies.
+{Blaze.command_prefix}proxies https » Scrape HTTPS proxies.
+{Blaze.command_prefix}proxies socks4 » Scrape SOCKS4 proxies.
+{Blaze.command_prefix}proxies socks5 » Scrape SOCKS5 proxies.
+{Blaze.command_prefix}proxies all » Scrape HTTP, HTTPS, SOCKS4 AND SOCKS5 proxies.
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
 
-    @Stoner.command(name="hiddenchannels", description="Sends a list of all the channels you cant see.", usage="hiddenchannels (guild id)")
+    @Blaze.command(name="hiddenchannels", description="Sends a list of all the channels you cant see.", usage="hiddenchannels (guild id)")
     async def hiddenchannels(ctx, guild=None):
         if guild == None:
             guild = ctx.guild
         else:
-            guild = await Stoner.fetch_guild(int(guild))
+            guild = await Blaze.fetch_guild(int(guild))
         hiddenChannels = []
 
         message = await ctx.send("Looking for hidden channels, this could take a while...")
@@ -3006,7 +2982,7 @@ You have risk mode disabled, you cant use this command.
             embed.timestamp = datetime.now()
             await message.edit(content="", embed=embed, delete_after=__deletetimeout__) 
         else:
-            await message.edit(content=f"""```ini
+            await message.edit(content=f"""```>>>
 [ Hidden Channels ]
 
 There is a total of {len(hiddenChannels)} hidden channels.
@@ -3017,20 +2993,20 @@ There is a total of {len(hiddenChannels)} hidden channels.
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__) 
 
-    @Stoner.command(name="clearconsole", description="Clear your console.", usage="clearconsole", aliases=["resetconsole", "consoleclear", "consolereset", "consoleCommand-clearconsole", "consoleCommand-clear"])
+    @Blaze.command(name="clearconsole", description="Clear your console.", usage="clearconsole", aliases=["resetconsole", "consoleclear", "consolereset", "consoleCommand-clearconsole", "consoleCommand-clear"])
     async def clearconsole(ctx):
         width = os.get_terminal_size().columns
 
         if is_windows():
             os.system("cls")
-            os.system(f"title Stoner [{version}] [{Stoner.user}]")
+            os.system(f"title Blaze [{version}] [{Blaze.user}]")
 
         # if is_windows():
         #     def startupPath():
         #         return str(shell.SHGetFolderPath(0, (shellcon.CSIDL_STARTUP, shellcon.CSIDL_COMMON_STARTUP)[0], None, 0))
 
         #     os.system("cls")
-        #     os.system(f"title Stoner [{version}] [{Stoner.user}]")
+        #     os.system(f"title Blaze [{version}] [{Blaze.user}]")
             
         #     if (CONFIG["load_on_startup"] == True):
         #         print("Adding to startup.......")
@@ -3040,15 +3016,15 @@ There is a total of {len(hiddenChannels)} hidden channels.
         #             if file_path == "":
         #                 file_path = os.path.dirname(os.path.realpath(__file__))
                     
-        #             bat_file = open(startupPath() + r"\\Stoner.bat", "w")
-        #             bat_file.write(f"cd {file_path}\nstart Stoner")   
+        #             bat_file = open(startupPath() + r"\\Blaze.bat", "w")
+        #             bat_file.write(f"cd {file_path}\nstart Blaze")   
         #             bat_file.close()
 
         #         add_to_startup()   
 
         #     else:
         #         print("Removing from startup......")
-        #         if os.path.exists(startupPath() + r"\\Stoner.bat"): os.remove(startupPath() + r"\\Stoner.bat");
+        #         if os.path.exists(startupPath() + r"\\Blaze.bat"): os.remove(startupPath() + r"\\Blaze.bat");
 
         #     os.system("cls")
         if is_linux():
@@ -3193,7 +3169,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
             print("██║  ██║██║███████║███████╗    ███████║███████╗███████╗██║     ██████╔╝╚██████╔╝   ██║   ".center(width))
             print("╚═╝  ╚═╝╚═╝╚══════╝╚══════╝    ╚══════╝╚══════╝╚══════╝╚═╝     ╚═════╝  ╚═════╝    ╚═╝   ".center(width))
             print("╭─━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━─╮")
-            print(fg.cGrey + f"Connected: {Stoner.user} | Prefix: {Stoner.command_prefix} | Servers: {len(Stoner.guilds)}".center(width))
+            print(fg.cGrey + f"Connected: {Blaze.user} | Prefix: {Blaze.command_prefix} | Servers: {len(Blaze.guilds)}".center(width))
             print(fg.cBlue + "╰─━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━─╯")
             print("")
             print(fg.cBlue + '━'*width)
@@ -3216,8 +3192,8 @@ There is a total of {len(hiddenChannels)} hidden channels.
             print(f"                      {fg.cBlue}╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ")   
             print("")
             print(f"{fg.cWhite}Status:    {fg.cGreen}Connected")
-            print(f"{fg.cWhite}Account:   {Stoner.user} [{len(Stoner.guilds)} servers] [{len(get_friends(__token__))} friends]")
-            print(f"{fg.cWhite}Prefix:    {Stoner.command_prefix}")
+            print(f"{fg.cWhite}Account:   {Blaze.user} [{len(Blaze.guilds)} servers] [{len(get_friends(__token__))} friends]")
+            print(f"{fg.cWhite}Prefix:    {Blaze.command_prefix}")
             print(fg.cWhite + '─'*os.get_terminal_size().columns)                                                          
 
             # def getCurrentTime():
@@ -3227,7 +3203,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
             # def print_info(message):
             #     print(f"{fg.cGrey}{getCurrentTime()} | {fg.cYellow}[Information] {fg.cGrey} | {message}")
             # def print_cmd(command):
-            #     print(f"{fg.cGrey}{getCurrentTime()} | {fg.consoleColour}[Command] {fg.cGrey} | {Stoner.command_prefix}{command}")
+            #     print(f"{fg.cGrey}{getCurrentTime()} | {fg.consoleColour}[Command] {fg.cGrey} | {Blaze.command_prefix}{command}")
             # def print_sharecmd(author, command):
             #     print(f"{fg.cGrey}[{getCurrentTime()}] {fg.consoleColour}[SHARE COMMAND] {fg.cWhite}({author}) {command}")
             # def print_error(error):
@@ -3241,17 +3217,17 @@ There is a total of {len(hiddenChannels)} hidden channels.
 
 
         if "beta" in version.lower():
-            print_important("You're currently using a beta build of Stoner.")
+            print_important("You're currently using a beta build of Blaze.")
             print_important("If you notice any bugs please report them to the developer.")
             print(" ")
         elif "dev" in version.lower():
-            print_important("You're currently using a developer build of Stoner.")
+            print_important("You're currently using a developer build of Blaze.")
             print_important("If you notice any bugs please report them to the developer.")
             print(" ")                      
 
-    @Stoner.command(name="blocksend", description="Send a message to a blocked user.", usage="blocksend [user id] [messages]", aliases=["sendblocked", "sendtoblocked"])
+    @Blaze.command(name="blocksend", description="Send a message to a blocked user.", usage="blocksend [user id] [messages]", aliases=["sendblocked", "sendtoblocked"])
     async def blocksend(ctx, userid:int, *, message):
-        user = await Stoner.fetch_user(userid)
+        user = await Blaze.fetch_user(userid)
         await user.unblock()
         await user.send(message)
         await user.block()
@@ -3265,7 +3241,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
         else:
             await ctx.send(f"Sent `{message}` to {user}.", delete_after=__deletetimeout__) 
 
-    @Stoner.command(name="riskmode", description="Disable and enable risk mode", usage="riskmode")
+    @Blaze.command(name="riskmode", description="Disable and enable risk mode", usage="riskmode")
     async def riskmode(ctx):
         global __riskmode__
         riskModeText = ""
@@ -3291,7 +3267,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
         else:
             await ctx.send(f"Risk mode has been {riskModeText}.", delete_after=__deletetimeout__)  
 
-    @Stoner.command(name="embedmode", description="Toggle embed mode.", usage="embedmode")
+    @Blaze.command(name="embedmode", description="Toggle embed mode.", usage="embedmode")
     async def embedmode(ctx):
         global __embedmode__
         if not __embedmode__:
@@ -3317,7 +3293,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
             else:
                 await ctx.send("Embed mode is already enabled.", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="textmode", description="Toggle text mode.", usage="textmode")
+    @Blaze.command(name="textmode", description="Toggle text mode.", usage="textmode")
     async def textmode(ctx):
         global __embedmode__
         if __embedmode__:
@@ -3343,12 +3319,12 @@ There is a total of {len(hiddenChannels)} hidden channels.
             else:
                 await ctx.send("Text mode is already enabled.", delete_after=__deletetimeout__)                    
 
-    @Stoner.command(name="readall", description="Mark every message as read.", usage="readall")
+    @Blaze.command(name="readall", description="Mark every message as read.", usage="readall")
     async def readall(ctx):
         index = 0
         index2 = 0
         DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
-        for guild in Stoner.guilds:
+        for guild in Blaze.guilds:
             messages2 = []
             for channel in guild.text_channels:
                 index+=1
@@ -3365,7 +3341,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
         print_info("All messages have been read.")
         await ctx.send(f"Read a total of `{index}` channels and `{index2}` messages.")
 
-    @Stoner.command(name="specs", description="Your computers specifications.", usage="specs", aliases=["computerspecs", "pcspecs", "specifications"])
+    @Blaze.command(name="specs", description="Your computers specifications.", usage="specs", aliases=["computerspecs", "pcspecs", "specifications"])
     async def specs(ctx):
         def get_size(bytes, suffix="B"):
             factor = 1024
@@ -3397,7 +3373,7 @@ There is a total of {len(hiddenChannels)} hidden channels.
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Specifications ]
 
 System: {system}
@@ -3410,7 +3386,7 @@ RAM: {ram}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="crypto", description="Get the current data on a cryptocurrency.", usage="crypto [currency]", aliases=["cryptodata"])
+    @Blaze.command(name="crypto", description="Get the current data on a cryptocurrency.", usage="crypto [currency]", aliases=["cryptodata"])
     async def crypto(ctx, *, currency="bitcoin"):
         request = requests.get(f"https://api.coingecko.com/api/v3/coins/{currency}")
         if request.status_code == 200:
@@ -3442,7 +3418,7 @@ EUR: {'{:,}'.format(request['market_data']['price_change_24h_in_currency']['eur'
                 embed.timestamp = datetime.now()    
                 await ctx.send(embed=embed)  
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ {request['name']} Data ]
 
 [Scores]
@@ -3476,7 +3452,7 @@ EUR: {'{:,}'.format(request['market_data']['price_change_24h_in_currency']['eur'
                 embed.timestamp = datetime.now()    
                 await ctx.send(embed=embed)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Invalid Crypto ]
 
 That crypto currency doesnt exist or there was an error.
@@ -3485,7 +3461,7 @@ That crypto currency doesnt exist or there was an error.
 # {__embedfooter__}
 ```""")
 
-    @Stoner.command(name="proxies", description="Scrape an type of proxy.", usage="proxies [http, https, socks4, socks5, all]", aliases=["proxygen", "genproxies"])
+    @Blaze.command(name="proxies", description="Scrape an type of proxy.", usage="proxies [http, https, socks4, socks5, all]", aliases=["proxygen", "genproxies"])
     async def proxies(ctx, type):
         if type == "http":
             if not os.path.isdir("data/proxies/"): os.makedirs("data/proxies/");
@@ -3552,14 +3528,14 @@ That crypto currency doesnt exist or there was an error.
             file.close()
             await ctx.send(content=f"Scraped `{len(proxies)}` HTTP, HTTPS, SOCKS4 AND SOCKS5 proxies.", file=discord.File("data/proxies/all.txt"))                                                                               
 
-    # @Stoner.command(name="stealusername", description="Steal someones username.", usage="stealusername [@user]", aliases=["stealname"])
+    # @Blaze.command(name="stealusername", description="Steal someones username.", usage="stealusername [@user]", aliases=["stealname"])
     # async def stealusername(ctx, user:discord.User):
     #     DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
     #     username = user.name
     #     DiscumClient.setUsername(username)
     #     await ctx.send(f"Stolen `{user}`'s username.", delete_after=__deletetimeout__) 
 
-    # @Stoner.command(name="stealprofile", description="Steal someones avatar and username.", usage="stealprofile [@user]")
+    # @Blaze.command(name="stealprofile", description="Steal someones avatar and username.", usage="stealprofile [@user]")
     # async def stealprofile(ctx, user:discord.User):
     #     DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
     #     avatar = user.avatar
@@ -3569,13 +3545,13 @@ That crypto currency doesnt exist or there was an error.
     #     DiscumClient.setAvatar(f"data/pfpstealavatar.{extension}") 
     #     DiscumClient.setUsername(username)           
 
-    @Stoner.command(name="cloneemoji", description="Clone an emoji to the command server.", usage="cloneemoji [emoji]", aliases=["stealemoji"])
+    @Blaze.command(name="cloneemoji", description="Clone an emoji to the command server.", usage="cloneemoji [emoji]", aliases=["stealemoji"])
     async def cloneemoji(ctx, *, msg):
         msg = re.sub("<:(.+):([0-9]+)>", "\\2", msg)
 
         match = None
         exact_match = False
-        for guild in Stoner.guilds:
+        for guild in Blaze.guilds:
             for emoji in guild.emojis:
                 if msg.strip().lower() in str(emoji):
                     match = emoji
@@ -3593,7 +3569,7 @@ That crypto currency doesnt exist or there was an error.
         emoji = await ctx.guild.create_custom_emoji(name=match.name, image=response.content)
         await ctx.send(f"Successfully cloned `{emoji.name}`.")                
 
-    @Stoner.command(name="detections", description="A list of all detections.", usage="detections")
+    @Blaze.command(name="detections", description="A list of all detections.", usage="detections")
     async def detections(ctx):
         cfg = Config.getConfig()
         _list = []
@@ -3611,9 +3587,9 @@ That crypto currency doesnt exist or there was an error.
             embed.timestamp = datetime.now()    
             await ctx.send(embed=embed)
         else:
-            await ctx.send("```ini\n[ Detections ]\n " + "\n".join(_list) + "\n\n# " + __embedfooter__ + "```")
+            await ctx.send("```>>>\n[ Detections ]\n " + "\n".join(_list) + "\n\n# " + __embedfooter__ + "```")
 
-    @Stoner.command(name="snipers", description="A list of all snipers.", usage="snipers")
+    @Blaze.command(name="snipers", description="A list of all snipers.", usage="snipers")
     async def snipers(ctx):
         cfg = Config.getConfig()
         _list = []
@@ -3631,9 +3607,9 @@ That crypto currency doesnt exist or there was an error.
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed)
         else:
-            await ctx.send("```ini\n[ Snipers ]\n " + "\n".join(_list) + "\n\n# " + __embedfooter__ + "```")
+            await ctx.send("```>>>\n[ Snipers ]\n " + "\n".join(_list) + "\n\n# " + __embedfooter__ + "```")
 
-    @Stoner.command(name="enabledetect", description="Enable a detection.", usage="enabledetect [type]", aliases=["enabledetection", "enabledetections"])
+    @Blaze.command(name="enabledetect", description="Enable a detection.", usage="enabledetect [type]", aliases=["enabledetection", "enabledetections"])
     async def enabledetect(ctx, *, type):
         cfg = Config.getConfig()
         success = False
@@ -3649,7 +3625,7 @@ That crypto currency doesnt exist or there was an error.
         else:
             await ctx.send(f"Couldnt find `{type}` detection.")
 
-    @Stoner.command(name="disabledetect", description="Disable a detection.", usage="disabledetect [type]", aliases=["disabledetection", "disabledetections"])
+    @Blaze.command(name="disabledetect", description="Disable a detection.", usage="disabledetect [type]", aliases=["disabledetection", "disabledetections"])
     async def disabledetect(ctx, *, type):
         cfg = Config.getConfig()
         success = False
@@ -3665,7 +3641,7 @@ That crypto currency doesnt exist or there was an error.
         else:
             await ctx.send(f"Couldnt find `{type}` detection.")
 
-    @Stoner.command(name="enablesniper", description="Enable a sniper.", usage="enablesniper [type]", aliases=["enablesnipers"])
+    @Blaze.command(name="enablesniper", description="Enable a sniper.", usage="enablesniper [type]", aliases=["enablesnipers"])
     async def enablesniper(ctx, *, type):
         cfg = Config.getConfig()
         success = False
@@ -3681,7 +3657,7 @@ That crypto currency doesnt exist or there was an error.
         else:
             await ctx.send(f"Couldnt find `{type}` sniper.")
 
-    @Stoner.command(name="disablesniper", description="Disable a sniper.", usage="disablesniper [type]", aliases=["disablesnipers"])
+    @Blaze.command(name="disablesniper", description="Disable a sniper.", usage="disablesniper [type]", aliases=["disablesnipers"])
     async def disablesniper(ctx, *, type):
         cfg = Config.getConfig()
         success = False
@@ -3697,12 +3673,12 @@ That crypto currency doesnt exist or there was an error.
         else:
             await ctx.send(f"Couldnt find `{type}` sniper.")
 
-#     @Stoner.command(name="stonerusers", description="Finds all the people using Stoner in a server.", usage="stonerusers")
+#     @Blaze.command(name="blazeusers", description="Finds all the people using Blaze in a server.", usage="blazeusers")
 #     @commands.guild_only()
-#     async def stonerusers(ctx):
-#         message = await ctx.send("Looking for people that have Stoner, this may take a while...")
+#     async def blazeusers(ctx):
+#         message = await ctx.send("Looking for people that have Blaze, this may take a while...")
 
-#         stonerUsers = []
+#         blazeUsers = []
 #         userAgent = get_random_user_agent()
 #         try:
 #             await ctx.message.delete()
@@ -3723,7 +3699,7 @@ That crypto currency doesnt exist or there was an error.
 
 #         for memberID in DiscumClient.gateway.session.guild(f'{ctx.guild.id}').members:
 #             member = await ctx.guild.fetch_member(int(memberID))
-#             stonerguild = await Stoner.fetch_guild(838869729829191681)
+#             blazeguild = await Blaze.fetch_guild(838869729829191681)
 #             mutualGuilds = member.mutual_guilds
 #             for guild in mutualGuilds:
 #                 print(guild.name)
@@ -3732,8 +3708,8 @@ That crypto currency doesnt exist or there was an error.
 
 #         if __embedmode__:
 #             embed=discord.Embed(
-#                 title="Stoner Users",
-#                 description=f"There are a total of `{len(stonerUsers)}` Stoner users in `{ctx.guild.name}`\n \n```\n" + ", ".join(stonerUsers) + f"\n```",
+#                 title="Blaze Users",
+#                 description=f"There are a total of `{len(blazeUsers)}` Blaze users in `{ctx.guild.name}`\n \n```\n" + ", ".join(blazeUsers) + f"\n```",
 #                 color=__embedcolour__
 #             )
 #             embed.set_thumbnail(url=__embedimage__)
@@ -3742,36 +3718,36 @@ That crypto currency doesnt exist or there was an error.
 
 #             await message.edit(content="", embed=embed)
 #         else:
-#             await message.edit(content=f"""```ini
-# [ Stoner Users ]
+#             await message.edit(content=f"""```>>>
+# [ Blaze Users ]
 
-# There is a total of {len(stonerUsers)} in {ctx.guild.name}.
+# There is a total of {len(blazeUsers)} in {ctx.guild.name}.
 
-# {', '.join(stonerUsers)}
+# {', '.join(blazeUsers)}
 
 
 # # {__embedfooter__}
 # ```""")
 
-    @Stoner.command(name="addccmd", description="Add a custom command.", usage="addccmd [name] [response]", aliases=["addcustomcommand"])
+    @Blaze.command(name="addccmd", description="Add a custom command.", usage="addccmd [name] [response]", aliases=["addcustomcommand"])
     async def addccmd(ctx, name, *, response):
         global ccmd
         customCommands = json.load(open("customcommands.json"))
         customCommands[name] = response
         json.dump(customCommands, open("customcommands.json", "w"), indent=4, sort_keys=False)
         ccmd = json.load(open("customcommands.json"))
-        await ctx.send(f"Added `{Stoner.command_prefix}{name}` to your custom commands.", delete_after=__deletetimeout__)
+        await ctx.send(f"Added `{Blaze.command_prefix}{name}` to your custom commands.", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="delccmd", description="Remove a custom command.", usage="delccmd [name]", aliases=["deletecustomcommand", "delcustomcommand", "removecustomcommand", "removeccmd", "deleteccmd"])
+    @Blaze.command(name="delccmd", description="Remove a custom command.", usage="delccmd [name]", aliases=["deletecustomcommand", "delcustomcommand", "removecustomcommand", "removeccmd", "deleteccmd"])
     async def delccmd(ctx, name):
         global ccmd
         customCommands = json.load(open("customcommands.json"))
         customCommands.pop(name)
         json.dump(customCommands, open("customcommands.json", "w"), indent=4, sort_keys=False)
         ccmd = json.load(open("customcommands.json"))
-        await ctx.send(f"Removed `{Stoner.command_prefix}{name}` from your custom commands", delete_after=__deletetimeout__)            
+        await ctx.send(f"Removed `{Blaze.command_prefix}{name}` from your custom commands", delete_after=__deletetimeout__)            
 
-    @Stoner.command(name="boobs", description="Pictures or videos of boobs.", usage=f"boobs", aliases=["tits", "tit", "milkers", "titties", "boob"])
+    @Blaze.command(name="boobs", description="Pictures or videos of boobs.", usage=f"boobs", aliases=["tits", "tit", "milkers", "titties", "boob"])
     async def boobs(ctx):
         type = "boobs"
         image = get_nsfw(type)
@@ -3784,7 +3760,7 @@ That crypto currency doesnt exist or there was an error.
         else:  
             await ctx.send(image)
 
-    @Stoner.command(name="ass", description="Pictures or videos of ass.", usage=f"ass")
+    @Blaze.command(name="ass", description="Pictures or videos of ass.", usage=f"ass")
     async def ass(ctx):
         type = "ass"
         image = get_nsfw(type)
@@ -3801,7 +3777,7 @@ That crypto currency doesnt exist or there was an error.
             await ctx.send(image)                
 
 
-    @Stoner.command(name="pussy", description="Pictures or videos of pussy.", usage=f"pussy")
+    @Blaze.command(name="pussy", description="Pictures or videos of pussy.", usage=f"pussy")
     async def pussy(ctx):
         type = "pussy"
         image = get_nsfw(type)
@@ -3817,7 +3793,7 @@ That crypto currency doesnt exist or there was an error.
         else:  
             await ctx.send(image)  
 
-    @Stoner.command(name="porngif", description="Porn gifs.", usage=f"porngif")
+    @Blaze.command(name="porngif", description="Porn gifs.", usage=f"porngif")
     async def porngif(ctx):
         type = "porngif"
         image = get_nsfw(type)
@@ -3833,7 +3809,7 @@ That crypto currency doesnt exist or there was an error.
         else:  
             await ctx.send(image)  
 
-    @Stoner.command(name="hentai", description="Pictures or videos of hentai.", usage=f"hentai")
+    @Blaze.command(name="hentai", description="Pictures or videos of hentai.", usage=f"hentai")
     async def hentai(ctx):
         type = random.randint(1, 2)
         if type == 1:
@@ -3849,7 +3825,7 @@ That crypto currency doesnt exist or there was an error.
         else:
             await ctx.send(image)                     
 
-    @Stoner.command(name="discordtheme", description="Change default Discord theme.", usage="discordtheme [light/dark]")
+    @Blaze.command(name="discordtheme", description="Change default Discord theme.", usage="discordtheme [light/dark]")
     async def discordtheme(ctx, theme = "dark"):
         theme = theme.lower()
         validThemes = ["dark", "light"]
@@ -3860,7 +3836,7 @@ That crypto currency doesnt exist or there was an error.
         else:
             await ctx.send("That isn't a valid Discord theme.", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="changehypesquad", description="Change your hypesquad house.", usage="changehypesquad [bravery/brilliance/balance]")
+    @Blaze.command(name="changehypesquad", description="Change your hypesquad house.", usage="changehypesquad [bravery/brilliance/balance]")
     async def changehypesquad(ctx, house):
         house = house.lower()
         houses = ["bravery", "brilliance", "balance"]
@@ -3871,7 +3847,7 @@ That crypto currency doesnt exist or there was an error.
         else:
             await ctx.send("That isn't a valid hypesquad house.", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="backupfriends", description="Backup all your friend's user IDs to a file.", usage="backupfriends", aliases=["friendbackup"])
+    @Blaze.command(name="backupfriends", description="Backup all your friend's user IDs to a file.", usage="backupfriends", aliases=["friendbackup"])
     async def backupfriends(ctx):
         print_info("Grabbing all friends...")
         request = requests.get("https://discord.com/api/v6/users/@me/relationships", headers={"authorization": __token__})
@@ -3935,7 +3911,7 @@ That crypto currency doesnt exist or there was an error.
             )
         file.close()
 
-    @Stoner.command(name="backupservers", description="Backup all your servers and try to create invites for each one.", usage="backupservers", aliases=["backupguilds", "serverbackup", "guildbackup"])
+    @Blaze.command(name="backupservers", description="Backup all your servers and try to create invites for each one.", usage="backupservers", aliases=["backupguilds", "serverbackup", "guildbackup"])
     async def backupservers(ctx):
         DiscumClient = discum.Client(token=__token__, log=False, user_agent=get_random_user_agent())
         try:
@@ -3952,7 +3928,7 @@ That crypto currency doesnt exist or there was an error.
             invite = ""
 
             print_info(f"Trying to create invite for {guildname}")
-            server = discord.utils.get(Stoner.guilds, id=int(guildid))
+            server = discord.utils.get(Blaze.guilds, id=int(guildid))
             for channel in server.text_channels:
                 if invite == "":
                     invite = DiscumClient.createInvite(str(channel.id))
@@ -3972,7 +3948,7 @@ That crypto currency doesnt exist or there was an error.
         file.close()        
         await ctx.send("Saved a list of all your guilds and their IDs in __data/servers.txt__.", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="richpresence", description="Enable or disable rich presence.", usage="richpresence [on/off]", aliases=["rpc"])
+    @Blaze.command(name="richpresence", description="Enable or disable rich presence.", usage="richpresence [on/off]", aliases=["rpc"])
     async def richpresence(ctx, status):
         if status == "on" or status == "On":
             richpresence = json.load(open("richpresence.json"))
@@ -3991,7 +3967,7 @@ That crypto currency doesnt exist or there was an error.
             await ctx.send("Rich presence has been disabled, restarting to change effect...", delete_after=__deletetimeout__)
             restart_bot()
     
-    @Stoner.command(name="spacechannel", description="Create a channel with spaces.", usage="spacechannel [channel name]")
+    @Blaze.command(name="spacechannel", description="Create a channel with spaces.", usage="spacechannel [channel name]")
     async def spacechannel(ctx, *, channelName = "example channel name"):
         channelName = channelName.replace(" ", channelBlankChar)
         await ctx.guild.create_text_channel(name=channelName)
@@ -4004,7 +3980,7 @@ That crypto currency doesnt exist or there was an error.
 
             await ctx.send(embed=embed, delete_after=__deletetimeout__)  
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Space Channel ]
 
 Created a channel with the name {channelName}.
@@ -4013,12 +3989,12 @@ Created a channel with the name {channelName}.
 # {__embedfooter__}
 ```""")
     
-    @Stoner.command(name="uwu", description="Translate your messages to uwu!", usage="uwu [message]")
+    @Blaze.command(name="uwu", description="Translate your messages to uwu!", usage="uwu [message]")
     async def uwu__(ctx, *, message):
         uwued = uwuify.uwu(message)
         await ctx.send(uwued)
         
-    @Stoner.command(name="uwuify", description="Automatically translate all your sent messages to uwu!", usage="uwuify")
+    @Blaze.command(name="uwuify", description="Automatically translate all your sent messages to uwu!", usage="uwuify")
     async def uwuify__(ctx):
         global uwuifyEnabled
         
@@ -4029,7 +4005,7 @@ Created a channel with the name {channelName}.
             uwuifyEnabled = True
             await ctx.send("All your messages will now be translated to uwu.", delete_after=__deletetimeout__)            
 
-    @Stoner.command(name="geoip", description="Get information from an IP address.", usage="geoip [ip]", aliases=["iplookup", "lookupip", "ipinfo"])
+    @Blaze.command(name="geoip", description="Get information from an IP address.", usage="geoip [ip]", aliases=["iplookup", "lookupip", "ipinfo"])
     async def geoip(ctx, ip):
         data = requests.get(f"http://ip-api.com/json/{ip}").json()
         data2 = requests.get(f"https://ipqualityscore.com/api/json/ip/oOswzMILsf8QA7JGtaQDdXARfDtbKW1K/{ip}").json()
@@ -4063,7 +4039,7 @@ Created a channel with the name {channelName}.
 
             await ctx.send(embed=embed, delete_after=__deletetimeout__)  
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ {ip} information.. ]
 
 Country: {country}
@@ -4081,11 +4057,11 @@ Hostname: {hostname}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)      
 
-    @Stoner.command(name="invite", description="Get Stoner's Discord server invite link.", usage="invite")
+    @Blaze.command(name="invite", description="Get Blaze's Discord server invite link.", usage="invite")
     async def invite(ctx):
         print_info(f"Discord server invite: {discordServer}")
 
-    @Stoner.command(name="pytoexe", description="Convert a PY file to an executable.", usage="pytoexe [path]", aliases=["pythontoexe", "py2exe", "python2exe"])
+    @Blaze.command(name="pytoexe", description="Convert a PY file to an executable.", usage="pytoexe [path]", aliases=["pythontoexe", "py2exe", "python2exe"])
     async def pytoexe(ctx, *, path):
         pyFile = False
         file = path.split("/")[-1]
@@ -4104,7 +4080,7 @@ Hostname: {hostname}
 
                 message = await ctx.send(embed=embed)
             else:
-                message = await ctx.send(f"""```ini
+                message = await ctx.send(f"""```>>>
 [ PY To Executable ]
 
 Conversion for your file has started, check the console for more information.
@@ -4126,7 +4102,7 @@ Conversion for your file has started, check the console for more information.
 
                 await message.edit(content="", embed=embed)  
             else:
-                await message.edit(content=f"""```ini
+                await message.edit(content=f"""```>>>
 [ PY To Executable ]
 
 Converstion for your file has completed! Check the console for more information.
@@ -4144,7 +4120,7 @@ Converstion for your file has completed! Check the console for more information.
 
                 await ctx.send(embed=embed)   
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ PY To Executable ]
 
 The path you submitted does not link to a PY file.
@@ -4153,7 +4129,7 @@ The path you submitted does not link to a PY file.
 # {__embedfooter__}
 ```""")          
 
-    @Stoner.command(name="statuscycle", description="Start a custom status cycle.", usage="statuscycle", aliases=["cyclestatus"])
+    @Blaze.command(name="statuscycle", description="Start a custom status cycle.", usage="statuscycle", aliases=["cyclestatus"])
     async def statuscycle(ctx):
         global cycleStatus
 
@@ -4180,25 +4156,25 @@ The path you submitted does not link to a PY file.
                     changeStatus(word, __token__)   
                     await asyncio.sleep(1)
 
-        Stoner.loop.create_task(loopStatus(cycleStatusText))
+        Blaze.loop.create_task(loopStatus(cycleStatusText))
 
         if (cycleStatus is True):
             await ctx.send(f"Now looping your custom status.", delete_after=__deletetimeout__)
         else:
             await ctx.send(f"No longer looping your custom status.", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="statuscycletext", description="Set the text used in status cycle.", usage="statuscycletext [text]", aliases=["cyclestatustext"])
+    @Blaze.command(name="statuscycletext", description="Set the text used in status cycle.", usage="statuscycletext [text]", aliases=["cyclestatustext"])
     async def statuscycletext(ctx, *, text: str):
         global cycleStatusText
         cycleStatusText = text
 
         await ctx.send(f"Status cycle text set to `{cycleStatusText}`", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="stonerping", description="Ping a user then delete the message.", usage="stonerping [@user]")
-    async def stonerping(ctx, user: discord.User):
+    @Blaze.command(name="blazeping", description="Ping a user then delete the message.", usage="blazeping [@user]")
+    async def blazeping(ctx, user: discord.User):
         pass
 
-    @Stoner.command(name="getmessage", description="Get a message by ID.", usage="getmessage [message id]", aliases=["fetchmessage"])
+    @Blaze.command(name="getmessage", description="Get a message by ID.", usage="getmessage [message id]", aliases=["fetchmessage"])
     async def getmessage(ctx, messageid: int):
         msg = await ctx.send("Getting the message . . .")
         message = await get_message(ctx, messageid)
@@ -4213,7 +4189,7 @@ The path you submitted does not link to a PY file.
             embed.timestamp = datetime.now()
             await msg.edit(content="", embed=embed, delete_after=__deletetimeout__)  
         else:
-            await msg.edit(content=f"""```ini
+            await msg.edit(content=f"""```>>>
 [ Get Message ]
 
 Content: {message.content}
@@ -4224,7 +4200,7 @@ Message Link: {message.jump_url}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)      
 
-    @Stoner.command(name="watchdogstats", description="Get stats about Hypixel's Anticheat, Watchdog", usage="watchdogstats")
+    @Blaze.command(name="watchdogstats", description="Get stats about Hypixel's Anticheat, Watchdog", usage="watchdogstats")
     async def watchdogstats(ctx):
         if CONFIG["api_keys"]["hypixel"] == "":
             if __embedmode__:
@@ -4246,7 +4222,7 @@ Message Link: {message.jump_url}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Watchdog Stats ]
 
 Total Bans: {data['watchdog_total']}
@@ -4257,7 +4233,7 @@ Daily Bans: {data['watchdog_rollingDaily']}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="skin", description="Gets a MC user skin", usage="skin [MC user]")
+    @Blaze.command(name="skin", description="Gets a MC user skin", usage="skin [MC user]")
     async def skin(ctx, arg):
         image = requests.get(f"https://minotar.net/skin/{arg}")
         imageFile = open("image.png", "wb").write(image.content)
@@ -4274,7 +4250,7 @@ Daily Bans: {data['watchdog_rollingDaily']}
 
 
 
-    @Stoner.command(name="ppin", description="Add a message to your personal pins.", usage="ppin [message id]", aliases=["personalpin", "addppin", "addpersonalpin"])
+    @Blaze.command(name="ppin", description="Add a message to your personal pins.", usage="ppin [message id]", aliases=["personalpin", "addppin", "addpersonalpin"])
     async def ppin(ctx, msgId: int):
         message = await get_message(ctx, msgId)
 
@@ -4294,7 +4270,7 @@ Daily Bans: {data['watchdog_rollingDaily']}
         else:
             await ctx.send(f"**📌 Personal Pin**\nPinned message `{message.content}` by `{message.author.name}#{message.author.discriminator}`.")
 
-    @Stoner.command(name="ppins", description="List all your pinned messages.", usage="ppins", aliases=["personalpins"])
+    @Blaze.command(name="ppins", description="List all your pinned messages.", usage="ppins", aliases=["personalpins"])
     async def ppins(ctx):
         data = json.load(open("data/personal-pins.json"))
 
@@ -4314,7 +4290,7 @@ Daily Bans: {data['watchdog_rollingDaily']}
         else:
             await ctx.send(f"**Personal Pins**\n{ppinsMsg}")
 
-    @Stoner.command(name="ppindel", description="Delete a pin from your personal pins.", usage="ppindel [pin id]", aliases=["ppindelete", "removeppin", "deleteppin", "personalpindelete", "deletepersonalpin", "removepersonalpin"])
+    @Blaze.command(name="ppindel", description="Delete a pin from your personal pins.", usage="ppindel [pin id]", aliases=["ppindelete", "removeppin", "deleteppin", "personalpindelete", "deletepersonalpin", "removepersonalpin"])
     async def ppindel(ctx, pinId: str):
         data = json.load(open("data/personal-pins.json"))
 
@@ -4331,17 +4307,17 @@ Daily Bans: {data['watchdog_rollingDaily']}
         else:
             await ctx.send(f"**Personal Pin**\nDelete pin `{pinId}`.")
 
-    @Stoner.command(name="countdown", description="Count down from a number.", usage="countdown [number]")
+    @Blaze.command(name="countdown", description="Count down from a number.", usage="countdown [number]")
     async def countdown(ctx, number: int):
         for count in range(number, 0, -1):
             await ctx.send(count)
 
-    @Stoner.command(name="countup", description="Count up from a number.", usage="countup [number]")
+    @Blaze.command(name="countup", description="Count up from a number.", usage="countup [number]")
     async def countup(ctx, number: int):
         for count in range(number):
             await ctx.send(count)
 
-    @Stoner.command(name="massban", description="Ban all the members in the command server.", usage="massban")
+    @Blaze.command(name="massban", description="Ban all the members in the command server.", usage="massban")
     async def massban(ctx):
         if __riskmode__:
             try:
@@ -4385,7 +4361,7 @@ Daily Bans: {data['watchdog_rollingDaily']}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -4393,7 +4369,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
 
-    @Stoner.command(name="masskick", description="Kick all the members in the command server.", usage="masskick")
+    @Blaze.command(name="masskick", description="Kick all the members in the command server.", usage="masskick")
     async def masskick(ctx):
         if __riskmode__:
             try:
@@ -4437,7 +4413,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -4445,7 +4421,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
             
-    @Stoner.command(name="raidjoin", description="Make all your account tokens join a server.", usage="raidjoin [delay] [invite]")
+    @Blaze.command(name="raidjoin", description="Make all your account tokens join a server.", usage="raidjoin [delay] [invite]")
     async def raidjoin(ctx, delay:int = 3, *, invite: str):
         if __riskmode__:
             print_info(f"Trying to join server with tokens every {delay} seconds.")
@@ -4486,7 +4462,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -4494,7 +4470,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
 
-    @Stoner.command(name="tokenraid", description="Raid a server with all your account tokens.", usage="tokenraid [threads] [amount] [channel id] (message)")
+    @Blaze.command(name="tokenraid", description="Raid a server with all your account tokens.", usage="tokenraid [threads] [amount] [channel id] (message)")
     async def tokenraid(ctx, threadsAmount:int, amount: int, channel_id: int = None, *, text = None):
         if __riskmode__:
             await ctx.message.delete()
@@ -4522,7 +4498,7 @@ You have risk mode disabled, you cant use this command.
                     thread.join()
                 print_info("Raid finished.")
 
-            Stoner.loop.create_task(raid())
+            Blaze.loop.create_task(raid())
         else:
             if __embedmode__:
                 embed = discord.Embed(title=f"Abusive Commands", color=__embedcolour__, description=f"You have risk mode disabled, you cant use this command.")
@@ -4531,7 +4507,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -4539,7 +4515,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                          
 
-    @Stoner.command(name="checktoken", description="Checks if a token is working.", usage="checktoken [token]")
+    @Blaze.command(name="checktoken", description="Checks if a token is working.", usage="checktoken [token]")
     async def checktoken(ctx, *, token):
         tokens = [token]
         valid = "invalid"
@@ -4559,7 +4535,7 @@ You have risk mode disabled, you cant use this command.
         await message.edit(content="Check complete, read console for more information.", delete_after=__deletetimeout__)
         print_info(f"Check complete, the token is {valid}.")
 
-    @Stoner.command(name="checktokens", description="Checks if your tokens are working.", usage="checktokens")
+    @Blaze.command(name="checktokens", description="Checks if your tokens are working.", usage="checktokens")
     async def checktokens(ctx):
         tokens = []
         validTokens = []
@@ -4587,7 +4563,7 @@ You have risk mode disabled, you cant use this command.
         print_info(f"Valid tokens: {len(validTokens)} (Saved to data/valid-tokens.txt)")           
         print_info(f"Invalid tokens: {len(invalidTokens)} (Saved to data/invalid-tokens.txt)")           
 
-    @Stoner.command(name="wipetoken", description="Completely wipe a token.", aliases=["cleantoken"])
+    @Blaze.command(name="wipetoken", description="Completely wipe a token.", aliases=["cleantoken"])
     async def wipetoken(ctx, token):
         try:
             await ctx.message.delete()
@@ -4630,7 +4606,7 @@ You have risk mode disabled, you cant use this command.
         threading.Thread(target=leaveServers).start()
         threading.Thread(target=removeFriends).start()
 
-    @Stoner.command(name="nuketoken", description="Nuke a token.", usage="nuketoken [token]", aliases=["tokennuke"])
+    @Blaze.command(name="nuketoken", description="Nuke a token.", usage="nuketoken [token]", aliases=["tokennuke"])
     async def nuketoken(ctx, token):
         try:
             await ctx.message.delete()
@@ -4686,7 +4662,7 @@ You have risk mode disabled, you cant use this command.
         threading.Thread(target=removeFriends).start()
         threading.Thread(target=createGuilds).start()
 
-    @Stoner.command(name="gstart", description="Start a giveaway in the same channel", usage="gstart [duration] [winners] [prize]", aliases=["giveawaystart", "startgiveaway"])
+    @Blaze.command(name="gstart", description="Start a giveaway in the same channel", usage="gstart [duration] [winners] [prize]", aliases=["giveawaystart", "startgiveaway"])
     async def gstart(ctx, duration=None, winners: int = None, *, prize=None):
         if duration is not None:
             if winners is not None:
@@ -4743,7 +4719,7 @@ You have risk mode disabled, you cant use this command.
                             users = await reaction.users().flatten()
                             for user in users:
                                 entries.append(f"<@{user.id}>")
-                        entries.remove(f"<@{Stoner.user.id}>")
+                        entries.remove(f"<@{Blaze.user.id}>")
 
                         nowinner = False
                         if entries != []:
@@ -4788,14 +4764,14 @@ You have risk mode disabled, you cant use this command.
 
                 else:
                     await ctx.send(
-                        f"❌ **Incorrect Syntax**\nTry: `{Stoner.command_prefix}gstart 30m 1 Awesome T-Shirt`")
+                        f"❌ **Incorrect Syntax**\nTry: `{Blaze.command_prefix}gstart 30m 1 Awesome T-Shirt`")
             else:
-                await ctx.send(f"❌ **Incorrect Syntax**\nTry: `{Stoner.command_prefix}gstart 30m 1 Awesome T-Shirt`")
+                await ctx.send(f"❌ **Incorrect Syntax**\nTry: `{Blaze.command_prefix}gstart 30m 1 Awesome T-Shirt`")
         else:
-            await ctx.send(f"❌ **Incorrect Syntax**\nTry: `{Stoner.command_prefix}gstart 30m 1 Awesome T-Shirt`")
+            await ctx.send(f"❌ **Incorrect Syntax**\nTry: `{Blaze.command_prefix}gstart 30m 1 Awesome T-Shirt`")
 
 
-    @Stoner.command(name="gend", description="End a giveaway", usage="gend [message id]", aliases=["giveawayend", "endgiveaway"])
+    @Blaze.command(name="gend", description="End a giveaway", usage="gend [message id]", aliases=["giveawayend", "endgiveaway"])
     async def gend(ctx, id: int = None):
         #running = False
 
@@ -4815,9 +4791,9 @@ You have risk mode disabled, you cant use this command.
         #print("Fetched Message ID: " + str(msgId))
         #print("Looking for Message ID: " + str(id))
         #print("Message author ID: " + str(msgAuthorId))
-        #print("Bot user ID: " + str(Stoner.user.id))
+        #print("Bot user ID: " + str(Blaze.user.id))
 
-        if msgId == id and msgAuthorId == Stoner.user.id:
+        if msgId == id and msgAuthorId == Blaze.user.id:
             if "🎉 **GIVEAWAY** 🎉" in msgContent:
                 #running = True
                 embeds = msg.embeds
@@ -4830,7 +4806,7 @@ You have risk mode disabled, you cant use this command.
                     users = await reaction.users().flatten()
                     for user in users:
                         entries.append(f"<@{user.id}>")
-                entries.remove(f"<@{Stoner.user.id}>")
+                entries.remove(f"<@{Blaze.user.id}>")
 
                 nowinner = False
                 if "winners" in embed_dict['footer']['text']:
@@ -4883,7 +4859,7 @@ You have risk mode disabled, you cant use this command.
             await ctx.send("That is not a giveaway.")
 
 
-    @Stoner.command(name="greroll", description="Re-roll a giveaway", usage="greroll [message id]", aliases=["giveawayreroll", "rerollgiveaway"])
+    @Blaze.command(name="greroll", description="Re-roll a giveaway", usage="greroll [message id]", aliases=["giveawayreroll", "rerollgiveaway"])
     async def greroll(ctx, id: int = None):
         #running = False
 
@@ -4892,7 +4868,7 @@ You have risk mode disabled, you cant use this command.
             if message.id == id:
                 msg = message
 
-        if msg.author.id == Stoner.user.id:
+        if msg.author.id == Blaze.user.id:
             if "🎉 **GIVEAWAY** 🎉" in msg.content:
                 #running = True
                 await ctx.send("You can't re-roll a running giveaway.")
@@ -4909,7 +4885,7 @@ You have risk mode disabled, you cant use this command.
                     users = await reaction.users().flatten()
                     for user in users:
                         entries.append(f"<@{user.id}>")
-                entries.remove(f"<@{Stoner.user.id}>")
+                entries.remove(f"<@{Blaze.user.id}>")
 
                 nowinner = False
                 if "winners" in embed_dict['footer']['text']:
@@ -4944,7 +4920,7 @@ You have risk mode disabled, you cant use this command.
 
     typing = False
 
-    @Stoner.command(name="typing", description="Start or stop typing.", usage="typing [start/stop]", aliases=["inftyping", "infintetyping"])
+    @Blaze.command(name="typing", description="Start or stop typing.", usage="typing [start/stop]", aliases=["inftyping", "infintetyping"])
     async def typing__(ctx, action = None):
         global typing
         if action == "start" or action == "Start":
@@ -4966,7 +4942,7 @@ You have risk mode disabled, you cant use this command.
         elif action is None:
             pass
 
-    @Stoner.command(name="sounds", description="Toggle Stoner notification sounds.", usage="sounds", aliases=["togglesounds", "soundstoggle"])
+    @Blaze.command(name="sounds", description="Toggle Blaze notification sounds.", usage="sounds", aliases=["togglesounds", "soundstoggle"])
     async def sounds(ctx):
         cfg = Config.getConfig()
 
@@ -4978,7 +4954,7 @@ You have risk mode disabled, you cant use this command.
         Config.saveConfig(cfg)
         await ctx.send(f"Sounds set to `{cfg['sounds']}`.")
 
-    @Stoner.command(name="notifications", description="Toggle Stoner notifications.", usage="notifications", aliases=["togglenotifications", "notificationstoggle"])
+    @Blaze.command(name="notifications", description="Toggle Blaze notifications.", usage="notifications", aliases=["togglenotifications", "notificationstoggle"])
     async def notifications(ctx):
         cfg = Config.getConfig()
 
@@ -4990,7 +4966,7 @@ You have risk mode disabled, you cant use this command.
         Config.saveConfig(cfg)
         await ctx.send(f"Notifications set to `{cfg['toastnotifications']}`.")
 
-    @Stoner.command(name="ping", description="Ping a domain or ip address.", usage="ping [ip/domain]")
+    @Blaze.command(name="ping", description="Ping a domain or ip address.", usage="ping [ip/domain]")
     async def ping(ctx, *, dns):
         message = await ctx.send("Pinging...")
 
@@ -5013,7 +4989,7 @@ You have risk mode disabled, you cant use this command.
             embed.timestamp = datetime.now()
             await message.edit(content="Pong!", embed=embed, delete_after=__deletetimeout__)
         else:
-            await message.edit(content=f"""```ini
+            await message.edit(content=f"""```>>>
 [ {dns} ping.. ]
 
 IP Address: {address}
@@ -5025,12 +5001,12 @@ Average: {average}
 # {__embedfooter__}
 ```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="cloneserver", description="Clone a server.", usage="cloneserver", aliases=["copyserver"])
+    @Blaze.command(name="cloneserver", description="Clone a server.", usage="cloneserver", aliases=["copyserver"])
     async def cloneserver(ctx):
         serverName = ctx.guild.name
         serverIcon = ctx.guild.icon
 
-        newGuild = await Stoner.create_guild(serverName)
+        newGuild = await Blaze.create_guild(serverName)
         print_info(f"Created new guild.")
         newGuildDefaultChannels = await newGuild.fetch_channels()
         for channel in newGuildDefaultChannels:
@@ -5088,15 +5064,15 @@ Average: {average}
 
         await ctx.send(f"Made a clone of `{ctx.guild.name}`.")
 
-    @Stoner.command(name="webhooksetup", description="Create a new server with webhooks.", usage="webhooksetup", aliases=["setupwebhooks"])
+    @Blaze.command(name="webhooksetup", description="Create a new server with webhooks.", usage="webhooksetup", aliases=["setupwebhooks"])
     async def webhooksetup(ctx):
-        global __nitrowebhook__, __privnotewebhook__, __giveawaywebhook__, __stonerpingwebhook__, __friendsupdatewebhook__, __dmtypingwebhook__, __guildleavewebhook__, __selfbotwebhook__, __ticketswebhook__
+        global __nitrowebhook__, __privnotewebhook__, __giveawaywebhook__, __blazepingwebhook__, __friendsupdatewebhook__, __dmtypingwebhook__, __guildleavewebhook__, __selfbotwebhook__, __ticketswebhook__
         
         iconFile = open("data/icon.png", "rb")
         icon = bytes(iconFile.read())
 
         configFile = json.load(open("config.json"))
-        guild = await Stoner.create_guild("Stoner Notifications", icon=icon)
+        guild = await Blaze.create_guild("Blaze Notifications", icon=icon)
         newGuildDefaultChannels = await guild.fetch_channels()
         
         for channel in newGuildDefaultChannels:
@@ -5113,17 +5089,17 @@ Average: {average}
         nitroWebhookChannel = await category.create_text_channel("nitro-sniper")
         privnoteWebhookChannel = await category.create_text_channel("privnote-sniper")
         giveawayWebhookChannel = await category.create_text_channel("giveaway-sniper")
-        stonerPingWebhookChannel = await category.create_text_channel("stoner-pings")
+        blazePingWebhookChannel = await category.create_text_channel("blaze-pings")
         friendUpdatesWebhookChannel = await category.create_text_channel("friend-updates")
         dmTypingWebhookChannel = await category.create_text_channel("dm-typing")
         guildLeaveWebhookChannel = await category.create_text_channel("guild-leave")
         selfbotsWebhookChannel = await category.create_text_channel("selfbots")
         ticketsWebhookChannel = await category.create_text_channel("tickets")
 
-        nitroWebhook = await nitroWebhookChannel.create_webhook(name="Stoner Nitro Sniper")
-        privnoteWebhook = await privnoteWebhookChannel.create_webhook(name="Stoner Privnote Sniper")
-        giveawayWebhook = await giveawayWebhookChannel.create_webhook(name="Stoner Giveaway Sniper")
-        stonerPingWebhook = await stonerPingWebhookChannel.create_webhook(name="Stoner Pings")
+        nitroWebhook = await nitroWebhookChannel.create_webhook(name="Blaze Nitro Sniper")
+        privnoteWebhook = await privnoteWebhookChannel.create_webhook(name="Blaze Privnote Sniper")
+        giveawayWebhook = await giveawayWebhookChannel.create_webhook(name="Blaze Giveaway Sniper")
+        blazePingWebhook = await blazePingWebhookChannel.create_webhook(name="Blaze Pings")
         friendUpdatesWebhook = await friendUpdatesWebhookChannel.create_webhook(name="Friend Updates")
         dmTypingWebhook = await dmTypingWebhookChannel.create_webhook(name="DM Typing")
         guildLeaveWebhook = await guildLeaveWebhookChannel.create_webhook(name="Guild Leave")
@@ -5133,7 +5109,7 @@ Average: {average}
         __nitrowebhook__ = nitroWebhook.url
         __privnotewebhook__ = privnoteWebhook.url
         __giveawaywebhook__ = giveawayWebhook.url
-        __stonerpingwebhook__ = stonerPingWebhook.url
+        __blazepingwebhook__ = blazePingWebhook.url
         __friendsupdatewebhook__ = friendUpdatesWebhook.url
         __dmtypingwebhook__ = dmTypingWebhook.url
         __guildleavewebhook__ = guildLeaveWebhook.url
@@ -5143,7 +5119,7 @@ Average: {average}
         configFile["webhooks"]["nitro"] = __nitrowebhook__  
         configFile["webhooks"]["privnote"] = __privnotewebhook__  
         configFile["webhooks"]["giveaway"] = __giveawaywebhook__
-        configFile["webhooks"]["stonerping"] = __stonerpingwebhook__
+        configFile["webhooks"]["blazeping"] = __blazepingwebhook__
         configFile["webhooks"]["friendsupdate"] = __friendsupdatewebhook__
         configFile["webhooks"]["dmtyping"] = __dmtypingwebhook__
         configFile["webhooks"]["guildleave"] = __guildleavewebhook__
@@ -5161,7 +5137,7 @@ Average: {average}
         else:
             await ctx.send(f"Created a new guild for your webhooks called `{guild.name}`.", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="spamwebhook", description="Spam the shit out of a webhook.", usage="spamwebhook [amount] [url] (message)")
+    @Blaze.command(name="spamwebhook", description="Spam the shit out of a webhook.", usage="spamwebhook [amount] [url] (message)")
     async def spamwebhook(ctx, amount: int, url, *, message = None):
         if __embedmode__:
             embed = discord.Embed(title="Spamming webhook...", colour=__embedcolour__)
@@ -5191,7 +5167,7 @@ Average: {average}
         else:
             await ctx.send("Finished spamming webhook!", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="newwebhook", description="Create a webhook in the command channel.", usage="newwebhook [name]", aliases=["createwebhook"])
+    @Blaze.command(name="newwebhook", description="Create a webhook in the command channel.", usage="newwebhook [name]", aliases=["createwebhook"])
     async def newwebhook(ctx, *, name):
         webhook = await ctx.channel.create_webhook(name=name)
 
@@ -5205,9 +5181,9 @@ Average: {average}
         else:
             await ctx.send(f"Created a webhook called {name}\nURL: {webhook.url}", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="delwebhook", description="Delete a webhook from the ID.", usage="delwebhook [id]", aliases=["deletewebhook", "removewebhook"])
+    @Blaze.command(name="delwebhook", description="Delete a webhook from the ID.", usage="delwebhook [id]", aliases=["deletewebhook", "removewebhook"])
     async def delwebhook(ctx, id: int):
-        webhook = await Stoner.fetch_webhook(id)
+        webhook = await Blaze.fetch_webhook(id)
         await webhook.delete()
 
         if __embedmode__:
@@ -5219,9 +5195,9 @@ Average: {average}
         else:
             await ctx.send("Deleted the webhook", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="webhookinfo", description="Information about the webhook.", usage="webhookinfo [id]", aliases=["webhooklookup", "lookupwebhook"])
+    @Blaze.command(name="webhookinfo", description="Information about the webhook.", usage="webhookinfo [id]", aliases=["webhooklookup", "lookupwebhook"])
     async def webhookinfo(ctx, id: int):
-        webhook = await Stoner.fetch_webhook(id)
+        webhook = await Blaze.fetch_webhook(id)
 
         if __embedmode__:
             embed = discord.Embed(title=f"{webhook.name} Information", colour=__embedcolour__)
@@ -5235,7 +5211,7 @@ Average: {average}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ {webhook.name} Information ]
 
 Webhook Name: {webhook.name}
@@ -5247,7 +5223,7 @@ Webhook Token: {webhook.token}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="dumpchat", description="Get the chat's history.", usage="dumpchat [amount] (channel id) (oldest first, true/false)", aliases=["savechat", "chathistory"])
+    @Blaze.command(name="dumpchat", description="Get the chat's history.", usage="dumpchat [amount] (channel id) (oldest first, true/false)", aliases=["savechat", "chathistory"])
     async def dumpchat(ctx, amount: int, channelId: int = None, oldestFirst: bool = False):
         if channelId is None:
             messages = await ctx.channel.history(limit=amount, oldest_first=oldestFirst).flatten()
@@ -5268,7 +5244,7 @@ Webhook Token: {webhook.token}
             await ctx.send("Generated the chat history.", file=discord.File("chat_history.txt"))
             os.remove("chat_history.txt")
         else:
-            channel = Stoner.get_channel(channelId)
+            channel = Blaze.get_channel(channelId)
             messages = await channel.history(limit=amount, oldest_first=oldestFirst).flatten()
 
             f = open("chat_history.txt", "a")
@@ -5287,18 +5263,18 @@ Webhook Token: {webhook.token}
             await ctx.send("Generated the chat history.", file=discord.File("chat_history.txt"))
             os.remove("chat_history.txt")
 
-    @Stoner.command(name="newtheme", description="Create a new theme with the given name.", usage="newtheme [name]", aliases=["createtheme"])
+    @Blaze.command(name="newtheme", description="Create a new theme with the given name.", usage="newtheme [name]", aliases=["createtheme"])
     async def newtheme(ctx, *, name):
         if not os.path.isfile(f'themes/{name}.json'):
             name = name.replace(" ", "-")
             f = open(f'themes/{name}.json', "w")
             f.write("""
 {
-"embedtitle": "Stoner Recoded",
+"embedtitle": "Blaze Recoded",
 "embedcolour": "#708ffa",
 "embedfooter": "",
 "embedfooterimage": "",
-"globalemoji": ":stoner:",
+"globalemoji": ":blaze:",
 "embedimage": ""
 }
             """)
@@ -5310,7 +5286,7 @@ Webhook Token: {webhook.token}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Theme create with the name {name} ]
 
 
@@ -5323,13 +5299,13 @@ Webhook Token: {webhook.token}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ A theme with that name already exists ]
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="deltheme", description="Delete the named theme.", usage="deltheme [name]", aliases=["deletetheme", "removetheme"])
+    @Blaze.command(name="deltheme", description="Delete the named theme.", usage="deltheme [name]", aliases=["deletetheme", "removetheme"])
     async def deltheme(ctx, *, name):
         if not os.path.isfile(f'themes/{name}.json'):
             if __embedmode__:
@@ -5339,7 +5315,7 @@ Webhook Token: {webhook.token}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ A theme with that name doesnt exist ]
 
 
@@ -5353,13 +5329,13 @@ Webhook Token: {webhook.token}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Theme with the name {name} was deleted ]
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="theme", description="Change your current theme.", usage="theme [theme]", aliases=["settheme"])
+    @Blaze.command(name="theme", description="Change your current theme.", usage="theme [theme]", aliases=["settheme"])
     async def theme__(ctx, *, theme):
         if os.path.isfile(f'themes/{theme}.json'):
             updateTheme(theme + ".json")
@@ -5372,7 +5348,7 @@ Webhook Token: {webhook.token}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ That theme has been set ]
 
 
@@ -5385,13 +5361,13 @@ Webhook Token: {webhook.token}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ A theme with that name doesnt exist ]
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="prefix", description="Set the command prefix.", usage="prefix [prefix]", aliases=["c"])
+    @Blaze.command(name="prefix", description="Set the command prefix.", usage="prefix [prefix]", aliases=["c"])
     async def prefix(ctx, *, prefix):
         Config.changePrefix(prefix)
 
@@ -5402,22 +5378,22 @@ Webhook Token: {webhook.token}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Prefix changed to {prefix} ]
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="restart", description="Restart Stoner selfbot.", usage="restart", aliases=["reboot", "reload", "consoleCommand-restart"])
+    @Blaze.command(name="restart", description="Restart Blaze selfbot.", usage="restart", aliases=["reboot", "reload", "consoleCommand-restart"])
     async def restart(ctx):
-        print_info("Restarting stoner...")
+        print_info("Restarting blaze...")
         try:
-            await ctx.send("Restarting stoner...")
+            await ctx.send("Restarting blaze...")
         except:
             pass
         restart_bot()
 
-    @Stoner.command(name="firstmessage", description="Get the first message in the command channel.", usage="firstmessage")
+    @Blaze.command(name="firstmessage", description="Get the first message in the command channel.", usage="firstmessage")
     async def firstmessage(ctx):
         messages = await ctx.channel.history(limit=1, oldest_first=True).flatten()
         for message in messages:
@@ -5432,9 +5408,9 @@ Webhook Token: {webhook.token}
         else:
             await ctx.send(f"First message: {firstMessage.jump_url}")
 
-    @Stoner.command(name="haste", description="Upload text to Stoner's Haste site.", usage="haste [text]")
+    @Blaze.command(name="haste", description="Upload text to Blaze's Haste site.", usage="haste [text]")
     async def haste(ctx, *, text):
-        url = "https://haste.stoner.cool/haste"
+        url = "https://haste.blaze.cool/haste"
         payload=f'password=h5MEn3ptby4XSdxJ&text={text}&username={ctx.author.name}'
         headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -5443,51 +5419,51 @@ Webhook Token: {webhook.token}
         response = requests.request("POST", url, headers=headers, data=payload)
         await ctx.send(response.text)
 
-    @Stoner.command(name="brainfuck", description="Generate brainfuck code from text.", usage="brainfuck [text]", aliases=["bf"])
+    @Blaze.command(name="brainfuck", description="Generate brainfuck code from text.", usage="brainfuck [text]", aliases=["bf"])
     async def brainfuck(ctx, *, text):
         result = brainfuckery.Brainfuckery().convert(text)
         await ctx.send(result)
 
-    @Stoner.command(name="executebrainfuck", description="Execute brainfuck code.", usage="executebrainfuck [code]", aliases=["ebf"])
+    @Blaze.command(name="executebrainfuck", description="Execute brainfuck code.", usage="executebrainfuck [code]", aliases=["ebf"])
     async def executebrainfuck(ctx, *, code):
         result = brainfuckery.Brainfuckery().interpret(code)
         await ctx.send(result)
 
-    @Stoner.command(name="shrug", description="Shrug your arms.", usage="shrug")
+    @Blaze.command(name="shrug", description="Shrug your arms.", usage="shrug")
     async def shrug(ctx):
         await ctx.send(f"¯\_(ツ)_/¯")
 
-    @Stoner.command(name="tableflip", description="Flip the table.", usage="tableflip")
+    @Blaze.command(name="tableflip", description="Flip the table.", usage="tableflip")
     async def tableflip(ctx):
         await ctx.send("(╯°□°）╯︵ ┻━┻")
 
-    @Stoner.command(name="unflip", description="Put the table back.", usage="unflip")
+    @Blaze.command(name="unflip", description="Put the table back.", usage="unflip")
     async def unflip(ctx):
         await ctx.send("┬─┬ ノ( ゜-゜ノ)")
 
-    # @Stoner.command(name="hide", description="Hide a message behind another message.", usage="hide [msg1] [msg2]")
+    # @Blaze.command(name="hide", description="Hide a message behind another message.", usage="hide [msg1] [msg2]")
     # async def hide(ctx, msg1, msg2):
     #     await ctx.send(msg1+hideText+msg2)
 
-    @Stoner.command(name="blank", description="Send a blank message", usage="blank", aliases=["empty"])
+    @Blaze.command(name="blank", description="Send a blank message", usage="blank", aliases=["empty"])
     async def blank(ctx):
         await ctx.send("** **")
 
-    @Stoner.command(name="length", description="Get the length of a string.", usage="length [string]", aliases=["stringlength"])
+    @Blaze.command(name="length", description="Get the length of a string.", usage="length [string]", aliases=["stringlength"])
     async def length(ctx, *, string):
         await ctx.send(f"Length of `{string}`: " + len(string))
 
-    @Stoner.command(name="lmgtfy", description="Let me Google that for you.", usage="lmgtfy [search]", aliases=["letmegooglethatforyou"])
+    @Blaze.command(name="lmgtfy", description="Let me Google that for you.", usage="lmgtfy [search]", aliases=["letmegooglethatforyou"])
     async def lmgtfy(ctx, *, search):
         await ctx.send(f"https://lmgtfy.app/?q={search.replace(' ', '+')}")
 
-    @Stoner.command(name="selfbotcheck", description="Checks for users using a selfbot.", usage="selfbotcheck")
+    @Blaze.command(name="selfbotcheck", description="Checks for users using a selfbot.", usage="selfbotcheck")
     async def selfbotcheck(ctx):
         await ctx.send("Checking for users with a trash selfbot...\nPeople who react below are using a selfbot.")
         await ctx.send("GIVEAWAY")
         await ctx.send("🎉 **GIVEAWAY** 🎉")
 
-    @Stoner.command(name="nukeserver", description="Delete all roles and channels in the command server.", usage="nukeserver", aliases=["nukeguild"])
+    @Blaze.command(name="nukeserver", description="Delete all roles and channels in the command server.", usage="nukeserver", aliases=["nukeguild"])
     async def nukeserver(ctx):
         if __riskmode__:
             if ctx.author.guild_permissions.administrator:
@@ -5509,7 +5485,7 @@ Webhook Token: {webhook.token}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5517,7 +5493,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                  
 
-    @Stoner.command(name="destroyserver", description="Completely destroy the command server.", usage="destroyserver", aliases=["destroyguild"])
+    @Blaze.command(name="destroyserver", description="Completely destroy the command server.", usage="destroyserver", aliases=["destroyguild"])
     async def destroyserver(ctx):
         if __riskmode__:
             if ctx.author.guild_permissions.administrator:
@@ -5545,7 +5521,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5553,7 +5529,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                  
 
-    @Stoner.command(name="spamchannels", description="Spam create channels with a desired name. (Thanks Port <3)", usage="spamchannels [amount] (name)", aliases=["spamcreatechannels"])
+    @Blaze.command(name="spamchannels", description="Spam create channels with a desired name. (Thanks Port <3)", usage="spamchannels [amount] (name)", aliases=["spamcreatechannels"])
     async def spamchannels(ctx, amount: int, *, name = None):
         if __riskmode__:
             if ctx.author.guild_permissions.manage_channels:
@@ -5572,7 +5548,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5580,7 +5556,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                      
 
-    @Stoner.command(name="spamroles", description="Spam create roles with a desired name.", usage="spamroles [amount] (name)", aliases=["spamcreateroles"])
+    @Blaze.command(name="spamroles", description="Spam create roles with a desired name.", usage="spamroles [amount] (name)", aliases=["spamcreateroles"])
     async def spamroles(ctx, amount: int, *, name = None):
         if __riskmode__:
             if ctx.author.guild_permissions.manage_roles:
@@ -5599,7 +5575,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5607,7 +5583,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                      
 
-    @Stoner.command(name="deletechannels", description="Delete all of the command server's channels.", usage="deletechannels", aliases=["delchannels", "removechannels"])
+    @Blaze.command(name="deletechannels", description="Delete all of the command server's channels.", usage="deletechannels", aliases=["delchannels", "removechannels"])
     async def deletechannels(ctx):
         if __riskmode__:
             if ctx.author.guild_permissions.manage_channels:
@@ -5624,7 +5600,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5632,7 +5608,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                  
 
-    @Stoner.command(name="deleteroles", description="Delete all of the command server's roles.", usage="deleteroles", aliases=["delroles", "removeroles"])
+    @Blaze.command(name="deleteroles", description="Delete all of the command server's roles.", usage="deleteroles", aliases=["delroles", "removeroles"])
     async def deleteroles(ctx):
         if __riskmode__:
             if ctx.author.guild_permissions.manage_roles:
@@ -5649,7 +5625,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5657,7 +5633,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)      
 
-    @Stoner.command(name="dmspam", description="Spam DM messages X amount of times.", usage="dmspam [amount] [delay] [@user] [message]", aliases=["spamdm"])
+    @Blaze.command(name="dmspam", description="Spam DM messages X amount of times.", usage="dmspam [amount] [delay] [@user] [message]", aliases=["spamdm"])
     async def dmspam(ctx, amount: int, delay: int, user: discord.User, *, message):
         if __riskmode__:
             for _ in range(amount):
@@ -5674,7 +5650,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5682,8 +5658,8 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
 
-    @Stoner.command(name="threadspam", description="Spam create threads with a starting message.", usage="threadspam [delay] [amount] [addusers | true/false] [name] [startmessage]", aliases=["spamthreads", "spamcreatethreads"])
-    async def threadspam(ctx, delay: int, amount: int, addusers: bool, name: str = "Stoner best selfbot!", *, startmessage: str):
+    @Blaze.command(name="threadspam", description="Spam create threads with a starting message.", usage="threadspam [delay] [amount] [addusers | true/false] [name] [startmessage]", aliases=["spamthreads", "spamcreatethreads"])
+    async def threadspam(ctx, delay: int, amount: int, addusers: bool, name: str = "Blaze best selfbot!", *, startmessage: str):
         if __riskmode__:
             users = []
             
@@ -5754,7 +5730,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5762,7 +5738,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
 
-    @Stoner.command(name="channelspam", description="Spam a message X amount of times in every channel.", usage="channelspam [amount] [delay] [message]", aliases=["sendall", "sendtoallchannels", "msgallchannels", "messageallchannels"])
+    @Blaze.command(name="channelspam", description="Spam a message X amount of times in every channel.", usage="channelspam [amount] [delay] [message]", aliases=["sendall", "sendtoallchannels", "msgallchannels", "messageallchannels"])
     async def channelspam(ctx, amount:int, *, message:str):               
         if __riskmode__:
             for _ in range(amount):
@@ -5780,7 +5756,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5788,7 +5764,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                          
 
-    @Stoner.command(name="spam", description="Spam X amount of times.", usage="spam [amount] [delay] [message]")
+    @Blaze.command(name="spam", description="Spam X amount of times.", usage="spam [amount] [delay] [message]")
     async def spam(ctx, amount: int, delay: int, *, message):
         if __riskmode__:
             global spammingMessages
@@ -5800,7 +5776,7 @@ You have risk mode disabled, you cant use this command.
                         await asyncio.sleep(delay)
                     else:
                         return
-            Stoner.loop.create_task(spamMessages())
+            Blaze.loop.create_task(spamMessages())
         else:
             if __embedmode__:
                 embed = discord.Embed(title=f"Abusive Commands", color=__embedcolour__, description=f"You have risk mode disabled, you cant use this command.")
@@ -5809,7 +5785,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5817,7 +5793,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                      
         
-    @Stoner.command(name="stopspam", description="Stop spamming messages.", usage="stopspam")
+    @Blaze.command(name="stopspam", description="Stop spamming messages.", usage="stopspam")
     async def stopspam(ctx):
         if __riskmode__:
             global spammingMessages
@@ -5830,7 +5806,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5838,7 +5814,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                          
 
-    @Stoner.command(name="ttsspam", description="Spam TTS messages X amount of times.", usage="ttsspam [amount] [delay] [message]", aliases=["texttospeachspam"])
+    @Blaze.command(name="ttsspam", description="Spam TTS messages X amount of times.", usage="ttsspam [amount] [delay] [message]", aliases=["texttospeachspam"])
     async def ttsspam(ctx, amount: int, delay: int, *, message):
         if __riskmode__:
             for _ in range(amount):
@@ -5852,7 +5828,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5860,7 +5836,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
 
-    @Stoner.command(name="fetchmembers", description="Fetch members from a server.", usage="fetchmembers", aliases=["fetchmembersfromserver"])
+    @Blaze.command(name="fetchmembers", description="Fetch members from a server.", usage="fetchmembers", aliases=["fetchmembersfromserver"])
     async def fetchmembers(ctx):
         if __riskmode__:
             try:
@@ -5901,7 +5877,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5909,8 +5885,8 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)              
 
-    @Stoner.command(name="massstonerping", description="Ping a mass amount of people in the command server and delete the messages.", usage="massstonerping (amount of messages) (send delay)", aliases=["massstonermention", "theotherfunny"])
-    async def massstonerping(ctx, amount:int=1, delay:int=0):
+    @Blaze.command(name="massblazeping", description="Ping a mass amount of people in the command server and delete the messages.", usage="massblazeping (amount of messages) (send delay)", aliases=["massblazemention", "theotherfunny"])
+    async def massblazeping(ctx, amount:int=1, delay:int=0):
         if __riskmode__:
             try:
                 await ctx.message.delete()
@@ -5973,7 +5949,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -5981,7 +5957,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                  
 
-    @Stoner.command(name="massping", description="Ping a mass amount of people in the command server.", usage="massping (amount of messages) (send delay)", aliases=["massmention", "sigmainstaller", "hahafunny"])
+    @Blaze.command(name="massping", description="Ping a mass amount of people in the command server.", usage="massping (amount of messages) (send delay)", aliases=["massmention", "sigmainstaller", "hahafunny"])
     async def massping(ctx, amount:int=1, delay:int=0):
         if __riskmode__:
             try:
@@ -6036,7 +6012,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -6044,7 +6020,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                  
             
-    @Stoner.command(name="massdm", description="Send a DM message to everyone in the server.", usage="massdm [delay] [amount] [message]")
+    @Blaze.command(name="massdm", description="Send a DM message to everyone in the server.", usage="massdm [delay] [amount] [message]")
     @commands.guild_only()
     async def massdm(ctx, delay:int=0, amount:int=10, *, message:str):
         if __riskmode__:
@@ -6077,7 +6053,7 @@ You have risk mode disabled, you cant use this command.
             for _ in range(amount):
                 for member in members:
                     try:
-                        member = await Stoner.fetch_user(int(member))
+                        member = await Blaze.fetch_user(int(member))
                         await member.send(message)
                     except:
                         pass
@@ -6090,7 +6066,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -6098,7 +6074,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                                  
 
-    @Stoner.command(name="rickroll", description="Send never gonna give you up lyrics one by one.", usage="rickroll")
+    @Blaze.command(name="rickroll", description="Send never gonna give you up lyrics one by one.", usage="rickroll")
     async def rickroll(ctx):
         global rickRollEnabled
         rickRollEnabled = True
@@ -6113,14 +6089,14 @@ You have risk mode disabled, you cant use this command.
                 else:
                     return
                 
-        Stoner.loop.create_task(sendLyrics())
+        Blaze.loop.create_task(sendLyrics())
 
-    @Stoner.command(name="stoprickroll", description="Stop sending rick astley lyrics.", usage="stoprickroll")
+    @Blaze.command(name="stoprickroll", description="Stop sending rick astley lyrics.", usage="stoprickroll")
     async def stoprickroll(ctx):
         global rickRollEnabled
         rickRollEnabled = False
 
-    @Stoner.command(name="suggest", description="Suggest something.", usage="suggest [suggestion]")
+    @Blaze.command(name="suggest", description="Suggest something.", usage="suggest [suggestion]")
     async def suggest(ctx, *, suggestion):
         if __embedmode__:
             embed = discord.Embed(title="Suggestion", description=suggestion, colour=__embedcolour__)
@@ -6128,7 +6104,7 @@ You have risk mode disabled, you cant use this command.
             embed.timestamp = datetime.now()
             msg = await ctx.send(embed=embed)
         else:
-            msg = await ctx.send(f"""```ini
+            msg = await ctx.send(f"""```>>>
 [ Suggestion ]
 
 {suggestion}
@@ -6138,7 +6114,7 @@ You have risk mode disabled, you cant use this command.
         await msg.add_reaction('\U0001F44D')
         await msg.add_reaction('\U0001F44E')
 
-    @Stoner.command(name="massnick", description="Change the nickname of all members in the command server.", usage="massnick [nickname]", aliases=["massnickname", "masschangenickname"])
+    @Blaze.command(name="massnick", description="Change the nickname of all members in the command server.", usage="massnick [nickname]", aliases=["massnickname", "masschangenickname"])
     async def massnick(ctx, *, nickname):
         if __riskmode__:
             try:
@@ -6182,7 +6158,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -6190,7 +6166,7 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
 
-    @Stoner.command(name="massunnick", description="Reset the nickname of all members in the command server.", usage="massunnick", aliases=["massremovenickname", "massunnickname"])
+    @Blaze.command(name="massunnick", description="Reset the nickname of all members in the command server.", usage="massunnick", aliases=["massremovenickname", "massunnickname"])
     async def massunnick(ctx):
         try:
             await ctx.message.delete()
@@ -6226,7 +6202,7 @@ You have risk mode disabled, you cant use this command.
             except:
                 pass
 
-    @Stoner.command(name="dadjoke", description="A random dad joke.", usage="dadjoke")
+    @Blaze.command(name="dadjoke", description="A random dad joke.", usage="dadjoke")
     async def dadjoke(ctx):
         url = "https://icanhazdadjoke.com/"
 
@@ -6246,7 +6222,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(response.text)
 
-    @Stoner.command(name="randomquestion", description="A random question.", usage="randomquestion", aliases=["ranquestion"])
+    @Blaze.command(name="randomquestion", description="A random question.", usage="randomquestion", aliases=["ranquestion"])
     async def randomquestion(ctx):
         question = requests.get("https://nekos.life/api/v2/why").json()["why"]
 
@@ -6258,7 +6234,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(question)                
 
-    @Stoner.command(name="randommessage", description="A random message.", usage="randommessage", aliases=["ranmessage"])
+    @Blaze.command(name="randommessage", description="A random message.", usage="randommessage", aliases=["ranmessage"])
     async def randommessage(ctx):
         url = "https://ajith-messages.p.rapidapi.com/getMsgs"
 
@@ -6278,7 +6254,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(response_data["Message"])
 
-    @Stoner.command(name="meme", description="A random meme.", usage="meme", aliases=["randommeme"])
+    @Blaze.command(name="meme", description="A random meme.", usage="meme", aliases=["randommeme"])
     async def meme(ctx):
         response = requests.get("https://meme-api.herokuapp.com/gimme")
         data = response.json()
@@ -6292,7 +6268,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(data["title"] + "\n" + data["url"])
 
-    @Stoner.command(name="gif", description="Search for a gif.", usage="gif [search]", aliases=["searchgif"])
+    @Blaze.command(name="gif", description="Search for a gif.", usage="gif [search]", aliases=["searchgif"])
     async def gif(ctx, *, search):
         if CONFIG["api_keys"]["tenor"] == "":
             if __embedmode__:
@@ -6316,7 +6292,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send(data['results'][random.randint(0, 49)]["media"][0]["gif"]["url"])     
 
-    @Stoner.command(name="cat", description="A random cat image.", usage="cat", aliases=["randomcat"])
+    @Blaze.command(name="cat", description="A random cat image.", usage="cat", aliases=["randomcat"])
     async def cat(ctx):
         request = requests.get("https://cataas.com/cat?json=true").json()
         image = "https://cataas.com" + request["url"]
@@ -6329,7 +6305,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(image)
 
-    @Stoner.command(name="catgif", description="A random cat gif.", usage="catgif", aliases=["randomcatgif"])
+    @Blaze.command(name="catgif", description="A random cat gif.", usage="catgif", aliases=["randomcatgif"])
     async def catgif(ctx):
         request = requests.get("https://cataas.com/cat/gif?json=true").json()
         image = "https://cataas.com" + request["url"]
@@ -6342,7 +6318,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(image)
 
-    @Stoner.command(name="dog", description="A random dog image.", usage="dog", aliases=["randomdog"])
+    @Blaze.command(name="dog", description="A random dog image.", usage="dog", aliases=["randomdog"])
     async def dog(ctx):
         response = requests.get('https://dog.ceo/api/breeds/image/random')
         data = response.json()
@@ -6355,7 +6331,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(data['message'])
 
-    @Stoner.command(name="shiba", description="A random shiba image.", usage="shiba", aliases=["randomshiba"])
+    @Blaze.command(name="shiba", description="A random shiba image.", usage="shiba", aliases=["randomshiba"])
     async def shiba(ctx):
         response = requests.get('https://shibe.online/api/shibes?count=1&httpsUrls=true')
         data = response.json()
@@ -6368,7 +6344,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(data[0])                    
 
-    @Stoner.command(name="fox", description="A random fox image. (Thanks Imf44 <3)", usage="fox", aliases=["randomfox"])
+    @Blaze.command(name="fox", description="A random fox image. (Thanks Imf44 <3)", usage="fox", aliases=["randomfox"])
     async def fox(ctx):
         response = requests.get('https://randomfox.ca/floof/')
         data = response.json()
@@ -6381,7 +6357,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(data['message'])
 
-    @Stoner.command(name="achievement", description="Create a fake minecraft achievement image.", usage='achievement ["text"] (icon)', aliases=["minecraftachievement"])
+    @Blaze.command(name="achievement", description="Create a fake minecraft achievement image.", usage='achievement ["text"] (icon)', aliases=["minecraftachievement"])
     async def achievement(ctx, text, icon=10):
         icon = str(icon)
         text = text.replace(" ", "+")
@@ -6398,7 +6374,7 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(file=file)  
             os.remove("image.png")     
 
-    @Stoner.command(name="challenge", description="Create a fake minecraft challenge image.", usage='challenge ["text"] (icon)', aliases=["minecraftchallenge"])
+    @Blaze.command(name="challenge", description="Create a fake minecraft challenge image.", usage='challenge ["text"] (icon)', aliases=["minecraftchallenge"])
     async def challenge(ctx, text, icon=33):  
             text = text.replace(" ", "+")
             image = requests.get(f"http://timbw.ddns.net:5000/challenge?text={text}&icon={icon}")
@@ -6414,7 +6390,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")        
 
-    @Stoner.command(name="captcha", description="Create a fake reCaptcha.", usage="captcha [text]", aliases=["fakecaptcha"])
+    @Blaze.command(name="captcha", description="Create a fake reCaptcha.", usage="captcha [text]", aliases=["fakecaptcha"])
     async def captcha(ctx, *, text):
               
             text = text.replace(" ", "+")
@@ -6431,7 +6407,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")                                                         
 
-    @Stoner.command(name="amiajoke", description="Make a user a joke.", usage="amiajoke [@user]", aliases=["amiajoketoyou"])
+    @Blaze.command(name="amiajoke", description="Make a user a joke.", usage="amiajoke [@user]", aliases=["amiajoketoyou"])
     async def amiajoke(ctx, user:discord.User):
               
             imageurl = avatarUrl(user.id, user.avatar)
@@ -6448,8 +6424,8 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")   
 
-    @Stoner.command(name="didyoumean", description="Create a google did you mean image.", usage='didyoumean ["text 1"] ["text 2"]', aliases=["googledidyoumean"])
-    async def didyoumean(ctx, text1="Nighty", text2="Stoner"):
+    @Blaze.command(name="didyoumean", description="Create a google did you mean image.", usage='didyoumean ["text 1"] ["text 2"]', aliases=["googledidyoumean"])
+    async def didyoumean(ctx, text1="Nighty", text2="Blaze"):
               
             text1 = text1.replace(" ", "+")
             text2 = text2.replace(" ", "+")
@@ -6466,8 +6442,8 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png") 
 
-    @Stoner.command(name="drake", description="Create a drake meme image.", usage='drake ["text 1"] ["text 2"]', aliases=["drakememe"])
-    async def drake(ctx, text1="Nighty Selfbot", text2="Stoner Selfbot"):
+    @Blaze.command(name="drake", description="Create a drake meme image.", usage='drake ["text 1"] ["text 2"]', aliases=["drakememe"])
+    async def drake(ctx, text1="Nighty Selfbot", text2="Blaze Selfbot"):
               
             text1 = text1.replace(" ", "+")
             text2 = text2.replace(" ", "+")
@@ -6484,7 +6460,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")                     
 
-    @Stoner.command(name="facts", description="Create a facts meme image.", usage='facts [text]', aliases=["factsmeme"])
+    @Blaze.command(name="facts", description="Create a facts meme image.", usage='facts [text]', aliases=["factsmeme"])
     async def facts(ctx, *, text):
               
             text = text.replace(" ", "+")
@@ -6501,7 +6477,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")
 
-    @Stoner.command(name="jokeoverhead", description="Create a joke over head image.", usage="jokeoverhead [image url]")
+    @Blaze.command(name="jokeoverhead", description="Create a joke over head image.", usage="jokeoverhead [image url]")
     async def jokeoverhead(ctx, *, imageurl):
               
             image = requests.get(f"http://timbw.ddns.net:5000/jokeoverhead?image={imageurl}")
@@ -6517,8 +6493,8 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")               
 
-    @Stoner.command(name="pornhub", description="Create a pornhub logo image.", usage='pornhub ["text 1"] ["text 2"]')
-    async def pornhub(ctx, text1="Stoner", text2="Selfbot"):
+    @Blaze.command(name="pornhub", description="Create a pornhub logo image.", usage='pornhub ["text 1"] ["text 2"]')
+    async def pornhub(ctx, text1="Blaze", text2="Selfbot"):
               
             text1 = text1.replace(" ", "+")
             text2 = text2.replace(" ", "+")
@@ -6535,7 +6511,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")
 
-    @Stoner.command(name="salty", description="Make someone salty.", usage="salty [@user]")
+    @Blaze.command(name="salty", description="Make someone salty.", usage="salty [@user]")
     async def jokeoverhead(ctx, user:discord.User):
               
             imageurl = avatarUrl(user.id, user.avatar)
@@ -6552,7 +6528,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")
 
-    @Stoner.command(name="ship", description="Ship two people.", usage="ship [@user 1] [@user 2]")
+    @Blaze.command(name="ship", description="Ship two people.", usage="ship [@user 1] [@user 2]")
     async def ship(ctx, user1:discord.User, user2:discord.User):
               
             user1 = avatarUrl(user1.id, user1.avatar)
@@ -6570,11 +6546,11 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")
 
-    @Stoner.command(name="trash", description="Put someone in the trash.", usage='trash [@user]')
+    @Blaze.command(name="trash", description="Put someone in the trash.", usage='trash [@user]')
     async def trash(ctx, user: discord.User):
               
             trash = avatarUrl(user.id, user.avatar)
-            face = avatarUrl(Stoner.user.id, Stoner.user.avatar)
+            face = avatarUrl(Blaze.user.id, Blaze.user.avatar)
             image = requests.get(f"http://timbw.ddns.net:5000/trash?trash={trash}&face={face}")
             imageFile = open("image.png", "wb").write(image.content)
             file = discord.File("image.png", filename="image.png")
@@ -6588,7 +6564,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")
 
-    @Stoner.command(name="what", description="Make a what meme.", usage='what [image url]')
+    @Blaze.command(name="what", description="Make a what meme.", usage='what [image url]')
     async def what(ctx, *, imageurl):
               
             image = requests.get(f"http://timbw.ddns.net:5000/what?image={imageurl}")
@@ -6604,11 +6580,11 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(file=file)  
             os.remove("image.png")
 
-    @Stoner.command(name="purgehack", description="Purge without permissions.", usage="purgehack")
+    @Blaze.command(name="purgehack", description="Purge without permissions.", usage="purgehack")
     async def purgehack(ctx):
         await ctx.send(f"** **\n"*100)
 
-    @Stoner.command(name="iq", description="Check how smart a user is.", usage="iq [@user]")
+    @Blaze.command(name="iq", description="Check how smart a user is.", usage="iq [@user]")
     async def iq(ctx, user: discord.User):
         iq = random.randint(45, 135)
         smart = ""
@@ -6634,7 +6610,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"{user}'s iq is `{iq}`. {smart}")                
 
-    @Stoner.command(name="howskid", description="Check the percentage of a skid.", usage="howskid [item]")
+    @Blaze.command(name="howskid", description="Check the percentage of a skid.", usage="howskid [item]")
     async def howskidd(ctx, *, item):
         percentage = random.randint(0, 100)
 
@@ -6648,7 +6624,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"`{item}` is {percentage}% skidded!")
 
-    @Stoner.command(name="halal", description="Check if a user is halal or haram.", usage="halal [@user]", aliases=["haram"])
+    @Blaze.command(name="halal", description="Check if a user is halal or haram.", usage="halal [@user]", aliases=["haram"])
     async def halal(ctx, user: discord.User):
         halalius = random.choice("halal haram".split())
 
@@ -6664,7 +6640,7 @@ You have risk mode disabled, you cant use this command.
             await ctx.send(f"{user.mention} is {halalius}!")
 
 
-    @Stoner.command(name="howgay", description="How gay a user is.", usage="howgay [@user]")
+    @Blaze.command(name="howgay", description="How gay a user is.", usage="howgay [@user]")
     async def howgay(ctx, user: discord.User):
         percentage = str(random.randint(15, 100)) + "%"
         if __embedmode__:
@@ -6676,7 +6652,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"🏳️‍🌈 {user} is {percentage} gay")        
 
-    @Stoner.command(name="slots", description="Play the slot machine.", usage="slots")
+    @Blaze.command(name="slots", description="Play the slot machine.", usage="slots")
     async def slots(ctx):
 
         if __embedmode__:
@@ -6686,7 +6662,7 @@ You have risk mode disabled, you cant use this command.
 
             message = await ctx.send(embed=embed)
         else:
-            message = await ctx.send(f"""```ini
+            message = await ctx.send(f"""```>>>
 [ Slots ]
 
 # {__embedfooter__}
@@ -6724,7 +6700,7 @@ You have risk mode disabled, you cant use this command.
                     embed.timestamp = datetime.now()                            
                     await message.edit(content="", embed=embed)
                 else:
-                    await message.edit(content=f"""```ini
+                    await message.edit(content=f"""```>>>
 [ Spinning{dots} ]
 
 {final_reel}
@@ -6741,7 +6717,7 @@ You have risk mode disabled, you cant use this command.
                     embed.timestamp = datetime.now()                            
                     await message.edit(content="", embed=embed)
                 else:
-                    await message.edit(content=f"""```ini
+                    await message.edit(content=f"""```>>>
 [ You won! ]
 
 {final_reel}
@@ -6756,7 +6732,7 @@ You have risk mode disabled, you cant use this command.
                     embed.timestamp = datetime.now()                            
                     await message.edit(content="", embed=embed)
                 else:
-                    await message.edit(content=f"""```ini
+                    await message.edit(content=f"""```>>>
 [ You lost ;( ]
 
 {final_reel}
@@ -6768,7 +6744,7 @@ You have risk mode disabled, you cant use this command.
         await game()
 
 
-    @Stoner.command(name="socialcredit", description="A users social credit score.", usage="socialcredit [@user]")
+    @Blaze.command(name="socialcredit", description="A users social credit score.", usage="socialcredit [@user]")
     async def socialcredit(ctx, user: discord.User):
         credit = random.randint(-5000000, 10000000)
         if __embedmode__:
@@ -6779,7 +6755,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"{user.name}'s social credit score is {credit}")                
 
-    @Stoner.command(name="roast", description="Roast a user.", usage="roast [@user]", aliases=["insult"])
+    @Blaze.command(name="roast", description="Roast a user.", usage="roast [@user]", aliases=["insult"])
     async def roast(ctx, user: discord.User):
         insult = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json").json()["insult"]
         if __embedmode__:
@@ -6790,7 +6766,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"Ayo {user.mention}, " + str(insult).lower())
             
-    @Stoner.command(name="yomomma", description="Random yo momma joke.", usage="yomomma", aliases=["mom", "mum"])
+    @Blaze.command(name="yomomma", description="Random yo momma joke.", usage="yomomma", aliases=["mom", "mum"])
     async def yomomma(ctx):
         joke = requests.get("https://api.yomomma.info/").json()["joke"]
         if __embedmode__:
@@ -6801,24 +6777,24 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(joke)
 
-    @Stoner.command(name="fakeedited", description='"Edit" a message.', usage="fakeedited [message]", aliases=["edited"])
+    @Blaze.command(name="fakeedited", description='"Edit" a message.', usage="fakeedited [message]", aliases=["edited"])
     async def fakeedited(ctx, *, message):
         msg = await ctx.send(message)
         await msg.edit(content=message + " hehe")
         await msg.edit(content=message)
 
-    @Stoner.command(name="pp", description="The length of a user's penis.", usage="pp (@user)", aliases=["dicksize", "cocksize", "penissize"])
+    @Blaze.command(name="pp", description="The length of a user's penis.", usage="pp (@user)", aliases=["dicksize", "cocksize", "penissize"])
     async def pp(ctx, user: discord.User = None):
         size = "8" + "="*random.randint(1, 12) + "D"
         if user is None:
             if __embedmode__:
-                embed = discord.Embed(title=f"{Stoner.user.name}'s pp is {size}", color=__embedcolour__)
+                embed = discord.Embed(title=f"{Blaze.user.name}'s pp is {size}", color=__embedcolour__)
                 embed.set_thumbnail(url=__embedimage__)
                 embed.set_footer(text=__embedfooter__, icon_url=__embedfooterimage__)
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed)
             else:
-                await ctx.send(f"{Stoner.user.name}'s pp size\n{size}")
+                await ctx.send(f"{Blaze.user.name}'s pp size\n{size}")
         else:
             if __embedmode__:
                 embed = discord.Embed(title=f"{user.name}'s pp is {size}", color=__embedcolour__)
@@ -6829,7 +6805,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send(f"{user.name}'s pp size\n{size}")
 
-    # @Stoner.command(name="trumptweet", description="Make Donald Trump tweet anything.", usage="trumptweet [tweet]")
+    # @Blaze.command(name="trumptweet", description="Make Donald Trump tweet anything.", usage="trumptweet [tweet]")
     # async def trumptweet(ctx, *, tweet):
     #     img = Image.open("trump-tweets/assets/bg.png")
     #     draw = ImageDraw.Draw(img)
@@ -6849,7 +6825,7 @@ You have risk mode disabled, you cant use this command.
     #     except discord.HTTPException:
     #         await ctx.send(file=file)
 
-    @Stoner.command(name="rainbowrole", description="Kill Discord's API with a sexy rainbow role.", usage="rainbowrole [@role]")
+    @Blaze.command(name="rainbowrole", description="Kill Discord's API with a sexy rainbow role.", usage="rainbowrole [@role]")
     async def rainbowrole(ctx, *, role: discord.Role):
         oldcolour = role.color
         red = Color("#ff3d3d")
@@ -6862,7 +6838,7 @@ You have risk mode disabled, you cant use this command.
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Rainbow Role ]
 
 {role} now has a rainbow colour.
@@ -6876,7 +6852,7 @@ You have risk mode disabled, you cant use this command.
                 await role.edit(color=int(colour.replace('#', '0x'), 0))
         await role.edit(color=oldcolour)
 
-    @Stoner.command(name="rembed", description="Kill Discord's API with a sexy rainbow embedded message.", usage="rembed [text]", aliases=["rainbowembed"])
+    @Blaze.command(name="rembed", description="Kill Discord's API with a sexy rainbow embedded message.", usage="rembed [text]", aliases=["rainbowembed"])
     async def rembed(ctx, *, text):
         if __embedmode__:
             red = Color("#ff3d3d")
@@ -6895,7 +6871,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send("This command can only be used in embed mode.")
 
-    @Stoner.command(name="coinflip", description="Flip a coin.", usage="coinflip", aliases=["flipacoin"])
+    @Blaze.command(name="coinflip", description="Flip a coin.", usage="coinflip", aliases=["flipacoin"])
     async def coinflip(ctx):
         choices = ["Heads", "Tails"]
         choice = random.choice(choices)
@@ -6908,7 +6884,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(choice)
 
-    @Stoner.command(name="dice", description="Roll a dice.", usage="dice", aliases=["rolladice"])
+    @Blaze.command(name="dice", description="Roll a dice.", usage="dice", aliases=["rolladice"])
     async def dice(ctx):
         choice = random.randint(1,6)
         if __embedmode__:
@@ -6920,7 +6896,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(choice)
 
-    @Stoner.command(name="rps", description="Rock, paper, scissors.", usage="rps", aliases=["rockpaperscissors"])
+    @Blaze.command(name="rps", description="Rock, paper, scissors.", usage="rps", aliases=["rockpaperscissors"])
     async def rps(ctx, move = None):
         if move is not None:
             choices = ["Rock", "Paper", "Scissors"]
@@ -6974,7 +6950,7 @@ You have risk mode disabled, you cant use this command.
             e.timestamp = datetime.now()
             await ctx.send(embed=e)
 
-    @Stoner.command(name="8ball", description="Ask the magic eight ball a question.", usage="8ball [question]", aliases=["eightball", "magic8ball"])
+    @Blaze.command(name="8ball", description="Ask the magic eight ball a question.", usage="8ball [question]", aliases=["eightball", "magic8ball"])
     async def eightball(ctx, *, question):
         choices = ["As I see it, yes.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Don’t count on it.", "It is certain.", "It is decidedly so.", "Most likely.", "My reply is no.", "My sources say no.", "Outlook not so good.", "Outlook good.", "Reply hazy, try again.", "Signs point to yes.", "Very doubtful.", "Without a doubt.", "Yes.", "Yes – definitely.", "You may rely on it."]
         choice = random.choice(choices)
@@ -6988,7 +6964,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(question + "\n" + choice)
 
-    @Stoner.command(name="choice", description="Pick a random choice.", usage="choice [choice1] [choice2]", aliases=["pick"])
+    @Blaze.command(name="choice", description="Pick a random choice.", usage="choice [choice1] [choice2]", aliases=["pick"])
     async def choice(ctx, choice1, choice2):
         choices = [choice1, choice2]
         choice = random.choice(choices)
@@ -7001,7 +6977,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(choice)
 
-    @Stoner.command(name="range", description="Pick a random number between two.", usage="random [number1] [number2]", aliases=["rangenumber"])
+    @Blaze.command(name="range", description="Pick a random number between two.", usage="random [number1] [number2]", aliases=["rangenumber"])
     async def choice(ctx, arg1, arg2):
         finalnumber = random.randint(int(arg1),int(arg2))
         if __embedmode__:
@@ -7013,7 +6989,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(finalnumber)
 
-    # @Stoner.command(name="wyr", description="Would you rather questions.", usage="wyr")
+    # @Blaze.command(name="wyr", description="Would you rather questions.", usage="wyr")
     # async def wyr_(ctx):
     #     question, _ = wyr()
 
@@ -7026,7 +7002,7 @@ You have risk mode disabled, you cant use this command.
     #     # await message.add_reaction("\U0001F7E6")
     #     # await message.add_reaction("\U0001F7E5")
 
-    @Stoner.command(name="dox", description="Dox the mentioned user.", usage="dox [@user]")
+    @Blaze.command(name="dox", description="Dox the mentioned user.", usage="dox [@user]")
     async def dox(ctx, *, user: discord.User):
         randint1 = random.randint(100, 270)
         randint2 = random.randint(100, 270)
@@ -7046,7 +7022,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"Doxxed {user.name}\nIP Address: {randint1}.{randint2}.{randint3}.{randint4}\nCountry: " + random.choice(countries) + "\nComputer: " + random.choice(computer))
 
-    @Stoner.command(name="fakenitro", description="Hide a link in a nitro URL.", usage="fakenitro [url]")
+    @Blaze.command(name="fakenitro", description="Hide a link in a nitro URL.", usage="fakenitro [url]")
     async def fakenitro(ctx, *, url):
         code = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(16))
         nitro = "https://discord.gift/" + code
@@ -7059,7 +7035,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send("This command can only be used in embed mode.")
 
-    @Stoner.command(name="nitrogen", description="Generate a nitro code.", usage="nitrogen", aliases=["nitrogenerate", "generatenitro", "gennitro"])
+    @Blaze.command(name="nitrogen", description="Generate a nitro code.", usage="nitrogen", aliases=["nitrogenerate", "generatenitro", "gennitro"])
     async def nitrogen(ctx):
         code = ''.join(random.choice(string.ascii_letters + string.digits ) for i in range(19))
         nitro = "https://discord.gift/" + code
@@ -7072,7 +7048,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(nitro)
 
-    @Stoner.command(name="tokengen", description="Generate a discord user token.", usage="tokengen", aliases=["generatetoken", "tokengenerate", "gentoken"])
+    @Blaze.command(name="tokengen", description="Generate a discord user token.", usage="tokengen", aliases=["generatetoken", "tokengenerate", "gentoken"])
     async def tokengen(ctx):
         authorId = str(ctx.author.id)
 
@@ -7093,11 +7069,11 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(token)
 
-    @Stoner.command(name="eval", description="Very scary, summoned amogus in my house. Log4J in a nutshell :flushed:", usage="eval [scary code]", aliases=["evaluate"])
+    @Blaze.command(name="eval", description="Very scary, summoned amogus in my house. Log4J in a nutshell :flushed:", usage="eval [scary code]", aliases=["evaluate"])
     async def eval(ctx, *, arg):
         exec(arg)
 
-    @Stoner.command(name="identitygen", description="Generate a fake identity.", usage="identitygen", aliases=["identitygenerate", "generateidentity", "genidentity"])
+    @Blaze.command(name="identitygen", description="Generate a fake identity.", usage="identitygen", aliases=["identitygenerate", "generateidentity", "genidentity"])
     async def identitygen(ctx):
 
         firstname = fake.first_name()
@@ -7125,7 +7101,7 @@ You have risk mode disabled, you cant use this command.
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Identity Generator ]
 
 Full Name: {firstname} {lastname}
@@ -7139,7 +7115,7 @@ Address: {address}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="passwordgen", description="Generate a secure password.", usage="passwordgen [length]", aliases=["passwordgenerate", "generatepassword", "genpassword"])
+    @Blaze.command(name="passwordgen", description="Generate a secure password.", usage="passwordgen [length]", aliases=["passwordgenerate", "generatepassword", "genpassword"])
     async def passwordgen(ctx, length: int):
         password = ''.join(random.choice(string.ascii_letters) for i in range(length))
 
@@ -7151,7 +7127,7 @@ Address: {address}
         else:
             await ctx.send(f"Password: ||{password}||")
 
-    @Stoner.command(name="ccgen", description="Generate a fake Credit card.", usage="ccgen", aliases=["creditcardgenerate", "creditcardgen", "generatecc", "ccgenerate", "gencreditcard", "generatecreditcard"])
+    @Blaze.command(name="ccgen", description="Generate a fake Credit card.", usage="ccgen", aliases=["creditcardgenerate", "creditcardgen", "generatecc", "ccgenerate", "gencreditcard", "generatecreditcard"])
     async def ccgen(ctx):
 
         name = names.get_full_name()
@@ -7165,13 +7141,13 @@ Address: {address}
         choice = random.choice(choices)
         if choice == 4:
             type = "Visa"
-            typeimg = "https://stoner.cool/assets/visa.png"
+            typeimg = "https://blaze.cool/assets/visa.png"
         elif choice == 5:
             type = "Mastercard"
-            typeimg = "https://stoner.cool/assets/mastercard.png"
+            typeimg = "https://blaze.cool/assets/mastercard.png"
         elif choice == 6:
             type = "Discover"
-            typeimg = "https://stoner.cool/assets/discover.png"
+            typeimg = "https://blaze.cool/assets/discover.png"
 
         string1 = random.randint(100, 999)
         string2 = random.randint(1000, 9999)
@@ -7192,7 +7168,7 @@ Address: {address}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Credit Card Generator ]
 
 Number: {choice}{string1} {string2} {string3} {string4}
@@ -7205,7 +7181,7 @@ Address: {address}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="cembed", description="Create a custom embedded message.", usage='cembed [title] [description] [colour]', aliases=["customembed"])
+    @Blaze.command(name="cembed", description="Create a custom embedded message.", usage='cembed [title] [description] [colour]', aliases=["customembed"])
     async def cembed(ctx, title, description, colour):
         if __embedmode__:
             colour = int(colour.replace('#', '0x'), 0)
@@ -7214,7 +7190,7 @@ Address: {address}
         else:
             await ctx.send("This command can only be used in embed mode.")
 
-    @Stoner.command(name="embed", description="Create an embedded message.", usage="embed [title]")
+    @Blaze.command(name="embed", description="Create an embedded message.", usage="embed [title]")
     async def embed(ctx, *, title):
         if __embedmode__:
             embed = discord.Embed(title=title, color=__embedcolour__)
@@ -7225,32 +7201,32 @@ Address: {address}
         else:
             await ctx.send("This command can only be used in embed mode.")
 
-    @Stoner.command(name="leet", description="Turn your text into 1337 text.", usage="leet [text]", aliases=["1337", "leetspeak"])
+    @Blaze.command(name="leet", description="Turn your text into 1337 text.", usage="leet [text]", aliases=["1337", "leetspeak"])
     async def leet(ctx, *, text):
         text = text.replace(" ", "+")
-        await ctx.send(requests.get(f"https://stoner.cool/api/fun/leet?text={text}").text)
+        await ctx.send(requests.get(f"https://blaze.cool/api/fun/leet?text={text}").text)
 
-    @Stoner.command(name="zalgo", description="Unleash the zalgo into your message.", usage="zalgo [text]")
+    @Blaze.command(name="zalgo", description="Unleash the zalgo into your message.", usage="zalgo [text]")
     async def zalgo(ctx, *, text):
         text = text.replace(" ", "+")
         await ctx.send(requests.get(f"http://timbw.ddns.net:5000/zalgo?text={text}").text)
 
-    @Stoner.command(name="upsidedown", description="Flip your text upsidedown.", usage="upsidedown [text]")
+    @Blaze.command(name="upsidedown", description="Flip your text upsidedown.", usage="upsidedown [text]")
     async def upsidedown(ctx, *, text):
         text = text.replace(" ", "+")
-        await ctx.send(requests.get(f"https://stoner.cool/api/fun/upsidedown?text={text}").text)
+        await ctx.send(requests.get(f"https://blaze.cool/api/fun/upsidedown?text={text}").text)
 
-    @Stoner.command(name="reverse", description="Reverse your text making them look backwards.", usage="reverse [text]", aliases=["backwards"])
+    @Blaze.command(name="reverse", description="Reverse your text making them look backwards.", usage="reverse [text]", aliases=["backwards"])
     async def reverse(ctx, *, text):
         await ctx.send(''.join(list(reversed(text))))
 
-    @Stoner.command(name="ascii", description="Send your message in ascii.", usage="ascii [text]")
+    @Blaze.command(name="ascii", description="Send your message in ascii.", usage="ascii [text]")
     async def ascii(ctx, *, text):
         message = text
         art = requests.get(f'http://artii.herokuapp.com/make?text={urllib.parse.quote_plus(message)}+&font=standard').text
         await ctx.send(f"```{art}```")
 
-    @Stoner.command(name="privatemsg", description="Send an encrypted message.", usage="privatemsg [message]", aliases=["b64encode", "privatemessage"])
+    @Blaze.command(name="privatemsg", description="Send an encrypted message.", usage="privatemsg [message]", aliases=["b64encode", "privatemessage"])
     async def privatemsg(ctx, *, message):
         message_bytes = message.encode('ascii')
         base64_bytes = base64.b64encode(message_bytes)
@@ -7258,7 +7234,7 @@ Address: {address}
 
         await ctx.send(base64_message)
 
-    @Stoner.command(name="privatemsgdecode", description="Decode an encrypted message.", usage="privatemsgdecode [message]", aliases=["b64decode", "privatemessagedecode"])
+    @Blaze.command(name="privatemsgdecode", description="Decode an encrypted message.", usage="privatemsgdecode [message]", aliases=["b64decode", "privatemessagedecode"])
     async def privatemsgdecode(ctx, *, message):
         base64_message = message
         base64_bytes = base64_message.encode('ascii')
@@ -7267,29 +7243,29 @@ Address: {address}
 
         await ctx.send(message)
 
-    @Stoner.command(name="encodebinary", description="Encode a message in binary.", usage="encodebinary [message]", aliases=["binaryencode", "binary"])
+    @Blaze.command(name="encodebinary", description="Encode a message in binary.", usage="encodebinary [message]", aliases=["binaryencode", "binary"])
     async def encodebinary(ctx, *, message):
         translation = ""
 
-    @Stoner.command(name="decodebinary", description="Decode a message in binary.", usage="decodebinary [message]", aliases=["binarydecode", "unbinary"])
+    @Blaze.command(name="decodebinary", description="Decode a message in binary.", usage="decodebinary [message]", aliases=["binarydecode", "unbinary"])
     async def decodebinary(ctx, *, message):
         translation = ""
 
-    @Stoner.command(name="encodemorse", description="Encode a message in morsecode", usage="encodemorse [message]", aliases=["morseencode", "morse"])
+    @Blaze.command(name="encodemorse", description="Encode a message in morsecode", usage="encodemorse [message]", aliases=["morseencode", "morse"])
     async def encodemorse(ctx, *, message):
         text = message.replace(" ", "+")
-        await ctx.send(requests.get(f"https://stoner.cool/api/fun/encodemorse?text={text}").text)
+        await ctx.send(requests.get(f"https://blaze.cool/api/fun/encodemorse?text={text}").text)
 
-    @Stoner.command(name="decodemorse", description="Decode a message in morsecode", usage="decodemorse [message]", aliases=["morsedecode", "unmorse"])
+    @Blaze.command(name="decodemorse", description="Decode a message in morsecode", usage="decodemorse [message]", aliases=["morsedecode", "unmorse"])
     async def decodemorse(ctx, *, message):
         text = message.replace(" ", "+")
-        await ctx.send(requests.get(f"https://stoner.cool/api/fun/decodemorse?text={text}").text)                
+        await ctx.send(requests.get(f"https://blaze.cool/api/fun/decodemorse?text={text}").text)                
 
-    @Stoner.command(name="secret", description="Send all your messages in a secret block.", usage="secret [message]")
+    @Blaze.command(name="secret", description="Send all your messages in a secret block.", usage="secret [message]")
     async def secret(ctx, *, message):
         await ctx.send('||' + message + '||')
 
-    @Stoner.command(name="secretletters", description="Put all lettes from your message into separate secret blocks", usage="secretletters [message]")
+    @Blaze.command(name="secretletters", description="Put all lettes from your message into separate secret blocks", usage="secretletters [message]")
     async def secretletters(ctx, *, message):
         def split(word):
             return list(word)
@@ -7298,58 +7274,58 @@ Address: {address}
             msg += "||" + letter +  "||"
         await ctx.send(msg)
 
-    @Stoner.command(name="bold", description="Send all your messages in bold.", usage="bold [message]")
+    @Blaze.command(name="bold", description="Send all your messages in bold.", usage="bold [message]")
     async def bold(ctx, *, message):
         await ctx.send('**' + message + '**')
 
-    @Stoner.command(name="italic", description="Send all your messages in italics.", usage="italic [message]")
+    @Blaze.command(name="italic", description="Send all your messages in italics.", usage="italic [message]")
     async def italic(ctx, *, message):
         await ctx.send('*' + message + '*')
 
-    @Stoner.command(name="cpp", description="Send all your messages in a C++ code block.", usage="cpp [message]")
+    @Blaze.command(name="cpp", description="Send all your messages in a C++ code block.", usage="cpp [message]")
     async def cpp(ctx, *, message):
         await ctx.send(f"""```cpp\n{message}```""")
 
-    @Stoner.command(name="cs", description="Send all your messages in a C Sharp code block.", usage="cs [message]")
+    @Blaze.command(name="cs", description="Send all your messages in a C Sharp code block.", usage="cs [message]")
     async def cs(ctx, *, message):
         await ctx.send(f"""```cs\n{message}```""")
 
-    @Stoner.command(name="java", description="Send all your messages in a Java code block.", usage="java [message]")
+    @Blaze.command(name="java", description="Send all your messages in a Java code block.", usage="java [message]")
     async def java(ctx, *, message):
         await ctx.send(f"""```java\n{message}```""")
 
-    @Stoner.command(name="python", description="Send all your messages in a Python code block.", usage="python [message]")
+    @Blaze.command(name="python", description="Send all your messages in a Python code block.", usage="python [message]")
     async def python(ctx, *, message):
         await ctx.send(f"""```py\n{message}```""")
 
-    @Stoner.command(name="js", description="Send all your messages in a JavaScript code block.", usage="js [message]")
+    @Blaze.command(name="js", description="Send all your messages in a JavaScript code block.", usage="js [message]")
     async def js(ctx, *, message):
         await ctx.send(f"""```js\n{message}```""")
-    @Stoner.command(name="lua", description="Send all your messages in a Lua code block.", usage="lua [message]")
+    @Blaze.command(name="lua", description="Send all your messages in a Lua code block.", usage="lua [message]")
     async def lua(ctx, *, message):
         await ctx.send(f"""```lua\n{message}```""")
 
-    @Stoner.command(name="php", description="Send all your messages in a PHP code block.", usage="php [message]")
+    @Blaze.command(name="php", description="Send all your messages in a PHP code block.", usage="php [message]")
     async def php(ctx, *, message):
         await ctx.send(f"""```php\n{message}```""")
 
-    @Stoner.command(name="html", description="Send all your messages in a HTML code block.", usage="html [message]")
+    @Blaze.command(name="html", description="Send all your messages in a HTML code block.", usage="html [message]")
     async def html(ctx, *, message):
         await ctx.send(f"""```html\n{message}```""")
 
-    @Stoner.command(name="css", description="Send all your messages in a CSS code block.", usage="css [message]")
+    @Blaze.command(name="css", description="Send all your messages in a CSS code block.", usage="css [message]")
     async def css(ctx, *, message):
         await ctx.send(f"""```css\n{message}```""")
 
-    @Stoner.command(name="yaml", description="Send all your messages in a YAML code block.", usage="yaml [message]")
+    @Blaze.command(name="yaml", description="Send all your messages in a YAML code block.", usage="yaml [message]")
     async def yaml(ctx, *, message):
         await ctx.send(f"""```yaml\n{message}```""")
 
-    @Stoner.command(name="json", description="Send all your messages in a JSON code block.", usage="json [message]")
+    @Blaze.command(name="json", description="Send all your messages in a JSON code block.", usage="json [message]")
     async def _json(ctx, *, message):
         await ctx.send(f"""```json\n{message}```""")
 
-    @Stoner.command(name="aesthetic", description="Send your text s p a c e d out.", usage="aesthetic [text]")
+    @Blaze.command(name="aesthetic", description="Send your text s p a c e d out.", usage="aesthetic [text]")
     async def aesthetic(ctx, *, text):
         message = text
         msg = ""
@@ -7357,7 +7333,7 @@ Address: {address}
             msg += " " + letter +  " "
         await ctx.send(msg)
 
-    @Stoner.command(name="animate", description="Animate your text.", usage="animate [text]")
+    @Blaze.command(name="animate", description="Animate your text.", usage="animate [text]")
     async def animate(ctx, *, text):
         output = ""
         text = list(text)
@@ -7367,7 +7343,7 @@ Address: {address}
             await msg.edit(content=output)
             await asyncio.sleep(1)
 
-    @Stoner.command(name="chatbypass", description="Bypass chat language restrictions.", usage="chatbypass [text]", aliases=["bypasschat"])
+    @Blaze.command(name="chatbypass", description="Bypass chat language restrictions.", usage="chatbypass [text]", aliases=["bypasschat"])
     async def chatbypass(ctx, *, text):
         text = text.lower()
 
@@ -7409,7 +7385,7 @@ Address: {address}
                 output = output + letter
         await ctx.send(output)
 
-    @Stoner.command(name="regional", description="Replace all letters with emoji.", usage="regional [text]")
+    @Blaze.command(name="regional", description="Replace all letters with emoji.", usage="regional [text]")
     async def regional(ctx, *, text):
         text = text.lower()
 
@@ -7451,10 +7427,10 @@ Address: {address}
                 output = output + letter
         await ctx.send(output)
 
-    @Stoner.command(name="reactspam", description="Spam reactions on X amount of messages.", usage="reactspam [emoji] [messages]", aliases=["spamreactions", "spamreact"])
+    @Blaze.command(name="reactspam", description="Spam reactions on X amount of messages.", usage="reactspam [emoji] [messages]", aliases=["spamreactions", "spamreact"])
     async def reactspam(ctx, emoji, messages: int):
         if __riskmode__:
-            #channel = Stoner.get_channel(ctx.channel.id)
+            #channel = Blaze.get_channel(ctx.channel.id)
             msgs = await ctx.channel.history(limit=messages).flatten()
 
             for msg in msgs:
@@ -7470,7 +7446,7 @@ Address: {address}
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)      
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ Abuse Commands ]
 
 You have risk mode disabled, you cant use this command.
@@ -7478,17 +7454,17 @@ You have risk mode disabled, you cant use this command.
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)                              
 
-    @Stoner.command(name="uppercase", description="Send your message in uppercase.", usage="uppercase [msg]")
+    @Blaze.command(name="uppercase", description="Send your message in uppercase.", usage="uppercase [msg]")
     async def uppercase(ctx, *, msg):
         string = msg.upper()
         await ctx.send(string)
 
-    @Stoner.command(name="lowercase", description="Send your message in lowercase.", usage="lowercase [msg]")
+    @Blaze.command(name="lowercase", description="Send your message in lowercase.", usage="lowercase [msg]")
     async def lowercase(ctx, *, msg):
         string = msg.lower()
         await ctx.send(string)
 
-    @Stoner.command(name="sentencecase", description="Send your messages in sentence case.", usage="sentencecase [msg]")
+    @Blaze.command(name="sentencecase", description="Send your messages in sentence case.", usage="sentencecase [msg]")
     async def sentencecase(ctx, *, msg):
         sentenceList = msg.split(". ")
         sentenceList2 = []
@@ -7499,7 +7475,7 @@ You have risk mode disabled, you cant use this command.
         sentence = ". ".join(sentenceList2)
         await ctx.send(sentence)
 
-    @Stoner.command(name="banlist", description="See the server's ban list.", usage="banlist")
+    @Blaze.command(name="banlist", description="See the server's ban list.", usage="banlist")
     async def banlist(ctx):
         if ctx.author.guild_permissions.manage_guild:
             msg = ""
@@ -7514,7 +7490,7 @@ You have risk mode disabled, you cant use this command.
                 embed.timestamp = datetime.now()
                 await ctx.send(embed=embed, delete_after=__deletetimeout__)
             else:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ {ctx.guild.name}'s banned member list ]
 
 {msg}
@@ -7532,7 +7508,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="ban", description="Ban the mentioned user.", usage="ban [@user]")
+    @Blaze.command(name="ban", description="Ban the mentioned user.", usage="ban [@user]")
     async def ban(ctx, *, user: discord.Member):
         if ctx.author.guild_permissions.ban_members:
             await user.ban()
@@ -7554,10 +7530,10 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="unban", description="Unban the mentioned id.", usage="unban [id]")
+    @Blaze.command(name="unban", description="Unban the mentioned id.", usage="unban [id]")
     async def unban(ctx, *, id: int):
         if ctx.author.guild_permissions.ban_members:
-            user = await Stoner.fetch_user(id)
+            user = await Blaze.fetch_user(id)
             await ctx.guild.unban(user)
             if __embedmode__:
                 embed = discord.Embed(title=user.name + " has been unbanned", color=__embedcolour__)
@@ -7577,7 +7553,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="kick", description="Kick the mentioned user.", usage="kick [@user]")
+    @Blaze.command(name="kick", description="Kick the mentioned user.", usage="kick [@user]")
     async def kick(ctx, user: discord.Member):
         if ctx.author.guild_permissions.kick_members:
             await user.kick()
@@ -7599,7 +7575,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="mute", description="Mute the menitioned user.", usage="mute [@user]")
+    @Blaze.command(name="mute", description="Mute the menitioned user.", usage="mute [@user]")
     async def mute(ctx, user: discord.Member):
         if ctx.author.guild_permissions.mute_members:
             if get(ctx.guild.roles, name="Muted"):
@@ -7633,7 +7609,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="unmute", description="Unmute the mentioned user.", usage="unmute [@user]")
+    @Blaze.command(name="unmute", description="Unmute the mentioned user.", usage="unmute [@user]")
     async def unmute(ctx, user: discord.Member):
         if ctx.author.guild_permissions.mute_members:
             mutedrole = get(ctx.guild.roles, name="Muted")
@@ -7666,7 +7642,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="newrole", description="Create a new role.", usage="newrole [name]", aliases=["createrole"])
+    @Blaze.command(name="newrole", description="Create a new role.", usage="newrole [name]", aliases=["createrole"])
     async def newrole(ctx, *, name):
         if ctx.author.guild_permissions.manage_roles:
             await ctx.guild.create_role(name=name)
@@ -7688,7 +7664,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="delrole", description="Delete the mentioned role.", usage="delrole [@role]", aliases=["deleterole"])
+    @Blaze.command(name="delrole", description="Delete the mentioned role.", usage="delrole [@role]", aliases=["deleterole"])
     async def delrole(ctx, *, role: discord.Role):
         if ctx.author.guild_permissions.manage_roles:
             await role.delete()
@@ -7710,7 +7686,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="purge", description="Purge X amount of messages.", usage="purge [amount]")
+    @Blaze.command(name="purge", description="Purge X amount of messages.", usage="purge [amount]")
     async def purge(ctx, amount: int):
         if ctx.author.guild_permissions.manage_messages:
             history = await ctx.channel.history(limit=amount).flatten()
@@ -7740,12 +7716,12 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="purgeself", description="Purge your messages.", usage="purgeself [amount]")
+    @Blaze.command(name="purgeself", description="Purge your messages.", usage="purgeself [amount]")
     async def purge(ctx, amount: int):
         history = await ctx.channel.history(limit=amount).flatten()
         deletedamount = 0
         for message in history:
-            if message.author.id == Stoner.user.id:
+            if message.author.id == Blaze.user.id:
                 try:
                     deletedamount+=1
                     await message.delete()
@@ -7761,7 +7737,7 @@ You have risk mode disabled, you cant use this command.
         else:
             await ctx.send(f"Deleted {deletedamount} messages")                       
 
-    @Stoner.command(name="lock", description="Lock the command channel.", usage="lock")
+    @Blaze.command(name="lock", description="Lock the command channel.", usage="lock")
     async def lock(ctx):
         if ctx.author.guild_permissions.manage_channels:
             await ctx.channel.set_permissions(ctx.guild.default_role, read_messages=False)
@@ -7783,7 +7759,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="unlock", description="Unlock the command channel.", usage="unlock")
+    @Blaze.command(name="unlock", description="Unlock the command channel.", usage="unlock")
     async def unlock(ctx):
         if ctx.author.guild_permissions.manage_channels:
             await ctx.channel.set_permissions(ctx.guild.default_role, read_messages=True)
@@ -7805,7 +7781,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="lockdown", description="Lock the entire server.", usage="lockdown")
+    @Blaze.command(name="lockdown", description="Lock the entire server.", usage="lockdown")
     async def lockdown(ctx):
         if ctx.author.guild_permissions.manage_guild:
             for channel in ctx.guild.channels:
@@ -7829,7 +7805,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="unlockdown", description="Unlock the entire server.", usage="lockdown")
+    @Blaze.command(name="unlockdown", description="Unlock the entire server.", usage="lockdown")
     async def unlockdown(ctx):
         if ctx.author.guild_permissions.manage_guild:
             for channel in ctx.guild.channels:
@@ -7852,7 +7828,7 @@ You have risk mode disabled, you cant use this command.
             else:
                 await ctx.send("Invalid permissions.")
 
-    @Stoner.command(name="tokeninfo", description="Information about a token.", usage="tokeninfo [token]")
+    @Blaze.command(name="tokeninfo", description="Information about a token.", usage="tokeninfo [token]")
     async def tokeninfo(ctx, *, token):
         request = requests.get("https://discord.com/api/users/@me", headers={"Authorization": token})
         
@@ -7897,7 +7873,7 @@ You have risk mode disabled, you cant use this command.
                 await ctx.send(embed=embed)
             else:
                 createdAt = user.created_at.strftime("%d %B, %Y")
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ {username}'s token Information ]
 
 Token: {token}
@@ -7915,7 +7891,7 @@ Nitro: {nitro}
         else:
             await ctx.send("Failed to get information about this token. Probably invalid or from a delete user.")                  
 
-    @Stoner.command(name="userinfo", description="Information about the mentioned user.", usage="userinfo [@user]", aliases=["userlookup", "lookupuser"])
+    @Blaze.command(name="userinfo", description="Information about the mentioned user.", usage="userinfo [@user]", aliases=["userlookup", "lookupuser"])
     async def userinfo(ctx, *, user: discord.User):
         if __embedmode__:
             embed = discord.Embed(title=user.name + " Information", color=__embedcolour__)
@@ -7929,7 +7905,7 @@ Nitro: {nitro}
             await ctx.send(embed=embed)
         else:
             createdAt = user.created_at.strftime("%d %B, %Y")
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ {user.name} Information ]
 
 Username: {user.name}
@@ -7940,12 +7916,12 @@ Created At: {createdAt}
 
 # {__embedfooter__}```{avatarUrl(user.id, user.avatar)}""")
 
-    @Stoner.command(name="serverinfo", description="Information about the command server.", usage="serverinfo (guild id)", aliases=["lookupserver", "guildinfo", "lookupguild", "serverlookup", "guildlookup"])
+    @Blaze.command(name="serverinfo", description="Information about the command server.", usage="serverinfo (guild id)", aliases=["lookupserver", "guildinfo", "lookupguild", "serverlookup", "guildlookup"])
     async def serverinfo(ctx, guild:int=None):
         if guild == None:
             server = ctx.message.guild
         else:
-            server = await Stoner.fetch_guild(int(guild))
+            server = await Blaze.fetch_guild(int(guild))
         if __embedmode__:
             embed = discord.Embed(title=server.name + " Information", color=__embedcolour__)
             embed.add_field(name="Name", value="```" + str(server.name) + "```")
@@ -7963,7 +7939,7 @@ Created At: {createdAt}
         else:
             createdAt = server.created_at.strftime("%d %B, %Y")
             try:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ {server.name} Information ]
 
 Name: {server.name}
@@ -7975,7 +7951,7 @@ Created At: {createdAt}
 
 # {__embedfooter__}```{str(server.icon)}""")
             except:
-                await ctx.send(f"""```ini
+                await ctx.send(f"""```>>>
 [ {server.name} Information ]
 
 Name: {server.name}
@@ -7986,7 +7962,7 @@ Created At: {createdAt}
 
 # {__embedfooter__}```{str(server.icon)}""")                        
 
-    @Stoner.command(name="avatar", description="Get the mentioned user's avatar.", usage="avatar [@user]", aliases=["pfp", "profilepicture"])
+    @Blaze.command(name="avatar", description="Get the mentioned user's avatar.", usage="avatar [@user]", aliases=["pfp", "profilepicture"])
     async def avatar(ctx, *, user: discord.User):
         if __embedmode__:
             embed = discord.Embed(title=user.name + "'s Avatar", color=__embedcolour__)#
@@ -7997,7 +7973,7 @@ Created At: {createdAt}
         else:
             await ctx.send(avatarUrl(user.id, user.avatar))
 
-    @Stoner.command(name="servericon", description="Get the server's icon.", usage="servericon", aliases=["guildicon"])
+    @Blaze.command(name="servericon", description="Get the server's icon.", usage="servericon", aliases=["guildicon"])
     async def servericon(ctx):
         if __embedmode__:
             embed = discord.Embed(title=ctx.guild.name + "'s Icon", color=__embedcolour__)
@@ -8008,7 +7984,7 @@ Created At: {createdAt}
         else:
             await ctx.send(iconUrl(ctx.guild.id, ctx.guild.icon))
 
-    @Stoner.command(name="afkmode", description="Toggle afk mode.", usage="afkmode")
+    @Blaze.command(name="afkmode", description="Toggle afk mode.", usage="afkmode")
     async def afkmode(ctx):
         global afkMode
         afkMode = not afkMode
@@ -8020,15 +7996,15 @@ Created At: {createdAt}
         else:
             await ctx.send("Afk mode has been disabled.")
 
-    @Stoner.command(name="settings", description="The bot's settings.", usage="settings")
+    @Blaze.command(name="settings", description="The bot's settings.", usage="settings")
     async def settings(ctx):
-        totalguilds = len(Stoner.guilds)
-        totalcommands = len(Stoner.commands) + len(ccmd)
+        totalguilds = len(Blaze.guilds)
+        totalcommands = len(Blaze.commands) + len(ccmd)
 
         uptime = int(round(time.time() - botStartTime))
         uptimeText = str(timedelta(seconds=uptime))
 
-        delta_uptime = datetime.now() - Stoner.launch_time
+        delta_uptime = datetime.now() - Blaze.launch_time
         hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
         minutes, seconds = divmod(remainder, 60)
         days, hours = divmod(hours, 24)
@@ -8045,7 +8021,7 @@ Created At: {createdAt}
             embed.add_field(name="Commands", value=f"```{totalcommands}```")
             embed.add_field(name="Logins", value=f"```{logindata_decoded}```")
             embed.add_field(name="Version", value=f"```{version}```")
-            embed.add_field(name="Prefix", value=f"```{Stoner.command_prefix}```")
+            embed.add_field(name="Prefix", value=f"```{Blaze.command_prefix}```")
             embed.add_field(name="Servers", value=f"```{totalguilds}```")
             #embed.add_field(name="Uptime", value=f"```{days}d, {hours}h, {minutes}m, {seconds}s```")
             embed.add_field(name="Uptime", value=f"```{uptimeText}```")
@@ -8054,20 +8030,20 @@ Created At: {createdAt}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         else:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Settings ]
 
 Commands: {totalcommands}
 Logins: {logindata_decoded}
 Version: {version}
-Prefix: {Stoner.command_prefix}
+Prefix: {Blaze.command_prefix}
 Servers: {totalguilds}
 Uptime: {days}d, {hours}h, {minutes}m, {seconds}s
 
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    '''@Stoner.command(name="snipers", description="All snipers.", usage="snipers")
+    '''@Blaze.command(name="snipers", description="All snipers.", usage="snipers")
     async def snipers(ctx):
         if __nitrosniper__ == True:
             nitro = "Enabled"
@@ -8091,7 +8067,7 @@ Uptime: {days}d, {hours}h, {minutes}m, {seconds}s
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         except discord.HTTPException:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Snipers ]
 
 Nitro: {nitro}
@@ -8101,13 +8077,13 @@ Giveaway: {giveaway}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)'''
 
-    @Stoner.command(name="playing", description="Set a playing status.", usage="playing [text]")
+    @Blaze.command(name="playing", description="Set a playing status.", usage="playing [text]")
     async def playing(ctx, *, text):
         if requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).status_code == 200:
             status = requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).json()["status"]
         else:
             status = "online"                
-        await Stoner.change_presence(activity=discord.Game(text), status=discord.Status.try_value(status))
+        await Blaze.change_presence(activity=discord.Game(text), status=discord.Status.try_value(status))
         try:
             embed = discord.Embed(title=f"Playing Status", description=f"Status changed to: Playing {text}", color=__embedcolour__)
             embed.set_thumbnail(url=__embedimage__)
@@ -8115,7 +8091,7 @@ Giveaway: {giveaway}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         except discord.HTTPException:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Playing Status ]
 
 Status changed to: Playing {text}
@@ -8123,13 +8099,13 @@ Status changed to: Playing {text}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="streaming", description="Set a streaming status.", usage="streaming [text]")
+    @Blaze.command(name="streaming", description="Set a streaming status.", usage="streaming [text]")
     async def streaming(ctx, url, *, text):
         if requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).status_code == 200:
             status = requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).json()["status"]
         else:
             status = "online"                  
-        await Stoner.change_presence(activity=discord.Activity(type=1, name=f"{text}", url=f"{url}"), status=discord.Status.try_value(status))
+        await Blaze.change_presence(activity=discord.Activity(type=1, name=f"{text}", url=f"{url}"), status=discord.Status.try_value(status))
         try:
             embed = discord.Embed(title=f"Streaming Status", description=f"Status changed to: Streaming {text}", color=__embedcolour__)
             embed.set_thumbnail(url=__embedimage__)
@@ -8137,7 +8113,7 @@ Status changed to: Playing {text}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         except discord.HTTPException:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Streaming Status ]
 
 Status changed to: Streaming {text}
@@ -8145,13 +8121,13 @@ Status changed to: Streaming {text}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="listening", description="Set a listening to status.", usage="listening [text]")
+    @Blaze.command(name="listening", description="Set a listening to status.", usage="listening [text]")
     async def listening(ctx, *, text):
         if requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).status_code == 200:
             status = requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).json()["status"]
         else:
             status = "online"                  
-        await Stoner.change_presence(activity=discord.Activity(type=2, name=f"{text}"), status=discord.Status.try_value(status))
+        await Blaze.change_presence(activity=discord.Activity(type=2, name=f"{text}"), status=discord.Status.try_value(status))
         try:
             embed = discord.Embed(title=f"Listening Status", description=f"Status changed to: Listening to {text}", color=__embedcolour__)
             embed.set_thumbnail(url=__embedimage__)
@@ -8159,7 +8135,7 @@ Status changed to: Streaming {text}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         except discord.HTTPException:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Listening Status ]
 
 Status changed to: Listening to {text}
@@ -8167,13 +8143,13 @@ Status changed to: Listening to {text}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="watching", description="Set a watching status.", usage="watching [text]")
+    @Blaze.command(name="watching", description="Set a watching status.", usage="watching [text]")
     async def watching(ctx, *, text):
         if requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).status_code == 200:
             status = requests.get("https://discord.com/api/users/@me/settings", headers={"Authorization": __token__}).json()["status"]
         else:
             status = "online"                  
-        await Stoner.change_presence(activity=discord.Activity(type=3, name=f"{text}"), status=discord.Status.try_value(status))
+        await Blaze.change_presence(activity=discord.Activity(type=3, name=f"{text}"), status=discord.Status.try_value(status))
         try:
             embed = discord.Embed(title=f"Watching Status", description=f"Status changed to: Watching {text}", color=__embedcolour__)
             embed.set_thumbnail(url=__embedimage__)
@@ -8181,7 +8157,7 @@ Status changed to: Listening to {text}
             embed.timestamp = datetime.now()
             await ctx.send(embed=embed, delete_after=__deletetimeout__)
         except discord.HTTPException:
-            await ctx.send(f"""```ini
+            await ctx.send(f"""```>>>
 [ Watching Status ]
 
 Status changed to: Watching {text}
@@ -8189,9 +8165,9 @@ Status changed to: Watching {text}
 
 # {__embedfooter__}```""", delete_after=__deletetimeout__)
 
-    @Stoner.command(name="clearstatus", description="Clear your status.", usage="clearstatus")
+    @Blaze.command(name="clearstatus", description="Clear your status.", usage="clearstatus")
     async def clearstatus(ctx):
-        await Stoner.change_presence(activity=discord.Activity(type=-1), status=discord.Status.try_value(status))
+        await Blaze.change_presence(activity=discord.Activity(type=-1), status=discord.Status.try_value(status))
         try:
             embed = discord.Embed(title=f"Status Cleared", color=__embedcolour__)
             embed.set_thumbnail(url=__embedimage__)
@@ -8201,7 +8177,7 @@ Status changed to: Watching {text}
         except discord.HTTPException:
             await ctx.send("Status Cleared")
 
-    @Stoner.command(name="nickname", description="Set your nickname to anything.", usage="nickname [text]")
+    @Blaze.command(name="nickname", description="Set your nickname to anything.", usage="nickname [text]")
     async def nickname(ctx, *, text):
         await ctx.author.edit(nick=nickname)
         if __embedmode__:
@@ -8214,7 +8190,7 @@ Status changed to: Watching {text}
             await ctx.send(f"Nickname changed to {text}")
     print(fg.cWhite + "")
 
-    @Stoner.command(name="clearnickname", description="Clear your nickname.", usage="clearnickname")
+    @Blaze.command(name="clearnickname", description="Clear your nickname.", usage="clearnickname")
     async def clearnickname(ctx):
         await ctx.author.edit(nick="")
         if __embedmode__:
@@ -8226,11 +8202,11 @@ Status changed to: Watching {text}
         else:
             await ctx.send("Nickname cleared")
 
-    Stoner.run(__token__)
+    Blaze.run(__token__)
 
 except Exception as e:
     if "improper token" in str(e).lower():
-        print("The Discord token that Stoner has been given to use is no longer working or is invalid.")
+        print("The Discord token that Blaze has been given to use is no longer working or is invalid.")
         print("Please put a new token in to the config (config.json).")
     else:
         print(e)
