@@ -1,32 +1,5 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-
-# Copyright (C) 2021 Ben Tettmar
-
-# Permission is hereby granted, free of charge, to any person obtaining a copy of
-# this software and associated documentation files (the "Software"), to deal in
-# the Software without restriction, including without limitation the rights to
-# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-# of the Software, and to permit persons to whom the Software is furnished to do
-# so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
-# THE SOFTWARE IS ALSO NOT PROVIDED WITH SUPPORT AND IF YOU REQUIRE SUPPORT 
-# THEN PLEASE EITHER USE A DIFFERENT PEICE OF SOFTWARE OR PAY THE DEVELOPER
-
 import os
 from re import T
-
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 printSpaces = ""
 
@@ -36,7 +9,6 @@ if os.name == "nt":
     os.system("title Stoner")
 if os.name == "posix":
     os.system("clear")
-
 print(" ")
 print(f"{printSpaces}Loading Stoner...")
 print(" ")
@@ -48,7 +20,6 @@ import logging
 if not os.path.exists('logs/'): 
     os.makedirs('logs/')
     print(printSpaces+"Made logs folder.")
-
 open("logs/info.log", "w").write(" ")
 print(printSpaces+"Resetting info log.")
 open("logs/warning.log", "w").write(" ")
@@ -66,183 +37,135 @@ logging.basicConfig(filename="logs/critical.log", level=logging.CRITICAL)
 
 
 try: 
-    # pythonVersion = float(str(sys.version_info[0])+"."+str(sys.version_info[1]))
-    # if pythonVersion < 3.8:
-    #     input("You're not using a supported Python version.")
-    #     exit()
-
-    # else:
-    #     print("You're using a supported python version, " + str(pythonVersion))
-
     def install(package):
         os.system(f"{sys.executable} -m pip install {package}")
-
     def uninstall(package):
         os.system(f"{sys.executable} -m pip uninstall {package}")
-
     if "discord.py" in sys.modules:
         uninstall("discord.py")
-
     if "discordselfbot" in sys.modules:
         uninstall("discordselfbot")
-
     try:
         import discord
     except ModuleNotFoundError:
         install("discord.py-self")
-
     try:
         import pyPrivnote as pn
     except ModuleNotFoundError:
         install("pyPrivnote")
-
     try:
         import names
     except ModuleNotFoundError:
         install("names")
-
     try:
         import simplejson
     except ModuleNotFoundError:
         install("simplejson")
-
     try:
         import aiohttp
     except ModuleNotFoundError:
         install("aiohttp")
-
     try:
         from colour import Color
     except ModuleNotFoundError:
         install("colour")
-
     try:
         from termcolor import colored
     except ModuleNotFoundError:
         install("termcolor")
-
     try:
         from faker import Faker
     except ModuleNotFoundError:
         install("Faker")
-
     if os.name == "nt":
         try:
             import plyer
         except ModuleNotFoundError:
             install("plyer")
-
     try:
         from sty import fg, bg, ef, rs, Style, RgbFg
     except ModuleNotFoundError:
         install("sty==1.0.0rc0")
-
     try:
         import colorama
     except ModuleNotFoundError:
         install("colorama")
-
     try:
         import discord_rpc
     except ModuleNotFoundError:
         install("discord-rpc.py")
-
     try:
         import requests
     except ModuleNotFoundError:
         install("requests")
-
     try:
         import uwuify
     except ModuleNotFoundError:
         install("uwuify")
-
     try:
         import numpy as np
     except ModuleNotFoundError:
         install("numpy")
-
     try:
         import discum
     except ModuleNotFoundError:
         install("discum")
-
     try:
         from discord_webhook import DiscordWebhook, DiscordEmbed
     except ModuleNotFoundError:
         install("discord-webhook")
-
     try:
         from random_user_agent.user_agent import UserAgent
         from random_user_agent.params import SoftwareName, OperatingSystem
     except ModuleNotFoundError:
         install("random_user_agent")    
-
-
     try:
         import GPUtil
     except ModuleNotFoundError:
         install("gputil")    
-
     try:
         import psutil
     except ModuleNotFoundError:
         install("psutil")
-
     try:
         import PIL
     except ModuleNotFoundError:
         install("pillow")
-
     try:
         import pygame
     except ModuleNotFoundError:
         install("pygame")        
-
-    # if os.name == "posix":
-    #     if str(subprocess.check_output(["apt-cache", "policy", "libportaudio2"])).split("\\n")[1][2:].split(": ")[1] == "(none)":
-    #         os.system("sudo apt-get install libportaudio2")
-
     try:
         import sounddevice
     except ModuleNotFoundError:
         install("sounddevice")
-
     try:
         import discord_emoji
     except ModuleNotFoundError:
         install("discord-emoji")
-
     if sys.platform == "darwin":
         try:
             import pync
         except ModuleNotFoundError:
             install("pync")
-
     if os.name == "nt":
         try:
             import wmi
         except ModuleNotFoundError:
             install("WMI")
-
         import wmi
-
     if os.name == "nt":
         import plyer
-
     try:
         import tkinter
     except:
         pass
-
     try:
         import brainfuckery
     except:
         install("brainfuckery==1.0.1")
-
     if sys.platform == "darwin":
         import pync
-    
     import brainfuckery
     import colorama
     import discord_emoji
